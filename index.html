@@ -368,6 +368,137 @@
       letter-spacing: 0.05em;
     }
 
+    /* ── SUBMIT FORM ── */
+    .submit-section {
+      border-top: 1px solid var(--border);
+      padding: 4rem 2rem;
+      max-width: 640px;
+      margin: 0 auto;
+    }
+
+    .submit-section h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.6rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .submit-section .sub {
+      color: var(--muted);
+      font-size: 0.85rem;
+      font-weight: 300;
+      line-height: 1.6;
+      margin-bottom: 2rem;
+    }
+
+    .form-group {
+      margin-bottom: 1.2rem;
+    }
+
+    .form-group label {
+      display: block;
+      font-size: 0.78rem;
+      font-weight: 500;
+      color: var(--muted);
+      margin-bottom: 0.4rem;
+      letter-spacing: 0.04em;
+    }
+
+    .form-group label .req {
+      color: var(--accent);
+      margin-left: 2px;
+    }
+
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      width: 100%;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 0.7rem 1rem;
+      color: var(--text);
+      font-size: 0.88rem;
+      font-family: 'Inter', sans-serif;
+      transition: border-color 0.2s;
+      outline: none;
+    }
+
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      border-color: var(--accent);
+    }
+
+    .form-group input::placeholder,
+    .form-group textarea::placeholder {
+      color: #555;
+    }
+
+    .form-group textarea {
+      resize: vertical;
+      min-height: 100px;
+    }
+
+    .form-group select {
+      cursor: pointer;
+      appearance: none;
+      background-image: url("data:image/svg+xml,%3Csvg width='12' height='12' viewBox='0 0 12 12' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M3 4.5l3 3 3-3' stroke='%23888' stroke-width='1.5'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 1rem center;
+      padding-right: 2.5rem;
+    }
+
+    .form-group select option {
+      background: var(--card);
+      color: var(--text);
+    }
+
+    .submit-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-top: 0.5rem;
+      padding: 0.75rem 2rem;
+      background: var(--accent);
+      color: #0d0d0d;
+      border: none;
+      border-radius: 10px;
+      font-size: 0.88rem;
+      font-weight: 600;
+      font-family: 'Inter', sans-serif;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .submit-btn:hover {
+      background: #d4b878;
+      transform: translateY(-1px);
+      box-shadow: 0 6px 20px rgba(200, 169, 110, 0.25);
+    }
+
+    .form-success {
+      display: none;
+      text-align: center;
+      padding: 2.5rem 1rem;
+    }
+
+    .form-success.show { display: block; }
+
+    .form-success .check {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .form-success h3 {
+      font-size: 1.1rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .form-success p {
+      color: var(--muted);
+      font-size: 0.85rem;
+    }
+
     @media (max-width: 640px) {
       .search-box { width: 100%; }
       header { flex-wrap: wrap; height: auto; padding: 1rem; gap: 0.8rem; }
@@ -375,6 +506,7 @@
       .search-box { flex: 1; }
       .hero { padding: 3rem 1.2rem 2.5rem; }
       .main { padding: 2rem 1.2rem 4rem; }
+      .submit-section { padding: 3rem 1.2rem; }
     }
   </style>
 </head>
@@ -421,6 +553,41 @@
   <div class="empty" id="empty"></div>
 </main>
 
+<section class="submit-section" id="submitSection">
+  <h2 id="formTitle"></h2>
+  <p class="sub" id="formDesc"></p>
+
+  <form id="submitForm" action="https://formspree.io/f/xreayzej" method="POST">
+    <div class="form-group">
+      <label id="labelSiteName"><span class="req">*</span></label>
+      <input type="text" name="site_name" required id="inputSiteName" />
+    </div>
+    <div class="form-group">
+      <label id="labelSiteUrl"><span class="req">*</span></label>
+      <input type="url" name="site_url" required id="inputSiteUrl" placeholder="https://" />
+    </div>
+    <div class="form-group">
+      <label id="labelCategory"><span class="req">*</span></label>
+      <select name="category" required id="selectCategory"></select>
+    </div>
+    <div class="form-group">
+      <label id="labelDesc"></label>
+      <textarea name="description" id="inputDesc"></textarea>
+    </div>
+    <div class="form-group">
+      <label id="labelContact"><span class="req">*</span></label>
+      <input type="email" name="email" required id="inputContact" />
+    </div>
+    <button type="submit" class="submit-btn" id="submitBtn"></button>
+  </form>
+
+  <div class="form-success" id="formSuccess">
+    <div class="check">&#10003;</div>
+    <h3 id="successTitle"></h3>
+    <p id="successDesc"></p>
+  </div>
+</section>
+
 <footer id="footer"></footer>
 
 <script>
@@ -442,6 +609,21 @@
         vintage: "빈티지 / 중고",
         sneaker: "스니커즈",
         global: "글로벌 멀티"
+      },
+      form: {
+        title: "사이트 등록 요청",
+        desc: "운영 중인 패션 쇼핑 사이트를 DIGGING에 등록하고 싶으시다면 아래 양식을 작성해주세요. 검토 후 연락드리겠습니다.",
+        siteName: "사이트 이름",
+        siteUrl: "사이트 URL",
+        category: "카테고리",
+        categoryPlaceholder: "카테고리 선택",
+        description: "사이트 소개",
+        descPlaceholder: "사이트에 대한 간단한 소개를 작성해주세요.",
+        contact: "담당자 이메일",
+        contactPlaceholder: "email@example.com",
+        submit: "등록 요청하기 →",
+        successTitle: "요청이 접수되었습니다!",
+        successDesc: "검토 후 등록 여부를 이메일로 안내드리겠습니다. 감사합니다."
       }
     },
     en: {
@@ -460,6 +642,21 @@
         vintage: "Vintage / Resale",
         sneaker: "Sneakers",
         global: "Global Multi"
+      },
+      form: {
+        title: "Submit Your Site",
+        desc: "Want your fashion shopping site featured on DIGGING? Fill out the form below and we'll review your submission.",
+        siteName: "Site Name",
+        siteUrl: "Site URL",
+        category: "Category",
+        categoryPlaceholder: "Select a category",
+        description: "Site Description",
+        descPlaceholder: "Tell us briefly about your site.",
+        contact: "Contact Email",
+        contactPlaceholder: "email@example.com",
+        submit: "Submit Request →",
+        successTitle: "Request submitted!",
+        successDesc: "We'll review your site and get back to you via email. Thank you."
       }
     },
     zh: {
@@ -478,6 +675,21 @@
         vintage: "复古 / 二手",
         sneaker: "球鞋",
         global: "全球综合"
+      },
+      form: {
+        title: "提交您的网站",
+        desc: "想让您的时尚购物网站入驻DIGGING？请填写以下表单，我们会审核您的申请。",
+        siteName: "网站名称",
+        siteUrl: "网站网址",
+        category: "分类",
+        categoryPlaceholder: "选择分类",
+        description: "网站介绍",
+        descPlaceholder: "请简要介绍您的网站。",
+        contact: "联系邮箱",
+        contactPlaceholder: "email@example.com",
+        submit: "提交申请 →",
+        successTitle: "申请已提交！",
+        successDesc: "我们将审核您的网站并通过邮件回复。感谢您的提交。"
       }
     },
     ja: {
@@ -496,6 +708,21 @@
         vintage: "ヴィンテージ / 中古",
         sneaker: "スニーカー",
         global: "グローバル"
+      },
+      form: {
+        title: "サイト掲載リクエスト",
+        desc: "運営中のファッションサイトをDIGGINGに掲載しませんか？以下のフォームにご記入ください。審査後ご連絡いたします。",
+        siteName: "サイト名",
+        siteUrl: "サイトURL",
+        category: "カテゴリー",
+        categoryPlaceholder: "カテゴリーを選択",
+        description: "サイト紹介",
+        descPlaceholder: "サイトについて簡単にご紹介ください。",
+        contact: "担当者メールアドレス",
+        contactPlaceholder: "email@example.com",
+        submit: "掲載リクエスト →",
+        successTitle: "リクエストを受け付けました！",
+        successDesc: "審査後、メールにてご連絡いたします。ありがとうございます。"
       }
     }
   };
@@ -965,6 +1192,10 @@
   const langLabel = document.getElementById('langLabel');
   const langDropdown = document.getElementById('langDropdown');
 
+  // form DOM
+  const submitForm = document.getElementById('submitForm');
+  const formSuccess = document.getElementById('formSuccess');
+
   let currentFilter = 'all';
   let currentSearch = '';
   let currentLang = 'ko';
@@ -1001,6 +1232,33 @@
     heroDesc.textContent = t.heroDesc;
     footer.textContent = t.footer;
     emptyEl.textContent = t.empty;
+
+    // form
+    const f = t.form;
+    document.getElementById('formTitle').textContent = f.title;
+    document.getElementById('formDesc').textContent = f.desc;
+    document.getElementById('labelSiteName').innerHTML = f.siteName + ' <span class="req">*</span>';
+    document.getElementById('labelSiteUrl').innerHTML = f.siteUrl + ' <span class="req">*</span>';
+    document.getElementById('labelCategory').innerHTML = f.category + ' <span class="req">*</span>';
+    document.getElementById('labelDesc').textContent = f.description;
+    document.getElementById('labelContact').innerHTML = f.contact + ' <span class="req">*</span>';
+    document.getElementById('inputSiteName').placeholder = f.siteName;
+    document.getElementById('inputSiteUrl').placeholder = 'https://';
+    document.getElementById('inputDesc').placeholder = f.descPlaceholder;
+    document.getElementById('inputContact').placeholder = f.contactPlaceholder;
+    document.getElementById('submitBtn').textContent = f.submit;
+    document.getElementById('successTitle').textContent = f.successTitle;
+    document.getElementById('successDesc').textContent = f.successDesc;
+
+    // rebuild category select
+    const sel = document.getElementById('selectCategory');
+    sel.innerHTML = `<option value="" disabled selected>${f.categoryPlaceholder}</option>`;
+    ['korea', 'luxury', 'street', 'vintage', 'sneaker', 'global'].forEach(key => {
+      const opt = document.createElement('option');
+      opt.value = key;
+      opt.textContent = t.categories[key];
+      sel.appendChild(opt);
+    });
 
     // rebuild filter tabs
     filterBar.innerHTML = '';
@@ -1072,6 +1330,29 @@
   searchInput.addEventListener('input', e => {
     currentSearch = e.target.value;
     render();
+  });
+
+  // ── FORM SUBMIT ──
+  submitForm.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const btn = document.getElementById('submitBtn');
+    btn.disabled = true;
+    btn.style.opacity = '0.6';
+    try {
+      const res = await fetch(submitForm.action, {
+        method: 'POST',
+        body: new FormData(submitForm),
+        headers: { 'Accept': 'application/json' }
+      });
+      if (res.ok) {
+        submitForm.style.display = 'none';
+        formSuccess.classList.add('show');
+        submitForm.reset();
+      }
+    } finally {
+      btn.disabled = false;
+      btn.style.opacity = '1';
+    }
   });
 
   // init
