@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sites — DIGGING</title>
+  <meta name="description" content="Curated fashion shopping sites from around the world." />
+  <meta name="google-adsense-account" content="ca-pub-4004698288665198">
+  <link rel="canonical" href="https://swesket.github.io/vibe_coding/sites.html" />
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4004698288665198" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="shared.css" />
+</head>
+<body data-page="sites">
+
+<header>
+  <a href="index.html" class="logo">
+    DIGGING
+    <span>Fashion Site Curation</span>
+  </a>
+  <nav id="nav"></nav>
+  <div class="header-right">
+    <div class="search-box">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/>
+      </svg>
+      <input type="text" id="searchInput" placeholder="" />
+    </div>
+    <div class="lang-selector" id="langSelector">
+      <button class="lang-btn" id="langBtn">
+        <span id="langLabel">KO</span>
+        <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 4.5l3 3 3-3"/></svg>
+      </button>
+      <div class="lang-dropdown" id="langDropdown">
+        <button class="lang-option active" data-lang="ko">Korean</button>
+        <button class="lang-option" data-lang="en">English</button>
+        <button class="lang-option" data-lang="zh">Chinese</button>
+        <button class="lang-option" data-lang="ja">Japanese</button>
+      </div>
+    </div>
+  </div>
+</header>
+
+<div class="filter-bar" id="filterBar"></div>
+
+<main class="main" id="sites">
+  <p class="section-label" id="sectionLabel"></p>
+  <div class="grid" id="grid"></div>
+  <div class="empty" id="empty"></div>
+</main>
+
+<div class="ad-slot">
+  <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-4004698288665198" data-ad-slot="auto" data-ad-format="horizontal" data-full-width-responsive="true"></ins>
+  <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+</div>
+
+<footer>
+  <div class="footer-top">
+    <div class="footer-brand">
+      <div class="f-logo">DIGGING</div>
+      <p id="footerBrandDesc"></p>
+    </div>
+    <div class="footer-links">
+      <div class="footer-col">
+        <h4 id="footerNavTitle"></h4>
+        <a href="sites.html" id="footerNavSites"></a>
+        <a href="guide.html" id="footerNavGuide"></a>
+        <a href="about.html" id="footerNavAbout"></a>
+      </div>
+      <div class="footer-col">
+        <h4 id="footerLegalTitle"></h4>
+        <a href="privacy.html" id="footerPrivacy"></a>
+        <a href="submit.html" id="footerNavSubmit"></a>
+        <a href="mailto:swesket@gmail.com" id="footerContact"></a>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom" id="footerCopy"></div>
+</footer>
+
+<script src="data.js"></script>
+<script src="shared.js"></script>
+<script>
+  const grid = document.getElementById('grid');
+  const emptyEl = document.getElementById('empty');
+  const searchInput = document.getElementById('searchInput');
+  const sectionLabel = document.getElementById('sectionLabel');
+  const filterBar = document.getElementById('filterBar');
+
+  let currentFilter = 'all', currentSearch = '';
+  const catKeys = ['all','korea','luxury','street','vintage','sneaker','global'];
+
+  // Check URL param for initial category
+  const urlParams = new URLSearchParams(window.location.search);
+  const catParam = urlParams.get('cat');
+  if (catParam && catKeys.includes(catParam)) currentFilter = catParam;
+
+  function renderTabs() {
+    const t = i18n[currentLang];
+    filterBar.innerHTML = '';
+    catKeys.forEach(key => {
+      const btn = document.createElement('button');
+      btn.className = 'tab' + (key === currentFilter ? ' active' : '');
+      btn.dataset.filter = key; btn.textContent = t.categories[key];
+      btn.addEventListener('click', () => {
+        filterBar.querySelectorAll('.tab').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active'); currentFilter = key; render();
+      });
+      filterBar.appendChild(btn);
+    });
+  }
+
+  function render() {
+    const t = i18n[currentLang]; const q = currentSearch.toLowerCase();
+    const filtered = sites.filter(s => {
+      const matchCat = currentFilter === 'all' || s.cat === currentFilter;
+      const desc = s.desc[currentLang] || s.desc.ko;
+      const tags = s.tags[currentLang] || s.tags.ko;
+      const matchQ = !q || s.name.toLowerCase().includes(q) || desc.toLowerCase().includes(q) || tags.some(tag => tag.toLowerCase().includes(q));
+      return matchCat && matchQ;
+    });
+    grid.innerHTML = '';
+    sectionLabel.textContent = `${t.categories[currentFilter]} — ${filtered.length}${t.countSuffix}`;
+    emptyEl.textContent = t.empty;
+    if (filtered.length === 0) { emptyEl.classList.add('show'); } else {
+      emptyEl.classList.remove('show');
+      filtered.forEach((s, i) => {
+        const desc = s.desc[currentLang] || s.desc.ko;
+        const tags = s.tags[currentLang] || s.tags.ko;
+        const a = document.createElement('a');
+        a.className = 'card'; a.href = s.href; a.target = '_blank'; a.rel = 'noopener noreferrer';
+        a.innerHTML = `<div class="card-head"><div class="favicon">${s.emoji}</div><div><div class="card-title">${s.name}</div><div class="card-url">${s.url}</div></div></div><p class="card-desc">${desc}</p><div class="card-footer"><div class="tags">${tags.map(tag=>`<span class="tag">${tag}</span>`).join('')}</div><span class="arrow">→</span></div>`;
+        a.style.animationDelay = `${i * 0.04}s`; grid.appendChild(a);
+      });
+    }
+  }
+
+  searchInput.addEventListener('input', e => { currentSearch = e.target.value; render(); });
+
+  document.addEventListener('langchange', () => {
+    renderTabs();
+    render();
+  });
+</script>
+</body>
+</html>

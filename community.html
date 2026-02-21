@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Community — DIGGING</title>
+  <meta name="description" content="DIGGING community — talk about fashion freely." />
+  <meta name="google-adsense-account" content="ca-pub-4004698288665198">
+  <link rel="canonical" href="https://swesket.github.io/vibe_coding/community.html" />
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4004698288665198" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="shared.css" />
+</head>
+<body data-page="community">
+
+<header>
+  <a href="index.html" class="logo">
+    DIGGING
+    <span>Fashion Site Curation</span>
+  </a>
+  <nav id="nav"></nav>
+  <div class="header-right">
+    <div class="search-box">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/>
+      </svg>
+      <input type="text" id="searchInput" placeholder="" />
+    </div>
+    <div class="lang-selector" id="langSelector">
+      <button class="lang-btn" id="langBtn">
+        <span id="langLabel">KO</span>
+        <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 4.5l3 3 3-3"/></svg>
+      </button>
+      <div class="lang-dropdown" id="langDropdown">
+        <button class="lang-option active" data-lang="ko">Korean</button>
+        <button class="lang-option" data-lang="en">English</button>
+        <button class="lang-option" data-lang="zh">Chinese</button>
+        <button class="lang-option" data-lang="ja">Japanese</button>
+      </div>
+    </div>
+  </div>
+</header>
+
+<section class="comments-section">
+  <h2 id="commentsTitle"></h2>
+  <p class="sub" id="commentsDesc"></p>
+  <div id="disqus_thread"></div>
+  <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</section>
+
+<footer>
+  <div class="footer-top">
+    <div class="footer-brand">
+      <div class="f-logo">DIGGING</div>
+      <p id="footerBrandDesc"></p>
+    </div>
+    <div class="footer-links">
+      <div class="footer-col">
+        <h4 id="footerNavTitle"></h4>
+        <a href="sites.html" id="footerNavSites"></a>
+        <a href="guide.html" id="footerNavGuide"></a>
+        <a href="about.html" id="footerNavAbout"></a>
+      </div>
+      <div class="footer-col">
+        <h4 id="footerLegalTitle"></h4>
+        <a href="privacy.html" id="footerPrivacy"></a>
+        <a href="submit.html" id="footerNavSubmit"></a>
+        <a href="mailto:swesket@gmail.com" id="footerContact"></a>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom" id="footerCopy"></div>
+</footer>
+
+<script src="shared.js"></script>
+<script>
+  function renderComments() {
+    const t = i18n[currentLang];
+    document.getElementById('commentsTitle').textContent = t.comments.title;
+    document.getElementById('commentsDesc').textContent = t.comments.desc;
+  }
+
+  document.addEventListener('langchange', renderComments);
+
+  // Disqus
+  var disqus_config = function () { this.page.url = 'https://swesket.github.io/vibe_coding/community.html'; this.page.identifier = 'digging-community'; };
+  (function() { var d = document, s = d.createElement('script'); s.src = 'https://digging-1.disqus.com/embed.js'; s.setAttribute('data-timestamp', +new Date()); (d.head || d.body).appendChild(s); })();
+</script>
+</body>
+</html>

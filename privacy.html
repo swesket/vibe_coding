@@ -5,36 +5,48 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Privacy Policy — DIGGING</title>
   <meta name="google-adsense-account" content="ca-pub-4004698288665198">
+  <link rel="stylesheet" href="shared.css" />
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@700&display=swap');
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    :root {
-      --bg: #0d0d0d; --surface: #161616; --card: #1e1e1e; --border: #2a2a2a;
-      --accent: #c8a96e; --text: #f0f0f0; --muted: #888;
-    }
-    body { background: var(--bg); color: var(--text); font-family: 'Inter', sans-serif; min-height: 100vh; }
-    header {
-      border-bottom: 1px solid var(--border); padding: 0 2rem; height: 64px;
-      display: flex; align-items: center; background: rgba(13,13,13,0.92); backdrop-filter: blur(12px);
-    }
-    .logo { font-family: 'Playfair Display', serif; font-size: 1.5rem; letter-spacing: 0.15em; color: var(--accent); text-decoration: none; }
     .content { max-width: 720px; margin: 0 auto; padding: 4rem 2rem 5rem; }
-    h1 { font-family: 'Playfair Display', serif; font-size: 2rem; margin-bottom: 0.5rem; }
-    .updated { color: var(--muted); font-size: 0.82rem; margin-bottom: 2.5rem; }
-    h2 { font-size: 1.1rem; font-weight: 600; margin: 2rem 0 0.7rem; color: var(--accent); }
-    p, li { color: var(--muted); font-size: 0.9rem; line-height: 1.8; font-weight: 300; }
-    ul { padding-left: 1.2rem; margin-bottom: 1rem; }
-    li { margin-bottom: 0.3rem; }
-    a { color: var(--accent); }
-    footer {
-      border-top: 1px solid var(--border); text-align: center; padding: 2rem;
-      font-size: 0.78rem; color: var(--muted);
-    }
+    .content h1 { font-family: 'Playfair Display', serif; font-size: 2rem; margin-bottom: 0.5rem; }
+    .content .updated { color: var(--muted); font-size: 0.82rem; margin-bottom: 2.5rem; }
+    .content h2 { font-size: 1.1rem; font-weight: 600; margin: 2rem 0 0.7rem; color: var(--accent); }
+    .content p, .content li { color: var(--muted); font-size: 0.9rem; line-height: 1.8; font-weight: 300; }
+    .content ul { padding-left: 1.2rem; margin-bottom: 1rem; }
+    .content li { margin-bottom: 0.3rem; }
+    .content a { color: var(--accent); }
     @media (max-width: 640px) { .content { padding: 2.5rem 1.2rem 4rem; } }
   </style>
 </head>
-<body>
-<header><a href="index.html" class="logo">DIGGING</a></header>
+<body data-page="privacy">
+
+<header>
+  <a href="index.html" class="logo">
+    DIGGING
+    <span>Fashion Site Curation</span>
+  </a>
+  <nav id="nav"></nav>
+  <div class="header-right">
+    <div class="search-box">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/>
+      </svg>
+      <input type="text" id="searchInput" placeholder="" />
+    </div>
+    <div class="lang-selector" id="langSelector">
+      <button class="lang-btn" id="langBtn">
+        <span id="langLabel">KO</span>
+        <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 4.5l3 3 3-3"/></svg>
+      </button>
+      <div class="lang-dropdown" id="langDropdown">
+        <button class="lang-option active" data-lang="ko">Korean</button>
+        <button class="lang-option" data-lang="en">English</button>
+        <button class="lang-option" data-lang="zh">Chinese</button>
+        <button class="lang-option" data-lang="ja">Japanese</button>
+      </div>
+    </div>
+  </div>
+</header>
 
 <div class="content">
   <h1>Privacy Policy</h1>
@@ -73,6 +85,30 @@
   <p>If you have questions about this Privacy Policy, please contact us at <a href="mailto:swesket@gmail.com">swesket@gmail.com</a>.</p>
 </div>
 
-<footer>© 2026 DIGGING — Fashion Digging Curation</footer>
+<footer>
+  <div class="footer-top">
+    <div class="footer-brand">
+      <div class="f-logo">DIGGING</div>
+      <p id="footerBrandDesc"></p>
+    </div>
+    <div class="footer-links">
+      <div class="footer-col">
+        <h4 id="footerNavTitle"></h4>
+        <a href="sites.html" id="footerNavSites"></a>
+        <a href="guide.html" id="footerNavGuide"></a>
+        <a href="about.html" id="footerNavAbout"></a>
+      </div>
+      <div class="footer-col">
+        <h4 id="footerLegalTitle"></h4>
+        <a href="privacy.html" id="footerPrivacy"></a>
+        <a href="submit.html" id="footerNavSubmit"></a>
+        <a href="mailto:swesket@gmail.com" id="footerContact"></a>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom" id="footerCopy"></div>
+</footer>
+
+<script src="shared.js"></script>
 </body>
 </html>

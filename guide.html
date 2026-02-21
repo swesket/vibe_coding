@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Guide — DIGGING</title>
+  <meta name="description" content="Fashion shopping guides curated by DIGGING editors." />
+  <meta name="google-adsense-account" content="ca-pub-4004698288665198">
+  <link rel="canonical" href="https://swesket.github.io/vibe_coding/guide.html" />
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4004698288665198" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="shared.css" />
+</head>
+<body data-page="guide">
+
+<header>
+  <a href="index.html" class="logo">
+    DIGGING
+    <span>Fashion Site Curation</span>
+  </a>
+  <nav id="nav"></nav>
+  <div class="header-right">
+    <div class="search-box">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/>
+      </svg>
+      <input type="text" id="searchInput" placeholder="" />
+    </div>
+    <div class="lang-selector" id="langSelector">
+      <button class="lang-btn" id="langBtn">
+        <span id="langLabel">KO</span>
+        <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 4.5l3 3 3-3"/></svg>
+      </button>
+      <div class="lang-dropdown" id="langDropdown">
+        <button class="lang-option active" data-lang="ko">Korean</button>
+        <button class="lang-option" data-lang="en">English</button>
+        <button class="lang-option" data-lang="zh">Chinese</button>
+        <button class="lang-option" data-lang="ja">Japanese</button>
+      </div>
+    </div>
+  </div>
+</header>
+
+<section class="guide-section">
+  <h2 id="guideTitle"></h2>
+  <p class="sub" id="guideDesc"></p>
+  <div class="guide-grid" id="guideGrid"></div>
+</section>
+
+<div class="ad-slot">
+  <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-4004698288665198" data-ad-slot="auto" data-ad-format="rectangle" data-full-width-responsive="true"></ins>
+  <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+</div>
+
+<footer>
+  <div class="footer-top">
+    <div class="footer-brand">
+      <div class="f-logo">DIGGING</div>
+      <p id="footerBrandDesc"></p>
+    </div>
+    <div class="footer-links">
+      <div class="footer-col">
+        <h4 id="footerNavTitle"></h4>
+        <a href="sites.html" id="footerNavSites"></a>
+        <a href="guide.html" id="footerNavGuide"></a>
+        <a href="about.html" id="footerNavAbout"></a>
+      </div>
+      <div class="footer-col">
+        <h4 id="footerLegalTitle"></h4>
+        <a href="privacy.html" id="footerPrivacy"></a>
+        <a href="submit.html" id="footerNavSubmit"></a>
+        <a href="mailto:swesket@gmail.com" id="footerContact"></a>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom" id="footerCopy"></div>
+</footer>
+
+<script src="shared.js"></script>
+<script>
+  function renderGuide() {
+    const t = i18n[currentLang];
+    document.getElementById('guideTitle').textContent = t.guide.title;
+    document.getElementById('guideDesc').textContent = t.guide.desc;
+    const gg = document.getElementById('guideGrid');
+    gg.innerHTML = '';
+    t.guide.items.forEach(item => {
+      const d = document.createElement('div'); d.className = 'guide-card';
+      d.innerHTML = `<h3><span class="icon">${item.icon}</span>${item.title}</h3><p>${item.body}</p><div class="tip">${item.tip}</div>`;
+      gg.appendChild(d);
+    });
+  }
+
+  document.addEventListener('langchange', renderGuide);
+</script>
+</body>
+</html>
