@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>DIGGING — 패션 쇼핑 사이트 모음</title>
-  <meta name="description" content="국내외 패션 쇼핑 사이트를 한 곳에서 모아보는 디깅 큐레이션. 스트릿, 럭셔리, 빈티지, 스니커즈까지." />
+  <title>DIGGING — Fashion Site Curation</title>
+  <meta name="description" content="Curated fashion shopping sites from around the world. Street, luxury, vintage, sneakers and more." />
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@700&display=swap');
 
@@ -42,6 +42,7 @@
       align-items: center;
       justify-content: space-between;
       height: 64px;
+      gap: 1rem;
     }
 
     .logo {
@@ -49,6 +50,7 @@
       font-size: 1.5rem;
       letter-spacing: 0.15em;
       color: var(--accent);
+      flex-shrink: 0;
     }
 
     .logo span {
@@ -62,6 +64,12 @@
       margin-top: -4px;
     }
 
+    .header-right {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
     .search-box {
       display: flex;
       align-items: center;
@@ -70,12 +78,11 @@
       border: 1px solid var(--border);
       border-radius: 8px;
       padding: 0.45rem 1rem;
-      width: 260px;
+      width: 240px;
       transition: border-color 0.2s;
     }
 
     .search-box:focus-within { border-color: var(--accent); }
-
     .search-box svg { color: var(--muted); flex-shrink: 0; }
 
     .search-box input {
@@ -88,6 +95,78 @@
     }
 
     .search-box input::placeholder { color: var(--muted); }
+
+    /* ── LANG SELECTOR ── */
+    .lang-selector {
+      position: relative;
+      flex-shrink: 0;
+    }
+
+    .lang-btn {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 0.45rem 0.8rem;
+      color: var(--text);
+      font-size: 0.8rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: border-color 0.2s;
+      white-space: nowrap;
+    }
+
+    .lang-btn:hover { border-color: var(--accent); }
+
+    .lang-btn svg {
+      width: 12px;
+      height: 12px;
+      color: var(--muted);
+      transition: transform 0.2s;
+    }
+
+    .lang-selector.open .lang-btn svg { transform: rotate(180deg); }
+
+    .lang-dropdown {
+      display: none;
+      position: absolute;
+      top: calc(100% + 6px);
+      right: 0;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      overflow: hidden;
+      min-width: 140px;
+      box-shadow: 0 12px 32px rgba(0,0,0,0.5);
+      z-index: 200;
+    }
+
+    .lang-selector.open .lang-dropdown { display: block; }
+
+    .lang-option {
+      display: block;
+      width: 100%;
+      padding: 0.6rem 1rem;
+      background: none;
+      border: none;
+      color: var(--muted);
+      font-size: 0.82rem;
+      text-align: left;
+      cursor: pointer;
+      transition: all 0.15s;
+    }
+
+    .lang-option:hover {
+      background: var(--accent-soft);
+      color: var(--text);
+    }
+
+    .lang-option.active {
+      color: var(--accent);
+      font-weight: 600;
+    }
 
     /* ── HERO ── */
     .hero {
@@ -230,17 +309,8 @@
       border: 1px solid var(--border);
     }
 
-    .card-title {
-      font-size: 0.97rem;
-      font-weight: 600;
-      line-height: 1.3;
-    }
-
-    .card-url {
-      font-size: 0.72rem;
-      color: var(--muted);
-      margin-top: 1px;
-    }
+    .card-title { font-size: 0.97rem; font-weight: 600; line-height: 1.3; }
+    .card-url { font-size: 0.72rem; color: var(--muted); margin-top: 1px; }
 
     .card-desc {
       font-size: 0.82rem;
@@ -275,19 +345,10 @@
       transition: all 0.2s;
     }
 
-    .card:hover .arrow {
-      opacity: 1;
-      transform: translateX(0);
-    }
+    .card:hover .arrow { opacity: 1; transform: translateX(0); }
 
     /* ── NO RESULT ── */
-    .empty {
-      text-align: center;
-      padding: 4rem 2rem;
-      color: var(--muted);
-      display: none;
-    }
-
+    .empty { text-align: center; padding: 4rem 2rem; color: var(--muted); display: none; }
     .empty.show { display: block; }
 
     /* ── CARD ANIMATION ── */
@@ -295,7 +356,6 @@
       from { opacity: 0; transform: translateY(12px); }
       to   { opacity: 1; transform: translateY(0); }
     }
-
     .card { animation: fadeInUp 0.35s ease both; }
 
     /* ── FOOTER ── */
@@ -311,6 +371,8 @@
     @media (max-width: 640px) {
       .search-box { width: 100%; }
       header { flex-wrap: wrap; height: auto; padding: 1rem; gap: 0.8rem; }
+      .header-right { width: 100%; }
+      .search-box { flex: 1; }
       .hero { padding: 3rem 1.2rem 2.5rem; }
       .main { padding: 2rem 1.2rem 4rem; }
     }
@@ -323,349 +385,665 @@
     DIGGING
     <span>Fashion Site Curation</span>
   </div>
-  <div class="search-box">
-    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-      <circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/>
-    </svg>
-    <input type="text" id="searchInput" placeholder="사이트 검색..." />
+  <div class="header-right">
+    <div class="search-box">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/>
+      </svg>
+      <input type="text" id="searchInput" placeholder="" />
+    </div>
+    <div class="lang-selector" id="langSelector">
+      <button class="lang-btn" id="langBtn">
+        <span id="langLabel">KO</span>
+        <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 4.5l3 3 3-3"/></svg>
+      </button>
+      <div class="lang-dropdown" id="langDropdown">
+        <button class="lang-option active" data-lang="ko">Korean</button>
+        <button class="lang-option" data-lang="en">English</button>
+        <button class="lang-option" data-lang="zh">Chinese</button>
+        <button class="lang-option" data-lang="ja">Japanese</button>
+      </div>
+    </div>
   </div>
 </header>
 
 <section class="hero">
-  <p class="hero-eyebrow">Curated Fashion Destinations</p>
-  <h1>당신의 다음<br/>스타일을 발견하세요</h1>
-  <p>국내외 패션 쇼핑 사이트를 한 곳에서. 브랜드, 빈티지, 스트릿까지.</p>
+  <p class="hero-eyebrow" id="heroEyebrow"></p>
+  <h1 id="heroTitle"></h1>
+  <p id="heroDesc"></p>
 </section>
 
-<div class="filter-bar">
-  <button class="tab active" data-filter="all">전체</button>
-  <button class="tab" data-filter="korea">국내 셀렉트샵</button>
-  <button class="tab" data-filter="luxury">럭셔리 / 하이엔드</button>
-  <button class="tab" data-filter="street">스트릿 / 슈프리마시</button>
-  <button class="tab" data-filter="vintage">빈티지 / 중고</button>
-  <button class="tab" data-filter="sneaker">스니커즈</button>
-  <button class="tab" data-filter="global">글로벌 멀티</button>
-</div>
+<div class="filter-bar" id="filterBar"></div>
 
 <main class="main">
-  <p class="section-label" id="sectionLabel">전체 사이트 — 0개</p>
+  <p class="section-label" id="sectionLabel"></p>
   <div class="grid" id="grid"></div>
-  <div class="empty" id="empty">검색 결과가 없습니다.</div>
+  <div class="empty" id="empty"></div>
 </main>
 
-<footer>© 2026 DIGGING — 패션 디깅 큐레이션</footer>
+<footer id="footer"></footer>
 
 <script>
+  // ── i18n ──
+  const i18n = {
+    ko: {
+      searchPlaceholder: "사이트 검색...",
+      heroEyebrow: "Curated Fashion Destinations",
+      heroTitle: "당신의 다음<br/>스타일을 발견하세요",
+      heroDesc: "국내외 패션 쇼핑 사이트를 한 곳에서. 브랜드, 빈티지, 스트릿까지.",
+      footer: "© 2026 DIGGING — 패션 디깅 큐레이션",
+      empty: "검색 결과가 없습니다.",
+      countSuffix: "개",
+      categories: {
+        all: "전체",
+        korea: "국내 셀렉트샵",
+        luxury: "럭셔리 / 하이엔드",
+        street: "스트릿",
+        vintage: "빈티지 / 중고",
+        sneaker: "스니커즈",
+        global: "글로벌 멀티"
+      }
+    },
+    en: {
+      searchPlaceholder: "Search sites...",
+      heroEyebrow: "Curated Fashion Destinations",
+      heroTitle: "Discover Your<br/>Next Style",
+      heroDesc: "All the best fashion shopping sites in one place. Brands, vintage, streetwear and more.",
+      footer: "© 2026 DIGGING — Fashion Digging Curation",
+      empty: "No results found.",
+      countSuffix: "",
+      categories: {
+        all: "All",
+        korea: "Korean Select",
+        luxury: "Luxury / High-End",
+        street: "Streetwear",
+        vintage: "Vintage / Resale",
+        sneaker: "Sneakers",
+        global: "Global Multi"
+      }
+    },
+    zh: {
+      searchPlaceholder: "搜索网站...",
+      heroEyebrow: "精选时尚目的地",
+      heroTitle: "发现你的<br/>下一个风格",
+      heroDesc: "汇集国内外时尚购物网站。品牌、复古、街头，尽在一处。",
+      footer: "© 2026 DIGGING — 时尚挖掘策展",
+      empty: "未找到搜索结果。",
+      countSuffix: "个",
+      categories: {
+        all: "全部",
+        korea: "韩国精选店",
+        luxury: "奢侈品 / 高端",
+        street: "街头潮流",
+        vintage: "复古 / 二手",
+        sneaker: "球鞋",
+        global: "全球综合"
+      }
+    },
+    ja: {
+      searchPlaceholder: "サイトを検索...",
+      heroEyebrow: "厳選ファッションサイト",
+      heroTitle: "次のスタイルを<br/>見つけよう",
+      heroDesc: "国内外のファッション通販サイトを一箇所に。ブランド、ヴィンテージ、ストリートまで。",
+      footer: "© 2026 DIGGING — ファッションディギングキュレーション",
+      empty: "検索結果が見つかりません。",
+      countSuffix: "件",
+      categories: {
+        all: "すべて",
+        korea: "韓国セレクトショップ",
+        luxury: "ラグジュアリー / ハイエンド",
+        street: "ストリート",
+        vintage: "ヴィンテージ / 中古",
+        sneaker: "スニーカー",
+        global: "グローバル"
+      }
+    }
+  };
+
+  // ── SITE DATA (multi-lang desc & tags) ──
   const sites = [
-    // ── 국내 셀렉트샵
+    // ── 국내 셀렉트샵 / Korean Select ──
     {
-      name: "무신사",
-      url: "musinsa.com",
-      href: "https://www.musinsa.com",
-      emoji: "🟦",
-      desc: "국내 최대 패션 플랫폼. 스트릿·캐주얼 중심, 무신사 스탠다드 자체 브랜드 포함.",
-      tags: ["캐주얼", "스트릿", "자체PB"],
-      cat: "korea"
+      name: "무신사 / Musinsa", url: "musinsa.com", href: "https://www.musinsa.com", emoji: "🟦", cat: "korea",
+      desc: {
+        ko: "국내 최대 패션 플랫폼. 스트릿·캐주얼 중심, 무신사 스탠다드 자체 브랜드 포함.",
+        en: "Korea's largest fashion platform. Street & casual focused, includes in-house brand Musinsa Standard.",
+        zh: "韩国最大时尚平台。以街头休闲为主，含自有品牌Musinsa Standard。",
+        ja: "韓国最大のファッションプラットフォーム。ストリート・カジュアル中心、自社ブランド含む。"
+      },
+      tags: {
+        ko: ["캐주얼", "스트릿", "자체PB"],
+        en: ["Casual", "Street", "In-house"],
+        zh: ["休闲", "街头", "自有品牌"],
+        ja: ["カジュアル", "ストリート", "自社PB"]
+      }
     },
     {
-      name: "29CM",
-      url: "29cm.co.kr",
-      href: "https://www.29cm.co.kr",
-      emoji: "⬛",
-      desc: "감도 높은 라이프스타일·패션 셀렉트샵. 디자이너 브랜드 중심.",
-      tags: ["디자이너", "라이프스타일"],
-      cat: "korea"
+      name: "29CM", url: "29cm.co.kr", href: "https://www.29cm.co.kr", emoji: "⬛", cat: "korea",
+      desc: {
+        ko: "감도 높은 라이프스타일·패션 셀렉트샵. 디자이너 브랜드 중심.",
+        en: "High-taste lifestyle & fashion select shop. Designer brand focused.",
+        zh: "高品味生活方式·时尚精选店。以设计师品牌为主。",
+        ja: "感度の高いライフスタイル・ファッションセレクトショップ。デザイナーブランド中心。"
+      },
+      tags: {
+        ko: ["디자이너", "라이프스타일"],
+        en: ["Designer", "Lifestyle"],
+        zh: ["设计师", "生活方式"],
+        ja: ["デザイナー", "ライフスタイル"]
+      }
     },
     {
-      name: "W Concept",
-      url: "wconcept.co.kr",
-      href: "https://www.wconcept.co.kr",
-      emoji: "🤍",
-      desc: "국내외 컨템포러리 디자이너 브랜드 전문. 여성 라인 강세.",
-      tags: ["컨템포러리", "디자이너"],
-      cat: "korea"
+      name: "W Concept", url: "wconcept.co.kr", href: "https://www.wconcept.co.kr", emoji: "🤍", cat: "korea",
+      desc: {
+        ko: "국내외 컨템포러리 디자이너 브랜드 전문. 여성 라인 강세.",
+        en: "Contemporary designer brands from Korea and abroad. Strong women's line.",
+        zh: "国内外当代设计师品牌专营。女装线强势。",
+        ja: "国内外コンテンポラリーデザイナーブランド専門。ウィメンズに強み。"
+      },
+      tags: {
+        ko: ["컨템포러리", "디자이너"],
+        en: ["Contemporary", "Designer"],
+        zh: ["当代", "设计师"],
+        ja: ["コンテンポラリー", "デザイナー"]
+      }
     },
     {
-      name: "한섬 EQL",
-      url: "eql.kr",
-      href: "https://www.eql.kr",
-      emoji: "🔲",
-      desc: "한섬 공식 플랫폼. 타임, 시스템, 마인 등 국내 프리미엄 브랜드 모음.",
-      tags: ["프리미엄", "한국브랜드"],
-      cat: "korea"
+      name: "한섬 EQL / Handsome EQL", url: "eql.kr", href: "https://www.eql.kr", emoji: "🔲", cat: "korea",
+      desc: {
+        ko: "한섬 공식 플랫폼. 타임, 시스템, 마인 등 국내 프리미엄 브랜드 모음.",
+        en: "Handsome Group's official platform. Curates Korean premium brands like TIME, System, Mine.",
+        zh: "韩森官方平台。汇集TIME、System、Mine等韩国高端品牌。",
+        ja: "ハンサム公式プラットフォーム。TIME、System、Mineなど韓国プレミアムブランド。"
+      },
+      tags: {
+        ko: ["프리미엄", "한국브랜드"],
+        en: ["Premium", "Korean Brands"],
+        zh: ["高端", "韩国品牌"],
+        ja: ["プレミアム", "韓国ブランド"]
+      }
     },
     {
-      name: "룩핀",
-      url: "lookpin.com",
-      href: "https://www.lookpin.com",
-      emoji: "📌",
-      desc: "실착 스타일 기반 쇼핑 플랫폼. 코디 참고와 구매를 동시에.",
-      tags: ["코디", "캐주얼"],
-      cat: "korea"
+      name: "룩핀 / Lookpin", url: "lookpin.com", href: "https://www.lookpin.com", emoji: "📌", cat: "korea",
+      desc: {
+        ko: "실착 스타일 기반 쇼핑 플랫폼. 코디 참고와 구매를 동시에.",
+        en: "Real-wear style based shopping. Browse outfits and buy at the same time.",
+        zh: "基于实穿搭配的购物平台。参考搭配与购买同步。",
+        ja: "実着スタイルベースのショッピング。コーデ参考と購入を同時に。"
+      },
+      tags: {
+        ko: ["코디", "캐주얼"],
+        en: ["Outfits", "Casual"],
+        zh: ["搭配", "休闲"],
+        ja: ["コーデ", "カジュアル"]
+      }
     },
     {
-      name: "에이블리",
-      url: "a-bly.com",
-      href: "https://www.a-bly.com",
-      emoji: "🩷",
-      desc: "여성 트렌디 패션 앱. 저렴한 인디 브랜드·동대문 스타일.",
-      tags: ["여성", "트렌디", "저가"],
-      cat: "korea"
-    },
-
-    // ── 럭셔리 / 하이엔드
-    {
-      name: "SSENSE",
-      url: "ssense.com",
-      href: "https://www.ssense.com",
-      emoji: "⚫",
-      desc: "럭셔리·컨템포러리 글로벌 셀렉트샵. 에디토리얼 콘텐츠와 쇼핑의 결합.",
-      tags: ["럭셔리", "컨템포러리", "에디토리얼"],
-      cat: "luxury"
-    },
-    {
-      name: "Mytheresa",
-      url: "mytheresa.com",
-      href: "https://www.mytheresa.com",
-      emoji: "🌹",
-      desc: "럭셔리 하우스 중심의 독일계 플랫폼. 네타포르테와 쌍벽.",
-      tags: ["럭셔리", "하우스"],
-      cat: "luxury"
-    },
-    {
-      name: "Net-a-Porter",
-      url: "net-a-porter.com",
-      href: "https://www.net-a-porter.com",
-      emoji: "🖤",
-      desc: "럭셔리 여성 패션 1위 온라인몰. 포터 매거진 발행.",
-      tags: ["럭셔리", "여성", "매거진"],
-      cat: "luxury"
-    },
-    {
-      name: "Farfetch",
-      url: "farfetch.com",
-      href: "https://www.farfetch.com",
-      emoji: "🏷️",
-      desc: "전 세계 부티크·브랜드 직배송 플랫폼. 재고 폭이 가장 넓음.",
-      tags: ["럭셔리", "글로벌부티크"],
-      cat: "luxury"
-    },
-    {
-      name: "Dover Street Market",
-      url: "doverstreetmarket.com",
-      href: "https://www.doverstreetmarket.com",
-      emoji: "🏢",
-      desc: "꼼데가르송 창립. 아방가르드·럭셔리 스트릿의 경계.",
-      tags: ["럭셔리", "아방가르드"],
-      cat: "luxury"
+      name: "에이블리 / Ably", url: "a-bly.com", href: "https://www.a-bly.com", emoji: "🩷", cat: "korea",
+      desc: {
+        ko: "여성 트렌디 패션 앱. 저렴한 인디 브랜드·동대문 스타일.",
+        en: "Trendy women's fashion app. Affordable indie brands & Dongdaemun style.",
+        zh: "女性潮流时尚App。平价独立品牌·东大门风格。",
+        ja: "レディーストレンドファッションアプリ。手頃なインディブランド・東大門スタイル。"
+      },
+      tags: {
+        ko: ["여성", "트렌디", "저가"],
+        en: ["Women", "Trendy", "Budget"],
+        zh: ["女性", "潮流", "平价"],
+        ja: ["レディース", "トレンド", "プチプラ"]
+      }
     },
 
-    // ── 스트릿 / 슈프리마시
+    // ── 럭셔리 / Luxury ──
     {
-      name: "Supreme",
-      url: "supremenewyork.com",
-      href: "https://www.supremenewyork.com",
-      emoji: "🔴",
-      desc: "스트릿웨어의 아이콘. 매주 목요일 드롭 방식.",
-      tags: ["스트릿", "드롭", "한정판"],
-      cat: "street"
+      name: "SSENSE", url: "ssense.com", href: "https://www.ssense.com", emoji: "⚫", cat: "luxury",
+      desc: {
+        ko: "럭셔리·컨템포러리 글로벌 셀렉트샵. 에디토리얼 콘텐츠와 쇼핑의 결합.",
+        en: "Global luxury & contemporary select shop. Editorial content meets shopping.",
+        zh: "全球奢侈品·当代精选店。编辑内容与购物的结合。",
+        ja: "ラグジュアリー・コンテンポラリーのグローバルセレクトショップ。エディトリアルと買い物の融合。"
+      },
+      tags: {
+        ko: ["럭셔리", "컨템포러리", "에디토리얼"],
+        en: ["Luxury", "Contemporary", "Editorial"],
+        zh: ["奢侈品", "当代", "编辑精选"],
+        ja: ["ラグジュアリー", "コンテンポラリー", "エディトリアル"]
+      }
     },
     {
-      name: "Kith",
-      url: "kith.com",
-      href: "https://kith.com",
-      emoji: "🏀",
-      desc: "뉴욕 기반 하이엔드 스트릿. 나이키·아디다스 콜라보 강세.",
-      tags: ["스트릿", "콜라보", "스니커즈"],
-      cat: "street"
+      name: "Mytheresa", url: "mytheresa.com", href: "https://www.mytheresa.com", emoji: "🌹", cat: "luxury",
+      desc: {
+        ko: "럭셔리 하우스 중심의 독일계 플랫폼. 네타포르테와 쌍벽.",
+        en: "German luxury platform focused on fashion houses. Rivals Net-a-Porter.",
+        zh: "以奢侈品牌为核心的德系平台。与Net-a-Porter齐名。",
+        ja: "ラグジュアリーメゾン中心のドイツ系プラットフォーム。ネッタポルテと双璧。"
+      },
+      tags: {
+        ko: ["럭셔리", "하우스"],
+        en: ["Luxury", "Fashion Houses"],
+        zh: ["奢侈品", "品牌"],
+        ja: ["ラグジュアリー", "メゾン"]
+      }
     },
     {
-      name: "Palace",
-      url: "palaceskateboards.com",
-      href: "https://www.palaceskateboards.com",
-      emoji: "🔺",
-      desc: "런던 스케이트 문화 기반. 영국 감성 스트릿의 정수.",
-      tags: ["스케이트", "스트릿", "UK"],
-      cat: "street"
+      name: "Net-a-Porter", url: "net-a-porter.com", href: "https://www.net-a-porter.com", emoji: "🖤", cat: "luxury",
+      desc: {
+        ko: "럭셔리 여성 패션 1위 온라인몰. 포터 매거진 발행.",
+        en: "No.1 luxury women's fashion e-commerce. Publishes Porter Magazine.",
+        zh: "奢侈品女性时尚第一电商。发行Porter杂志。",
+        ja: "ラグジュアリーウィメンズファッションNo.1。ポーターマガジン発行。"
+      },
+      tags: {
+        ko: ["럭셔리", "여성", "매거진"],
+        en: ["Luxury", "Women", "Magazine"],
+        zh: ["奢侈品", "女性", "杂志"],
+        ja: ["ラグジュアリー", "ウィメンズ", "マガジン"]
+      }
     },
     {
-      name: "스탠더드서울",
-      url: "standardseoul.com",
-      href: "https://www.standardseoul.com",
-      emoji: "🇰🇷",
-      desc: "국내 대표 스트릿 셀렉트샵. 스케이트·서핑 컬처 중심.",
-      tags: ["스트릿", "스케이트", "서울"],
-      cat: "street"
+      name: "Farfetch", url: "farfetch.com", href: "https://www.farfetch.com", emoji: "🏷️", cat: "luxury",
+      desc: {
+        ko: "전 세계 부티크·브랜드 직배송 플랫폼. 재고 폭이 가장 넓음.",
+        en: "Global boutique & brand marketplace with direct shipping. Widest inventory.",
+        zh: "全球精品店·品牌直邮平台。库存最为丰富。",
+        ja: "世界中のブティック・ブランド直送プラットフォーム。在庫幅が最も広い。"
+      },
+      tags: {
+        ko: ["럭셔리", "글로벌부티크"],
+        en: ["Luxury", "Global Boutiques"],
+        zh: ["奢侈品", "全球精品"],
+        ja: ["ラグジュアリー", "グローバルブティック"]
+      }
     },
     {
-      name: "Beams",
-      url: "beams.co.jp",
-      href: "https://www.beams.co.jp",
-      emoji: "🗾",
-      desc: "일본 대표 셀렉트샵. 아메카지·트래드·스트릿 폭넓게 커버.",
-      tags: ["일본", "아메카지", "셀렉트"],
-      cat: "street"
-    },
-
-    // ── 빈티지 / 중고
-    {
-      name: "Grailed",
-      url: "grailed.com",
-      href: "https://www.grailed.com",
-      emoji: "🔍",
-      desc: "남성 하이엔드·빈티지 리셀 커뮤니티. 레어 아이템 성지.",
-      tags: ["빈티지", "리셀", "남성"],
-      cat: "vintage"
-    },
-    {
-      name: "Depop",
-      url: "depop.com",
-      href: "https://www.depop.com",
-      emoji: "🛍️",
-      desc: "Z세대 중심 P2P 중고 패션 앱. 독특하고 개성 있는 피스 발견.",
-      tags: ["빈티지", "P2P", "Z세대"],
-      cat: "vintage"
-    },
-    {
-      name: "Vestiaire Collective",
-      url: "vestiairecollective.com",
-      href: "https://www.vestiairecollective.com",
-      emoji: "👜",
-      desc: "럭셔리 중고 패션 인증 플랫폼. 진품 검수 서비스 운영.",
-      tags: ["럭셔리", "중고", "인증"],
-      cat: "vintage"
-    },
-    {
-      name: "번개장터",
-      url: "bunjang.co.kr",
-      href: "https://www.bunjang.co.kr",
-      emoji: "⚡",
-      desc: "국내 최대 중고거래 플랫폼. 패션 카테고리 거래량 1위.",
-      tags: ["중고", "국내", "리셀"],
-      cat: "vintage"
-    },
-    {
-      name: "크림",
-      url: "kream.co.kr",
-      href: "https://kream.co.kr",
-      emoji: "🧊",
-      desc: "국내 한정판·리셀 플랫폼. 정품 보장 검수 서비스.",
-      tags: ["리셀", "한정판", "검수"],
-      cat: "vintage"
+      name: "Dover Street Market", url: "doverstreetmarket.com", href: "https://www.doverstreetmarket.com", emoji: "🏢", cat: "luxury",
+      desc: {
+        ko: "꼼데가르송 창립. 아방가르드·럭셔리 스트릿의 경계.",
+        en: "Founded by Comme des Garçons. The edge of avant-garde & luxury street.",
+        zh: "Comme des Garçons创立。前卫与奢侈街头的交界。",
+        ja: "コム デ ギャルソン設立。アヴァンギャルドとラグジュアリーストリートの境界。"
+      },
+      tags: {
+        ko: ["럭셔리", "아방가르드"],
+        en: ["Luxury", "Avant-Garde"],
+        zh: ["奢侈品", "前卫"],
+        ja: ["ラグジュアリー", "アヴァンギャルド"]
+      }
     },
 
-    // ── 스니커즈
+    // ── 스트릿 / Street ──
     {
-      name: "GOAT",
-      url: "goat.com",
-      href: "https://www.goat.com",
-      emoji: "🐐",
-      desc: "스니커즈·하이엔드 리셀 글로벌 1위. 정품 인증 보장.",
-      tags: ["스니커즈", "리셀", "인증"],
-      cat: "sneaker"
+      name: "Supreme", url: "supremenewyork.com", href: "https://www.supremenewyork.com", emoji: "🔴", cat: "street",
+      desc: {
+        ko: "스트릿웨어의 아이콘. 매주 목요일 드롭 방식.",
+        en: "The icon of streetwear. Weekly Thursday drops.",
+        zh: "街头服饰的标志。每周四限量发售。",
+        ja: "ストリートウェアのアイコン。毎週木曜ドロップ方式。"
+      },
+      tags: {
+        ko: ["스트릿", "드롭", "한정판"],
+        en: ["Street", "Drop", "Limited"],
+        zh: ["街头", "限量", "发售"],
+        ja: ["ストリート", "ドロップ", "限定"]
+      }
     },
     {
-      name: "StockX",
-      url: "stockx.com",
-      href: "https://stockx.com",
-      emoji: "📈",
-      desc: "주식처럼 거래하는 스니커즈·스트릿 리셀 플랫폼.",
-      tags: ["스니커즈", "리셀", "시세"],
-      cat: "sneaker"
+      name: "Kith", url: "kith.com", href: "https://kith.com", emoji: "🏀", cat: "street",
+      desc: {
+        ko: "뉴욕 기반 하이엔드 스트릿. 나이키·아디다스 콜라보 강세.",
+        en: "New York-based high-end street. Strong Nike & Adidas collabs.",
+        zh: "纽约高端街头品牌。Nike·Adidas联名强势。",
+        ja: "ニューヨーク拠点のハイエンドストリート。ナイキ・アディダスコラボに強み。"
+      },
+      tags: {
+        ko: ["스트릿", "콜라보", "스니커즈"],
+        en: ["Street", "Collabs", "Sneakers"],
+        zh: ["街头", "联名", "球鞋"],
+        ja: ["ストリート", "コラボ", "スニーカー"]
+      }
     },
     {
-      name: "Kicks Crew",
-      url: "kickscrew.com",
-      href: "https://www.kickscrew.com",
-      emoji: "👟",
-      desc: "홍콩 기반 글로벌 스니커즈 셀렉트샵. 나이키·조던 재고 풍부.",
-      tags: ["스니커즈", "셀렉트", "아시아"],
-      cat: "sneaker"
+      name: "Palace", url: "palaceskateboards.com", href: "https://www.palaceskateboards.com", emoji: "🔺", cat: "street",
+      desc: {
+        ko: "런던 스케이트 문화 기반. 영국 감성 스트릿의 정수.",
+        en: "London skate culture roots. The essence of British streetwear.",
+        zh: "源自伦敦滑板文化。英式街头的精髓。",
+        ja: "ロンドンのスケートカルチャー発。英国ストリートの真髄。"
+      },
+      tags: {
+        ko: ["스케이트", "스트릿", "UK"],
+        en: ["Skate", "Street", "UK"],
+        zh: ["滑板", "街头", "英国"],
+        ja: ["スケート", "ストリート", "UK"]
+      }
     },
     {
-      name: "Sneakersnstuff",
-      url: "sneakersnstuff.com",
-      href: "https://www.sneakersnstuff.com",
-      emoji: "🧦",
-      desc: "스웨덴 발 스니커즈 전문 셀렉트샵. 유럽 한정 콜라보 강점.",
-      tags: ["스니커즈", "유럽", "콜라보"],
-      cat: "sneaker"
+      name: "스탠더드서울 / Standard Seoul", url: "standardseoul.com", href: "https://www.standardseoul.com", emoji: "🇰🇷", cat: "street",
+      desc: {
+        ko: "국내 대표 스트릿 셀렉트샵. 스케이트·서핑 컬처 중심.",
+        en: "Korea's leading street select shop. Skate & surf culture focused.",
+        zh: "韩国代表性街头精选店。滑板·冲浪文化中心。",
+        ja: "韓国代表のストリートセレクトショップ。スケート・サーフカルチャー中心。"
+      },
+      tags: {
+        ko: ["스트릿", "스케이트", "서울"],
+        en: ["Street", "Skate", "Seoul"],
+        zh: ["街头", "滑板", "首尔"],
+        ja: ["ストリート", "スケート", "ソウル"]
+      }
+    },
+    {
+      name: "Beams", url: "beams.co.jp", href: "https://www.beams.co.jp", emoji: "🗾", cat: "street",
+      desc: {
+        ko: "일본 대표 셀렉트샵. 아메카지·트래드·스트릿 폭넓게 커버.",
+        en: "Japan's iconic select shop. Covers Amekaji, trad, and street broadly.",
+        zh: "日本代表性精选店。美式复古·传统·街头广泛覆盖。",
+        ja: "日本を代表するセレクトショップ。アメカジ・トラッド・ストリートを幅広くカバー。"
+      },
+      tags: {
+        ko: ["일본", "아메카지", "셀렉트"],
+        en: ["Japan", "Amekaji", "Select"],
+        zh: ["日本", "美式复古", "精选"],
+        ja: ["日本", "アメカジ", "セレクト"]
+      }
     },
 
-    // ── 글로벌 멀티
+    // ── 빈티지 / Vintage ──
     {
-      name: "ASOS",
-      url: "asos.com",
-      href: "https://www.asos.com",
-      emoji: "🌍",
-      desc: "영국 기반 글로벌 패션 멀티샵. 방대한 브랜드와 자체 라인 보유.",
-      tags: ["글로벌", "트렌디", "가성비"],
-      cat: "global"
+      name: "Grailed", url: "grailed.com", href: "https://www.grailed.com", emoji: "🔍", cat: "vintage",
+      desc: {
+        ko: "남성 하이엔드·빈티지 리셀 커뮤니티. 레어 아이템 성지.",
+        en: "Men's high-end & vintage resale community. Holy grail for rare items.",
+        zh: "男性高端·复古转售社区。稀有单品圣地。",
+        ja: "メンズハイエンド・ヴィンテージリセルコミュニティ。レアアイテムの聖地。"
+      },
+      tags: {
+        ko: ["빈티지", "리셀", "남성"],
+        en: ["Vintage", "Resale", "Men"],
+        zh: ["复古", "转售", "男性"],
+        ja: ["ヴィンテージ", "リセル", "メンズ"]
+      }
     },
     {
-      name: "Zara",
-      url: "zara.com",
-      href: "https://www.zara.com",
-      emoji: "🇪🇸",
-      desc: "SPA 패스트패션의 아이콘. 트렌드 빠른 회전율.",
-      tags: ["SPA", "트렌드", "글로벌"],
-      cat: "global"
+      name: "Depop", url: "depop.com", href: "https://www.depop.com", emoji: "🛍️", cat: "vintage",
+      desc: {
+        ko: "Z세대 중심 P2P 중고 패션 앱. 독특하고 개성 있는 피스 발견.",
+        en: "Gen Z P2P fashion resale app. Discover unique, one-of-a-kind pieces.",
+        zh: "Z世代P2P二手时尚App。发现独特个性单品。",
+        ja: "Z世代向けP2P古着ファッションアプリ。ユニークな一点物を発見。"
+      },
+      tags: {
+        ko: ["빈티지", "P2P", "Z세대"],
+        en: ["Vintage", "P2P", "Gen Z"],
+        zh: ["复古", "P2P", "Z世代"],
+        ja: ["ヴィンテージ", "P2P", "Z世代"]
+      }
     },
     {
-      name: "Uniqlo",
-      url: "uniqlo.com",
-      href: "https://www.uniqlo.com",
-      emoji: "🎌",
-      desc: "일본 라이프웨어 SPA. LifeWear 철학. 소재 퀄리티 강점.",
-      tags: ["베이직", "소재", "일본SPA"],
-      cat: "global"
+      name: "Vestiaire Collective", url: "vestiairecollective.com", href: "https://www.vestiairecollective.com", emoji: "👜", cat: "vintage",
+      desc: {
+        ko: "럭셔리 중고 패션 인증 플랫폼. 진품 검수 서비스 운영.",
+        en: "Luxury pre-owned fashion with authentication. Verified authenticity service.",
+        zh: "奢侈品二手时尚认证平台。提供正品验证服务。",
+        ja: "ラグジュアリー中古ファッション認証プラットフォーム。真贋鑑定サービス。"
+      },
+      tags: {
+        ko: ["럭셔리", "중고", "인증"],
+        en: ["Luxury", "Pre-owned", "Authenticated"],
+        zh: ["奢侈品", "二手", "认证"],
+        ja: ["ラグジュアリー", "中古", "鑑定済"]
+      }
     },
     {
-      name: "End Clothing",
-      url: "endclothing.com",
-      href: "https://www.endclothing.com",
-      emoji: "🏴󠁧󠁢󠁥󠁮󠁧󠁿",
-      desc: "영국 뉴캐슬 발 럭셔리·스트릿 셀렉트샵. 드롭 이벤트 활발.",
-      tags: ["셀렉트", "드롭", "UK"],
-      cat: "global"
+      name: "번개장터 / Bunjang", url: "bunjang.co.kr", href: "https://www.bunjang.co.kr", emoji: "⚡", cat: "vintage",
+      desc: {
+        ko: "국내 최대 중고거래 플랫폼. 패션 카테고리 거래량 1위.",
+        en: "Korea's largest secondhand marketplace. #1 fashion category volume.",
+        zh: "韩国最大二手交易平台。时尚品类交易量第一。",
+        ja: "韓国最大の中古取引プラットフォーム。ファッションカテゴリ取引量1位。"
+      },
+      tags: {
+        ko: ["중고", "국내", "리셀"],
+        en: ["Secondhand", "Korean", "Resale"],
+        zh: ["二手", "韩国", "转售"],
+        ja: ["中古", "韓国", "リセル"]
+      }
+    },
+    {
+      name: "크림 / KREAM", url: "kream.co.kr", href: "https://kream.co.kr", emoji: "🧊", cat: "vintage",
+      desc: {
+        ko: "국내 한정판·리셀 플랫폼. 정품 보장 검수 서비스.",
+        en: "Korea's limited edition & resale platform. Guaranteed authenticity inspection.",
+        zh: "韩国限量版·转售平台。正品保障验收服务。",
+        ja: "韓国の限定版・リセルプラットフォーム。正規品保証検収サービス。"
+      },
+      tags: {
+        ko: ["리셀", "한정판", "검수"],
+        en: ["Resale", "Limited", "Verified"],
+        zh: ["转售", "限量", "验收"],
+        ja: ["リセル", "限定", "検収"]
+      }
+    },
+
+    // ── 스니커즈 / Sneakers ──
+    {
+      name: "GOAT", url: "goat.com", href: "https://www.goat.com", emoji: "🐐", cat: "sneaker",
+      desc: {
+        ko: "스니커즈·하이엔드 리셀 글로벌 1위. 정품 인증 보장.",
+        en: "World's #1 sneaker & high-end resale platform. Guaranteed authentic.",
+        zh: "全球第一球鞋·高端转售平台。保证正品认证。",
+        ja: "スニーカー・ハイエンドリセル世界No.1。正規品認証保証。"
+      },
+      tags: {
+        ko: ["스니커즈", "리셀", "인증"],
+        en: ["Sneakers", "Resale", "Authenticated"],
+        zh: ["球鞋", "转售", "认证"],
+        ja: ["スニーカー", "リセル", "認証"]
+      }
+    },
+    {
+      name: "StockX", url: "stockx.com", href: "https://stockx.com", emoji: "📈", cat: "sneaker",
+      desc: {
+        ko: "주식처럼 거래하는 스니커즈·스트릿 리셀 플랫폼.",
+        en: "Stock market-style sneaker & streetwear resale platform.",
+        zh: "像股票一样交易的球鞋·街头转售平台。",
+        ja: "株式のように取引するスニーカー・ストリートリセルプラットフォーム。"
+      },
+      tags: {
+        ko: ["스니커즈", "리셀", "시세"],
+        en: ["Sneakers", "Resale", "Market Price"],
+        zh: ["球鞋", "转售", "行情"],
+        ja: ["スニーカー", "リセル", "相場"]
+      }
+    },
+    {
+      name: "Kicks Crew", url: "kickscrew.com", href: "https://www.kickscrew.com", emoji: "👟", cat: "sneaker",
+      desc: {
+        ko: "홍콩 기반 글로벌 스니커즈 셀렉트샵. 나이키·조던 재고 풍부.",
+        en: "Hong Kong-based global sneaker select shop. Rich Nike & Jordan stock.",
+        zh: "香港全球球鞋精选店。Nike·Jordan库存丰富。",
+        ja: "香港拠点のグローバルスニーカーセレクトショップ。ナイキ・ジョーダン在庫豊富。"
+      },
+      tags: {
+        ko: ["스니커즈", "셀렉트", "아시아"],
+        en: ["Sneakers", "Select", "Asia"],
+        zh: ["球鞋", "精选", "亚洲"],
+        ja: ["スニーカー", "セレクト", "アジア"]
+      }
+    },
+    {
+      name: "Sneakersnstuff", url: "sneakersnstuff.com", href: "https://www.sneakersnstuff.com", emoji: "🧦", cat: "sneaker",
+      desc: {
+        ko: "스웨덴 발 스니커즈 전문 셀렉트샵. 유럽 한정 콜라보 강점.",
+        en: "Swedish sneaker specialist. Strong European exclusive collabs.",
+        zh: "瑞典球鞋专业精选店。欧洲限定联名强项。",
+        ja: "スウェーデン発スニーカー専門セレクトショップ。欧州限定コラボに強み。"
+      },
+      tags: {
+        ko: ["스니커즈", "유럽", "콜라보"],
+        en: ["Sneakers", "Europe", "Collabs"],
+        zh: ["球鞋", "欧洲", "联名"],
+        ja: ["スニーカー", "ヨーロッパ", "コラボ"]
+      }
+    },
+
+    // ── 글로벌 멀티 / Global Multi ──
+    {
+      name: "ASOS", url: "asos.com", href: "https://www.asos.com", emoji: "🌍", cat: "global",
+      desc: {
+        ko: "영국 기반 글로벌 패션 멀티샵. 방대한 브랜드와 자체 라인 보유.",
+        en: "UK-based global fashion multi-shop. Massive brand range plus own label.",
+        zh: "英国全球时尚综合店。拥有海量品牌和自有线。",
+        ja: "英国発グローバルファッションマルチショップ。膨大なブランドと自社ライン。"
+      },
+      tags: {
+        ko: ["글로벌", "트렌디", "가성비"],
+        en: ["Global", "Trendy", "Value"],
+        zh: ["全球", "潮流", "性价比"],
+        ja: ["グローバル", "トレンド", "コスパ"]
+      }
+    },
+    {
+      name: "Zara", url: "zara.com", href: "https://www.zara.com", emoji: "🇪🇸", cat: "global",
+      desc: {
+        ko: "SPA 패스트패션의 아이콘. 트렌드 빠른 회전율.",
+        en: "The icon of fast fashion. Rapid trend turnover.",
+        zh: "快时尚的标杆。趋势快速更迭。",
+        ja: "ファストファッションのアイコン。トレンドの高速回転。"
+      },
+      tags: {
+        ko: ["SPA", "트렌드", "글로벌"],
+        en: ["SPA", "Trend", "Global"],
+        zh: ["SPA", "趋势", "全球"],
+        ja: ["SPA", "トレンド", "グローバル"]
+      }
+    },
+    {
+      name: "Uniqlo", url: "uniqlo.com", href: "https://www.uniqlo.com", emoji: "🎌", cat: "global",
+      desc: {
+        ko: "일본 라이프웨어 SPA. LifeWear 철학. 소재 퀄리티 강점.",
+        en: "Japanese LifeWear SPA. Material quality as a core strength.",
+        zh: "日本LifeWear SPA。面料品质为核心优势。",
+        ja: "日本のLifeWear SPA。素材クオリティが強み。"
+      },
+      tags: {
+        ko: ["베이직", "소재", "일본SPA"],
+        en: ["Basics", "Fabric", "Japan SPA"],
+        zh: ["基础款", "面料", "日本SPA"],
+        ja: ["ベーシック", "素材", "日本SPA"]
+      }
+    },
+    {
+      name: "End Clothing", url: "endclothing.com", href: "https://www.endclothing.com", emoji: "🏴󠁧󠁢󠁥󠁮󠁧󠁿", cat: "global",
+      desc: {
+        ko: "영국 뉴캐슬 발 럭셔리·스트릿 셀렉트샵. 드롭 이벤트 활발.",
+        en: "Newcastle-based luxury & street select shop. Active drop events.",
+        zh: "英国纽卡斯尔奢侈·街头精选店。限量发售活跃。",
+        ja: "英国ニューカッスル発ラグジュアリー・ストリートセレクト。ドロップイベント活発。"
+      },
+      tags: {
+        ko: ["셀렉트", "드롭", "UK"],
+        en: ["Select", "Drop", "UK"],
+        zh: ["精选", "限量", "英国"],
+        ja: ["セレクト", "ドロップ", "UK"]
+      }
     },
   ];
 
+  // ── DOM ──
   const grid = document.getElementById('grid');
   const emptyEl = document.getElementById('empty');
   const searchInput = document.getElementById('searchInput');
-  const tabs = document.querySelectorAll('.tab');
   const sectionLabel = document.getElementById('sectionLabel');
+  const filterBar = document.getElementById('filterBar');
+  const heroEyebrow = document.getElementById('heroEyebrow');
+  const heroTitle = document.getElementById('heroTitle');
+  const heroDesc = document.getElementById('heroDesc');
+  const footer = document.getElementById('footer');
+  const langSelector = document.getElementById('langSelector');
+  const langBtn = document.getElementById('langBtn');
+  const langLabel = document.getElementById('langLabel');
+  const langDropdown = document.getElementById('langDropdown');
 
   let currentFilter = 'all';
   let currentSearch = '';
+  let currentLang = 'ko';
 
-  const categoryNames = {
-    all: '전체 사이트',
-    korea: '국내 셀렉트샵',
-    luxury: '럭셔리 / 하이엔드',
-    street: '스트릿 / 슈프리마시',
-    vintage: '빈티지 / 중고',
-    sneaker: '스니커즈',
-    global: '글로벌 멀티'
-  };
+  const langNames = { ko: 'KO', en: 'EN', zh: 'ZH', ja: 'JA' };
+  const catKeys = ['all', 'korea', 'luxury', 'street', 'vintage', 'sneaker', 'global'];
+
+  // ── LANG DROPDOWN ──
+  langBtn.addEventListener('click', (e) => {
+    e.stopPropagation();
+    langSelector.classList.toggle('open');
+  });
+
+  document.addEventListener('click', () => langSelector.classList.remove('open'));
+
+  langDropdown.addEventListener('click', (e) => {
+    const opt = e.target.closest('.lang-option');
+    if (!opt) return;
+    currentLang = opt.dataset.lang;
+    langLabel.textContent = langNames[currentLang];
+    langDropdown.querySelectorAll('.lang-option').forEach(o => o.classList.remove('active'));
+    opt.classList.add('active');
+    langSelector.classList.remove('open');
+    document.documentElement.lang = currentLang === 'zh' ? 'zh-CN' : currentLang;
+    applyLang();
+    render();
+  });
+
+  function applyLang() {
+    const t = i18n[currentLang];
+    searchInput.placeholder = t.searchPlaceholder;
+    heroEyebrow.textContent = t.heroEyebrow;
+    heroTitle.innerHTML = t.heroTitle;
+    heroDesc.textContent = t.heroDesc;
+    footer.textContent = t.footer;
+    emptyEl.textContent = t.empty;
+
+    // rebuild filter tabs
+    filterBar.innerHTML = '';
+    catKeys.forEach(key => {
+      const btn = document.createElement('button');
+      btn.className = 'tab' + (key === currentFilter ? ' active' : '');
+      btn.dataset.filter = key;
+      btn.textContent = t.categories[key];
+      btn.addEventListener('click', () => {
+        filterBar.querySelectorAll('.tab').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        currentFilter = key;
+        render();
+      });
+      filterBar.appendChild(btn);
+    });
+  }
 
   function render() {
+    const t = i18n[currentLang];
     const q = currentSearch.toLowerCase();
     const filtered = sites.filter(s => {
       const matchCat = currentFilter === 'all' || s.cat === currentFilter;
-      const matchQ = !q || s.name.toLowerCase().includes(q) || s.desc.toLowerCase().includes(q) || s.tags.some(t => t.includes(q));
+      const desc = s.desc[currentLang] || s.desc.ko;
+      const tags = s.tags[currentLang] || s.tags.ko;
+      const matchQ = !q
+        || s.name.toLowerCase().includes(q)
+        || desc.toLowerCase().includes(q)
+        || tags.some(tag => tag.toLowerCase().includes(q));
       return matchCat && matchQ;
     });
 
     grid.innerHTML = '';
-    sectionLabel.textContent = `${categoryNames[currentFilter]} — ${filtered.length}개`;
+    const catLabel = t.categories[currentFilter];
+    sectionLabel.textContent = `${catLabel} — ${filtered.length}${t.countSuffix}`;
 
     if (filtered.length === 0) {
       emptyEl.classList.add('show');
     } else {
       emptyEl.classList.remove('show');
       filtered.forEach((s, i) => {
+        const desc = s.desc[currentLang] || s.desc.ko;
+        const tags = s.tags[currentLang] || s.tags.ko;
         const a = document.createElement('a');
         a.className = 'card';
         a.href = s.href;
@@ -679,9 +1057,9 @@
               <div class="card-url">${s.url}</div>
             </div>
           </div>
-          <p class="card-desc">${s.desc}</p>
+          <p class="card-desc">${desc}</p>
           <div class="card-footer">
-            <div class="tags">${s.tags.map(t => `<span class="tag">${t}</span>`).join('')}</div>
+            <div class="tags">${tags.map(tag => `<span class="tag">${tag}</span>`).join('')}</div>
             <span class="arrow">→</span>
           </div>
         `;
@@ -691,20 +1069,13 @@
     }
   }
 
-  tabs.forEach(tab => {
-    tab.addEventListener('click', () => {
-      tabs.forEach(t => t.classList.remove('active'));
-      tab.classList.add('active');
-      currentFilter = tab.dataset.filter;
-      render();
-    });
-  });
-
   searchInput.addEventListener('input', e => {
     currentSearch = e.target.value;
     render();
   });
 
+  // init
+  applyLang();
   render();
 </script>
 </body>
