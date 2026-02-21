@@ -4,6 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>DIGGING — 패션 쇼핑 사이트 모음</title>
+  <meta name="description" content="국내외 패션 쇼핑 사이트를 한 곳에서 모아보는 디깅 큐레이션. 스트릿, 럭셔리, 빈티지, 스니커즈까지." />
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@700&display=swap');
 
@@ -194,6 +195,12 @@
       background: linear-gradient(135deg, var(--accent-soft), transparent 60%);
       opacity: 0;
       transition: opacity 0.3s;
+      z-index: 0;
+    }
+
+    .card-head, .card-desc, .card-footer {
+      position: relative;
+      z-index: 1;
     }
 
     .card:hover {
@@ -283,6 +290,14 @@
 
     .empty.show { display: block; }
 
+    /* ── CARD ANIMATION ── */
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(12px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .card { animation: fadeInUp 0.35s ease both; }
+
     /* ── FOOTER ── */
     footer {
       border-top: 1px solid var(--border);
@@ -333,12 +348,12 @@
 </div>
 
 <main class="main">
-  <p class="section-label" id="sectionLabel">전체 사이트 — <span id="count"></span>개</p>
+  <p class="section-label" id="sectionLabel">전체 사이트 — 0개</p>
   <div class="grid" id="grid"></div>
   <div class="empty" id="empty">검색 결과가 없습니다.</div>
 </main>
 
-<footer>© 2025 DIGGING — 패션 디깅 큐레이션</footer>
+<footer>© 2026 DIGGING — 패션 디깅 큐레이션</footer>
 
 <script>
   const sites = [
@@ -617,7 +632,6 @@
   ];
 
   const grid = document.getElementById('grid');
-  const countEl = document.getElementById('count');
   const emptyEl = document.getElementById('empty');
   const searchInput = document.getElementById('searchInput');
   const tabs = document.querySelectorAll('.tab');
@@ -645,14 +659,13 @@
     });
 
     grid.innerHTML = '';
-    countEl.textContent = filtered.length;
-    sectionLabel.innerHTML = `${categoryNames[currentFilter]} — <span id="count">${filtered.length}</span>개`;
+    sectionLabel.textContent = `${categoryNames[currentFilter]} — ${filtered.length}개`;
 
     if (filtered.length === 0) {
       emptyEl.classList.add('show');
     } else {
       emptyEl.classList.remove('show');
-      filtered.forEach(s => {
+      filtered.forEach((s, i) => {
         const a = document.createElement('a');
         a.className = 'card';
         a.href = s.href;
@@ -672,6 +685,7 @@
             <span class="arrow">→</span>
           </div>
         `;
+        a.style.animationDelay = `${i * 0.04}s`;
         grid.appendChild(a);
       });
     }
