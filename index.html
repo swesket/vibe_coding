@@ -499,6 +499,35 @@
       font-size: 0.85rem;
     }
 
+    /* ── DISQUS COMMENTS ── */
+    .comments-section {
+      border-top: 1px solid var(--border);
+      padding: 4rem 2rem;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .comments-section h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.6rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .comments-section .sub {
+      color: var(--muted);
+      font-size: 0.85rem;
+      font-weight: 300;
+      line-height: 1.6;
+      margin-bottom: 2rem;
+    }
+
+    #disqus_thread {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 1.5rem;
+    }
+
     @media (max-width: 640px) {
       .search-box { width: 100%; }
       header { flex-wrap: wrap; height: auto; padding: 1rem; gap: 0.8rem; }
@@ -507,6 +536,7 @@
       .hero { padding: 3rem 1.2rem 2.5rem; }
       .main { padding: 2rem 1.2rem 4rem; }
       .submit-section { padding: 3rem 1.2rem; }
+      .comments-section { padding: 3rem 1.2rem; }
     }
   </style>
 </head>
@@ -588,6 +618,13 @@
   </div>
 </section>
 
+<section class="comments-section">
+  <h2 id="commentsTitle"></h2>
+  <p class="sub" id="commentsDesc"></p>
+  <div id="disqus_thread"></div>
+  <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</section>
+
 <footer id="footer"></footer>
 
 <script>
@@ -624,7 +661,8 @@
         submit: "등록 요청하기 →",
         successTitle: "요청이 접수되었습니다!",
         successDesc: "검토 후 등록 여부를 이메일로 안내드리겠습니다. 감사합니다."
-      }
+      },
+      comments: { title: "커뮤니티", desc: "패션에 대해 자유롭게 이야기해보세요." }
     },
     en: {
       searchPlaceholder: "Search sites...",
@@ -657,7 +695,8 @@
         submit: "Submit Request →",
         successTitle: "Request submitted!",
         successDesc: "We'll review your site and get back to you via email. Thank you."
-      }
+      },
+      comments: { title: "Community", desc: "Talk freely about fashion with others." }
     },
     zh: {
       searchPlaceholder: "搜索网站...",
@@ -690,7 +729,8 @@
         submit: "提交申请 →",
         successTitle: "申请已提交！",
         successDesc: "我们将审核您的网站并通过邮件回复。感谢您的提交。"
-      }
+      },
+      comments: { title: "社区", desc: "与大家自由交流时尚话题。" }
     },
     ja: {
       searchPlaceholder: "サイトを検索...",
@@ -723,7 +763,8 @@
         submit: "掲載リクエスト →",
         successTitle: "リクエストを受け付けました！",
         successDesc: "審査後、メールにてご連絡いたします。ありがとうございます。"
-      }
+      },
+      comments: { title: "コミュニティ", desc: "ファッションについて自由に語り合いましょう。" }
     }
   };
 
@@ -1260,6 +1301,10 @@
       sel.appendChild(opt);
     });
 
+    // comments
+    document.getElementById('commentsTitle').textContent = t.comments.title;
+    document.getElementById('commentsDesc').textContent = t.comments.desc;
+
     // rebuild filter tabs
     filterBar.innerHTML = '';
     catKeys.forEach(key => {
@@ -1358,6 +1403,18 @@
   // init
   applyLang();
   render();
+
+  // ── DISQUS ──
+  var disqus_config = function () {
+    this.page.url = 'https://swesket.github.io/vibe_coding/';
+    this.page.identifier = 'digging-main';
+  };
+  (function() {
+    var d = document, s = d.createElement('script');
+    s.src = 'https://digging-1.disqus.com/embed.js';
+    s.setAttribute('data-timestamp', +new Date());
+    (d.head || d.body).appendChild(s);
+  })();
 </script>
 </body>
 </html>
