@@ -301,6 +301,72 @@ footer {
 .cat-card .cat-arrow { margin-left: auto; color: var(--accent); font-size: 1rem; opacity: 0; transition: all 0.2s; }
 .cat-card:hover .cat-arrow { opacity: 1; }
 
+/* ── BRANDS PAGE ── */
+.brands-section {
+  border-top: 1px solid var(--border); padding: 4rem 2rem;
+  max-width: 1000px; margin: 0 auto;
+}
+.brands-section h2 {
+  font-family: 'Playfair Display', serif; font-size: 1.8rem;
+  text-align: center; margin-bottom: 0.6rem;
+}
+.brands-section > .sub {
+  text-align: center; color: var(--muted); font-size: 0.9rem;
+  font-weight: 300; margin-bottom: 2.5rem; line-height: 1.6;
+}
+.brand-search-wrap {
+  max-width: 480px; margin: 0 auto 2rem; position: relative;
+}
+.brand-search-input {
+  width: 100%; background: var(--card); border: 1px solid var(--border);
+  border-radius: 12px; padding: 0.85rem 1.2rem 0.85rem 2.8rem;
+  color: var(--text); font-size: 0.95rem; font-family: 'Inter', sans-serif;
+  transition: border-color 0.2s; outline: none;
+}
+.brand-search-input:focus { border-color: var(--accent); }
+.brand-search-input::placeholder { color: #555; }
+.brand-search-icon {
+  position: absolute; left: 1rem; top: 50%; transform: translateY(-50%);
+  color: var(--muted); pointer-events: none;
+}
+.brand-autocomplete {
+  display: none; position: absolute; top: calc(100% + 4px); left: 0; right: 0;
+  background: var(--card); border: 1px solid var(--border); border-radius: 10px;
+  max-height: 240px; overflow-y: auto; z-index: 50;
+  box-shadow: 0 12px 32px rgba(0,0,0,0.5);
+}
+.brand-autocomplete.show { display: block; }
+.brand-autocomplete-item {
+  padding: 0.6rem 1.2rem; cursor: pointer; font-size: 0.88rem;
+  color: var(--muted); transition: all 0.15s;
+}
+.brand-autocomplete-item:hover,
+.brand-autocomplete-item.active { background: var(--accent-soft); color: var(--text); }
+.brand-chips {
+  display: flex; flex-wrap: wrap; gap: 0.5rem; justify-content: center;
+  margin-bottom: 2.5rem;
+}
+.brand-chip {
+  padding: 0.4rem 1rem; border-radius: 999px; border: 1px solid var(--border);
+  background: var(--surface); color: var(--muted); font-size: 0.8rem;
+  font-weight: 500; cursor: pointer; transition: all 0.2s; white-space: nowrap;
+}
+.brand-chip:hover { color: var(--text); border-color: #444; }
+.brand-chip.active { background: var(--accent); border-color: var(--accent); color: #0d0d0d; }
+.brand-result-label {
+  font-size: 0.7rem; letter-spacing: 0.3em; text-transform: uppercase;
+  color: var(--muted); margin-bottom: 1.4rem;
+}
+.brand-result-grid {
+  display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1.2rem; margin-bottom: 2rem;
+}
+.brand-empty {
+  text-align: center; padding: 3rem 2rem; color: var(--muted);
+  font-size: 0.9rem; font-weight: 300; display: none;
+}
+.brand-empty.show { display: block; }
+
 @media (max-width: 768px) {
   nav { display: none; }
   .search-box { width: 100%; }
@@ -313,4 +379,5 @@ footer {
   .guide-section, .about-section, .submit-section, .comments-section { padding: 3rem 1.2rem; }
   .footer-top { flex-direction: column; }
   .category-grid { padding: 2rem 1.2rem; }
+  .brands-section { padding: 3rem 1.2rem; }
 }

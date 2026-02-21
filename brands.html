@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Brands — DIGGING</title>
+  <meta name="description" content="Search fashion brands and find which sites carry them." />
+  <meta name="google-adsense-account" content="ca-pub-4004698288665198">
+  <link rel="canonical" href="https://swesket.github.io/vibe_coding/brands.html" />
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4004698288665198" crossorigin="anonymous"></script>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-Y7PCS90ZRL"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-Y7PCS90ZRL');
+  </script>
+  <script type="text/javascript">
+    (function(c,l,a,r,i,t,y){
+        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window, document, "clarity", "script", "vks9106g6o");
+  </script>
+  <link rel="stylesheet" href="shared.css" />
+</head>
+<body data-page="brands">
+
+<header>
+  <a href="index.html" class="logo">
+    DIGGING
+    <span>Fashion Site Curation</span>
+  </a>
+  <nav id="nav"></nav>
+  <div class="header-right">
+    <div class="search-box">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/>
+      </svg>
+      <input type="text" id="searchInput" placeholder="" />
+    </div>
+    <div class="lang-selector" id="langSelector">
+      <button class="lang-btn" id="langBtn">
+        <span id="langLabel">KO</span>
+        <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 4.5l3 3 3-3"/></svg>
+      </button>
+      <div class="lang-dropdown" id="langDropdown">
+        <button class="lang-option active" data-lang="ko">Korean</button>
+        <button class="lang-option" data-lang="en">English</button>
+        <button class="lang-option" data-lang="zh">Chinese</button>
+        <button class="lang-option" data-lang="ja">Japanese</button>
+      </div>
+    </div>
+  </div>
+</header>
+
+<section class="brands-section">
+  <h2 id="brandsTitle"></h2>
+  <p class="sub" id="brandsDesc"></p>
+
+  <div class="brand-search-wrap">
+    <svg class="brand-search-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/>
+    </svg>
+    <input type="text" class="brand-search-input" id="brandSearchInput" placeholder="" autocomplete="off" />
+    <div class="brand-autocomplete" id="brandAutocomplete"></div>
+  </div>
+
+  <div class="brand-chips" id="brandChips"></div>
+
+  <div id="brandResultArea" style="display:none;">
+    <p class="brand-result-label" id="brandResultLabel"></p>
+    <div class="brand-result-grid" id="brandResultGrid"></div>
+  </div>
+
+  <div class="brand-empty" id="brandEmpty"></div>
+</section>
+
+<div class="ad-slot">
+  <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-4004698288665198" data-ad-slot="auto" data-ad-format="horizontal" data-full-width-responsive="true"></ins>
+  <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+</div>
+
+<footer>
+  <div class="footer-top">
+    <div class="footer-brand">
+      <div class="f-logo">DIGGING</div>
+      <p id="footerBrandDesc"></p>
+    </div>
+    <div class="footer-links">
+      <div class="footer-col">
+        <h4 id="footerNavTitle"></h4>
+        <a href="sites.html" id="footerNavSites"></a>
+        <a href="guide.html" id="footerNavGuide"></a>
+        <a href="brands.html" id="footerNavBrands"></a>
+        <a href="about.html" id="footerNavAbout"></a>
+      </div>
+      <div class="footer-col">
+        <h4 id="footerLegalTitle"></h4>
+        <a href="privacy.html" id="footerPrivacy"></a>
+        <a href="submit.html" id="footerNavSubmit"></a>
+        <a href="mailto:swesket@gmail.com" id="footerContact"></a>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom" id="footerCopy"></div>
+</footer>
+
+<script src="data.js"></script>
+<script src="brands.js"></script>
+<script src="shared.js"></script>
+<script>
+  const brandSearchInput = document.getElementById('brandSearchInput');
+  const brandAutocomplete = document.getElementById('brandAutocomplete');
+  const brandChips = document.getElementById('brandChips');
+  const brandResultArea = document.getElementById('brandResultArea');
+  const brandResultGrid = document.getElementById('brandResultGrid');
+  const brandResultLabel = document.getElementById('brandResultLabel');
+  const brandEmpty = document.getElementById('brandEmpty');
+
+  const popularBrands = ['Nike', 'Adidas', 'Gucci', 'Balenciaga', 'Supreme', 'Prada', 'New Balance', 'Jordan', 'Stussy', 'Comme des Garcons'];
+  let selectedBrand = null;
+
+  function renderBrandsPage() {
+    const t = i18n[currentLang];
+    const bt = t.brands;
+    document.getElementById('brandsTitle').textContent = bt.title;
+    document.getElementById('brandsDesc').textContent = bt.desc;
+    brandSearchInput.placeholder = bt.searchPlaceholder;
+    brandEmpty.textContent = bt.emptyResult;
+
+    // render chips
+    brandChips.innerHTML = '';
+    popularBrands.forEach(name => {
+      const chip = document.createElement('button');
+      chip.className = 'brand-chip' + (selectedBrand === name ? ' active' : '');
+      chip.textContent = name;
+      chip.addEventListener('click', () => selectBrand(name));
+      brandChips.appendChild(chip);
+    });
+
+    // re-render result if a brand is selected
+    if (selectedBrand) showBrandResult(selectedBrand);
+  }
+
+  function selectBrand(name) {
+    selectedBrand = name;
+    brandSearchInput.value = name;
+    brandAutocomplete.classList.remove('show');
+    brandEmpty.classList.remove('show');
+
+    // update chip active states
+    brandChips.querySelectorAll('.brand-chip').forEach(c => {
+      c.classList.toggle('active', c.textContent === name);
+    });
+
+    showBrandResult(name);
+  }
+
+  function showBrandResult(name) {
+    const brand = brands.find(b => b.name.toLowerCase() === name.toLowerCase());
+    if (!brand) {
+      brandResultArea.style.display = 'none';
+      brandEmpty.classList.add('show');
+      return;
+    }
+
+    const t = i18n[currentLang];
+    brandEmpty.classList.remove('show');
+    brandResultArea.style.display = '';
+    brandResultLabel.textContent = `${brand.name} — ${t.brands.resultLabel} (${brand.sites.length})`;
+
+    brandResultGrid.innerHTML = '';
+    brand.sites.forEach((siteName, i) => {
+      const site = sites.find(s => s.name === siteName);
+      if (!site) return;
+      const desc = site.desc[currentLang] || site.desc.ko;
+      const tags = site.tags[currentLang] || site.tags.ko;
+      const a = document.createElement('a');
+      a.className = 'card';
+      a.href = site.href;
+      a.target = '_blank';
+      a.rel = 'noopener noreferrer';
+      a.innerHTML = `<div class="card-head"><div class="favicon">${site.emoji}</div><div><div class="card-title">${site.name}</div><div class="card-url">${site.url}</div></div></div><p class="card-desc">${desc}</p><div class="card-footer"><div class="tags">${tags.map(tag => `<span class="tag">${tag}</span>`).join('')}</div><span class="arrow">→</span></div>`;
+      a.style.animationDelay = `${i * 0.04}s`;
+      brandResultGrid.appendChild(a);
+    });
+  }
+
+  // autocomplete
+  brandSearchInput.addEventListener('input', () => {
+    const q = brandSearchInput.value.trim().toLowerCase();
+    if (!q) {
+      brandAutocomplete.classList.remove('show');
+      return;
+    }
+    const matches = brands.filter(b => b.name.toLowerCase().includes(q)).slice(0, 8);
+    if (matches.length === 0) {
+      brandAutocomplete.classList.remove('show');
+      return;
+    }
+    brandAutocomplete.innerHTML = matches.map(b =>
+      `<div class="brand-autocomplete-item" data-name="${b.name}">${b.name}</div>`
+    ).join('');
+    brandAutocomplete.classList.add('show');
+  });
+
+  brandAutocomplete.addEventListener('click', (e) => {
+    const item = e.target.closest('.brand-autocomplete-item');
+    if (!item) return;
+    selectBrand(item.dataset.name);
+  });
+
+  // keyboard navigation for autocomplete
+  brandSearchInput.addEventListener('keydown', (e) => {
+    const items = brandAutocomplete.querySelectorAll('.brand-autocomplete-item');
+    if (!items.length) return;
+    const active = brandAutocomplete.querySelector('.brand-autocomplete-item.active');
+    let idx = Array.from(items).indexOf(active);
+
+    if (e.key === 'ArrowDown') {
+      e.preventDefault();
+      if (active) active.classList.remove('active');
+      idx = (idx + 1) % items.length;
+      items[idx].classList.add('active');
+    } else if (e.key === 'ArrowUp') {
+      e.preventDefault();
+      if (active) active.classList.remove('active');
+      idx = idx <= 0 ? items.length - 1 : idx - 1;
+      items[idx].classList.add('active');
+    } else if (e.key === 'Enter') {
+      e.preventDefault();
+      if (active) {
+        selectBrand(active.dataset.name);
+      } else {
+        const q = brandSearchInput.value.trim().toLowerCase();
+        const match = brands.find(b => b.name.toLowerCase() === q);
+        if (match) selectBrand(match.name);
+      }
+    }
+  });
+
+  // close autocomplete on outside click
+  document.addEventListener('click', (e) => {
+    if (!e.target.closest('.brand-search-wrap')) {
+      brandAutocomplete.classList.remove('show');
+    }
+  });
+
+  document.addEventListener('langchange', renderBrandsPage);
+</script>
+</body>
+</html>

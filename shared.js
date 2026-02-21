@@ -8,7 +8,7 @@ const i18n = {
     stats: { sites: "큐레이션 사이트", cats: "카테고리", langs: "지원 언어" },
     empty: "검색 결과가 없습니다.",
     countSuffix: "개",
-    nav: { sites: "사이트", guide: "가이드", about: "소개", submit: "등록 요청" },
+    nav: { sites: "사이트", guide: "가이드", brands: "브랜드", about: "소개", submit: "등록 요청" },
     categories: { all: "전체", korea: "국내 셀렉트샵", luxury: "럭셔리 / 하이엔드", street: "스트릿", vintage: "빈티지 / 중고", sneaker: "스니커즈", global: "글로벌 멀티" },
     guide: {
       title: "패션 쇼핑 가이드",
@@ -38,11 +38,19 @@ const i18n = {
       contact: "담당자 이메일", contactPlaceholder: "email@example.com", submit: "등록 요청하기 →",
       successTitle: "요청이 접수되었습니다!", successDesc: "검토 후 등록 여부를 이메일로 안내드리겠습니다. 감사합니다."
     },
+    brands: {
+      title: "브랜드 검색",
+      desc: "좋아하는 브랜드를 검색하면 해당 브랜드를 취급하는 사이트를 한눈에 확인할 수 있습니다.",
+      searchPlaceholder: "브랜드 검색...",
+      popularTitle: "인기 브랜드",
+      resultLabel: "취급 사이트",
+      emptyResult: "해당 브랜드를 찾을 수 없습니다."
+    },
     comments: { title: "커뮤니티", desc: "패션에 대해 자유롭게 이야기해보세요. 좋은 사이트 추천, 쇼핑 후기, 질문 모두 환영합니다." },
     footer: {
       brandDesc: "전 세계 패션 쇼핑 사이트를 큐레이션하는 디깅 플랫폼.",
       navTitle: "메뉴", legalTitle: "정보",
-      sites: "사이트 목록", guide: "쇼핑 가이드", about: "소개",
+      sites: "사이트 목록", guide: "쇼핑 가이드", brands: "브랜드", about: "소개",
       privacy: "개인정보처리방침", submit: "등록 요청", contact: "문의하기",
       copy: "© 2026 DIGGING. All rights reserved."
     },
@@ -66,7 +74,7 @@ const i18n = {
     stats: { sites: "Curated Sites", cats: "Categories", langs: "Languages" },
     empty: "No results found.",
     countSuffix: "",
-    nav: { sites: "Sites", guide: "Guide", about: "About", submit: "Submit" },
+    nav: { sites: "Sites", guide: "Guide", brands: "Brands", about: "About", submit: "Submit" },
     categories: { all: "All", korea: "Korean Select", luxury: "Luxury / High-End", street: "Streetwear", vintage: "Vintage / Resale", sneaker: "Sneakers", global: "Global Multi" },
     guide: {
       title: "Fashion Shopping Guide",
@@ -96,11 +104,19 @@ const i18n = {
       contact: "Contact Email", contactPlaceholder: "email@example.com", submit: "Submit Request →",
       successTitle: "Request submitted!", successDesc: "We'll review your site and get back to you via email. Thank you."
     },
+    brands: {
+      title: "Brand Search",
+      desc: "Search for your favorite brand to see which sites carry it at a glance.",
+      searchPlaceholder: "Search brands...",
+      popularTitle: "Popular Brands",
+      resultLabel: "Available Sites",
+      emptyResult: "Brand not found."
+    },
     comments: { title: "Community", desc: "Talk freely about fashion. Site recommendations, shopping reviews, and questions are all welcome." },
     footer: {
       brandDesc: "A curation platform for fashion shopping sites worldwide.",
       navTitle: "Navigate", legalTitle: "Info",
-      sites: "Site Directory", guide: "Shopping Guide", about: "About Us",
+      sites: "Site Directory", guide: "Shopping Guide", brands: "Brands", about: "About Us",
       privacy: "Privacy Policy", submit: "Submit Site", contact: "Contact",
       copy: "© 2026 DIGGING. All rights reserved."
     },
@@ -124,7 +140,7 @@ const i18n = {
     stats: { sites: "精选网站", cats: "分类", langs: "支持语言" },
     empty: "未找到搜索结果。",
     countSuffix: "个",
-    nav: { sites: "网站", guide: "指南", about: "关于", submit: "提交" },
+    nav: { sites: "网站", guide: "指南", brands: "品牌", about: "关于", submit: "提交" },
     categories: { all: "全部", korea: "韩国精选店", luxury: "奢侈品 / 高端", street: "街头潮流", vintage: "复古 / 二手", sneaker: "球鞋", global: "全球综合" },
     guide: {
       title: "时尚购物指南",
@@ -154,11 +170,19 @@ const i18n = {
       contact: "联系邮箱", contactPlaceholder: "email@example.com", submit: "提交申请 →",
       successTitle: "申请已提交！", successDesc: "我们将审核您的网站并通过邮件回复。感谢您的提交。"
     },
+    brands: {
+      title: "品牌搜索",
+      desc: "搜索您喜欢的品牌，一目了然地查看哪些网站有售。",
+      searchPlaceholder: "搜索品牌...",
+      popularTitle: "热门品牌",
+      resultLabel: "可购买网站",
+      emptyResult: "未找到该品牌。"
+    },
     comments: { title: "社区", desc: "与大家自由交流时尚话题。网站推荐、购物评价、提问都欢迎。" },
     footer: {
       brandDesc: "精选全球时尚购物网站的策展平台。",
       navTitle: "导航", legalTitle: "信息",
-      sites: "网站目录", guide: "购物指南", about: "关于我们",
+      sites: "网站目录", guide: "购物指南", brands: "品牌", about: "关于我们",
       privacy: "隐私政策", submit: "提交网站", contact: "联系我们",
       copy: "© 2026 DIGGING. All rights reserved."
     },
@@ -182,7 +206,7 @@ const i18n = {
     stats: { sites: "キュレーションサイト", cats: "カテゴリー", langs: "対応言語" },
     empty: "検索結果が見つかりません。",
     countSuffix: "件",
-    nav: { sites: "サイト", guide: "ガイド", about: "紹介", submit: "掲載依頼" },
+    nav: { sites: "サイト", guide: "ガイド", brands: "ブランド", about: "紹介", submit: "掲載依頼" },
     categories: { all: "すべて", korea: "韓国セレクトショップ", luxury: "ラグジュアリー / ハイエンド", street: "ストリート", vintage: "ヴィンテージ / 中古", sneaker: "スニーカー", global: "グローバル" },
     guide: {
       title: "ファッションショッピングガイド",
@@ -212,11 +236,19 @@ const i18n = {
       contact: "担当者メールアドレス", contactPlaceholder: "email@example.com", submit: "掲載リクエスト →",
       successTitle: "リクエストを受け付けました！", successDesc: "審査後、メールにてご連絡いたします。ありがとうございます。"
     },
+    brands: {
+      title: "ブランド検索",
+      desc: "お気に入りのブランドを検索して、取り扱いサイトを一目で確認できます。",
+      searchPlaceholder: "ブランドを検索...",
+      popularTitle: "人気ブランド",
+      resultLabel: "取り扱いサイト",
+      emptyResult: "該当するブランドが見つかりません。"
+    },
     comments: { title: "コミュニティ", desc: "ファッションについて自由に語り合いましょう。サイト推薦、お買い物レビュー、質問すべて歓迎です。" },
     footer: {
       brandDesc: "世界中のファッション通販サイトをキュレーションするプラットフォーム。",
       navTitle: "メニュー", legalTitle: "情報",
-      sites: "サイト一覧", guide: "ショッピングガイド", about: "紹介",
+      sites: "サイト一覧", guide: "ショッピングガイド", brands: "ブランド", about: "紹介",
       privacy: "プライバシーポリシー", submit: "掲載リクエスト", contact: "お問い合わせ",
       copy: "© 2026 DIGGING. All rights reserved."
     },
@@ -253,6 +285,7 @@ function applySharedLang(lang) {
     const links = [
       { href: 'sites.html', label: t.nav.sites, page: 'sites' },
       { href: 'guide.html', label: t.nav.guide, page: 'guide' },
+      { href: 'brands.html', label: t.nav.brands, page: 'brands' },
       { href: 'about.html', label: t.nav.about, page: 'about' },
       { href: 'submit.html', label: t.nav.submit, page: 'submit' }
     ];
@@ -285,6 +318,7 @@ function applySharedLang(lang) {
   setText('footerLegalTitle', ft.legalTitle);
   setText('footerNavSites', ft.sites);
   setText('footerNavGuide', ft.guide);
+  setText('footerNavBrands', ft.brands);
   setText('footerNavAbout', ft.about);
   setText('footerPrivacy', ft.privacy);
   setText('footerNavSubmit', ft.submit);
