@@ -4,6 +4,7 @@
 :root {
   --bg: #0d0d0a; --surface: #161611; --card: #1e1d17; --border: #2e2b20;
   --accent: #a89868; --accent-soft: rgba(168, 152, 104, 0.12);
+  --accent2: #6b8da8; --accent2-soft: rgba(107, 141, 168, 0.12);
   --text: #e8e5dc; --muted: #7a7460; --tag-bg: #25231a;
   --header-bg: rgba(13, 13, 10, 0.92);
   --card-hover-shadow: 0 12px 32px rgba(0,0,0,0.4);
@@ -13,6 +14,7 @@
 [data-theme="light"] {
   --bg: #f0eee4; --surface: #e4e2d6; --card: #faf9f3; --border: #ccc9b8;
   --accent: #847450; --accent-soft: rgba(132, 116, 80, 0.1);
+  --accent2: #4e7590; --accent2-soft: rgba(78, 117, 144, 0.1);
   --text: #1a1914; --muted: #8c8568; --tag-bg: #eae7da;
   --header-bg: rgba(240, 238, 228, 0.92);
   --card-hover-shadow: 0 12px 32px rgba(0,0,0,0.08);
@@ -50,7 +52,7 @@ nav a {
   white-space: nowrap;
 }
 nav a:hover { color: var(--text); }
-nav a.active { color: var(--text); }
+nav a.active { color: var(--text); border-bottom: 2px solid var(--accent2); padding-bottom: 2px; }
 
 .header-right { display: flex; align-items: center; gap: 0.75rem; }
 .search-box {
@@ -136,25 +138,33 @@ body:not([data-page="sites"]) .search-box { display: none; }
 [data-vision="protanopia"] {
   --accent: #5b9bd5;
   --accent-soft: rgba(91, 155, 213, 0.12);
+  --accent2: #8bb8d9;
+  --accent2-soft: rgba(139, 184, 217, 0.12);
 }
 [data-vision="protanopia"][data-theme="light"] {
   --accent: #4a87be;
   --accent-soft: rgba(74, 135, 190, 0.1);
+  --accent2: #6ea3c8;
+  --accent2-soft: rgba(110, 163, 200, 0.1);
 }
 [data-vision="achromatopsia"] {
   --accent: #aaa;
   --accent-soft: rgba(170, 170, 170, 0.12);
+  --accent2: #bbb;
+  --accent2-soft: rgba(187, 187, 187, 0.12);
 }
 [data-vision="achromatopsia"][data-theme="light"] {
   --accent: #777;
   --accent-soft: rgba(119, 119, 119, 0.1);
+  --accent2: #999;
+  --accent2-soft: rgba(153, 153, 153, 0.1);
 }
 
 /* ── HERO ── */
 .hero { text-align: center; padding: 5rem 2rem 3.5rem; border-bottom: 1px solid var(--border); }
 .hero-eyebrow {
   font-size: 0.7rem; letter-spacing: 0.35em; text-transform: uppercase;
-  color: var(--accent); margin-bottom: 1.2rem;
+  color: var(--accent2); margin-bottom: 1.2rem;
 }
 .hero h1 { font-family: 'Playfair Display', serif; font-size: clamp(2.4rem, 5vw, 4rem); line-height: 1.15; margin-bottom: 1rem; }
 .hero p { color: var(--muted); font-size: 1rem; font-weight: 300; max-width: 480px; margin: 0 auto; line-height: 1.7; }
@@ -221,7 +231,7 @@ body:not([data-page="sites"]) .search-box { display: none; }
   font-size: 0.68rem; padding: 0.25rem 0.6rem; border-radius: 999px;
   background: var(--tag-bg); color: var(--muted); font-weight: 500;
 }
-.arrow { color: var(--accent); font-size: 0.85rem; opacity: 0; transform: translateX(-4px); transition: all 0.2s; }
+.arrow { color: var(--accent2); font-size: 0.85rem; opacity: 0; transform: translateX(-4px); transition: all 0.2s; }
 .card:hover .arrow { opacity: 1; transform: translateX(0); }
 .empty { text-align: center; padding: 4rem 2rem; color: var(--muted); display: none; }
 .empty.show { display: block; }
@@ -298,7 +308,7 @@ body:not([data-page="sites"]) .search-box { display: none; }
 .submit-section .sub { color: var(--muted); font-size: 0.85rem; font-weight: 300; line-height: 1.6; margin-bottom: 2rem; }
 .form-group { margin-bottom: 1.2rem; }
 .form-group label { display: block; font-size: 0.78rem; font-weight: 500; color: var(--muted); margin-bottom: 0.4rem; letter-spacing: 0.04em; }
-.form-group label .req { color: var(--accent); margin-left: 2px; }
+.form-group label .req { color: var(--accent2); margin-left: 2px; }
 .form-group input, .form-group select, .form-group textarea {
   width: 100%; background: var(--card); border: 1px solid var(--border);
   border-radius: 10px; padding: 0.7rem 1rem; color: var(--text);
@@ -345,7 +355,7 @@ footer {
 .footer-links { display: flex; gap: 2.5rem; }
 .footer-col h4 { font-size: 0.72rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--muted); margin-bottom: 0.7rem; }
 .footer-col a { display: block; color: var(--text); text-decoration: none; font-size: 0.82rem; font-weight: 300; margin-bottom: 0.4rem; transition: color 0.2s; }
-.footer-col a:hover { color: var(--accent); }
+.footer-col a:hover { color: var(--accent2); }
 .footer-bottom { border-top: 1px solid var(--border); padding-top: 1.5rem; text-align: center; font-size: 0.75rem; color: var(--muted); }
 
 /* ── CATEGORY CARDS (index landing) ── */
@@ -363,7 +373,7 @@ footer {
 .cat-card .cat-icon { font-size: 1.8rem; }
 .cat-card .cat-name { font-size: 0.95rem; font-weight: 600; }
 .cat-card .cat-count { font-size: 0.75rem; color: var(--muted); margin-top: 2px; }
-.cat-card .cat-arrow { margin-left: auto; color: var(--accent); font-size: 1rem; opacity: 0; transition: all 0.2s; }
+.cat-card .cat-arrow { margin-left: auto; color: var(--accent2); font-size: 1rem; opacity: 0; transition: all 0.2s; }
 .cat-card:hover .cat-arrow { opacity: 1; }
 
 /* ── BRANDS PAGE ── */
