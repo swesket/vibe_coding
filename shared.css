@@ -2,9 +2,9 @@
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 :root {
-  --bg: #0d0d0a; --surface: #161611; --card: #1e1d17; --border: #2c2a20;
-  --accent: #9c9070; --accent-soft: rgba(156, 144, 112, 0.12);
-  --text: #e8e5dc; --muted: #78735f; --tag-bg: #24221a;
+  --bg: #0d0d0a; --surface: #161611; --card: #1e1d17; --border: #2e2b20;
+  --accent: #a89868; --accent-soft: rgba(168, 152, 104, 0.12);
+  --text: #e8e5dc; --muted: #7a7460; --tag-bg: #25231a;
   --header-bg: rgba(13, 13, 10, 0.92);
   --card-hover-shadow: 0 12px 32px rgba(0,0,0,0.4);
   --dropdown-shadow: 0 12px 32px rgba(0,0,0,0.5);
@@ -12,8 +12,8 @@
 
 [data-theme="light"] {
   --bg: #f0eee4; --surface: #e4e2d6; --card: #faf9f3; --border: #ccc9b8;
-  --accent: #7a7256; --accent-soft: rgba(122, 114, 86, 0.1);
-  --text: #1a1914; --muted: #8a8470; --tag-bg: #eae7da;
+  --accent: #847450; --accent-soft: rgba(132, 116, 80, 0.1);
+  --text: #1a1914; --muted: #8c8568; --tag-bg: #eae7da;
   --header-bg: rgba(240, 238, 228, 0.92);
   --card-hover-shadow: 0 12px 32px rgba(0,0,0,0.08);
   --dropdown-shadow: 0 12px 32px rgba(0,0,0,0.1);
@@ -177,7 +177,7 @@ body:not([data-page="sites"]) .search-box { display: none; }
   color: var(--muted); font-size: 0.8rem; font-weight: 500;
   cursor: pointer; transition: all 0.2s; white-space: nowrap;
 }
-.tab:hover { color: var(--text); border-color: #3a3828; }
+.tab:hover { color: var(--text); border-color: #3d3a26; }
 .tab.active { background: var(--accent); border-color: var(--accent); color: #fff; }
 
 /* ── GRID ── */
@@ -200,7 +200,7 @@ body:not([data-page="sites"]) .search-box { display: none; }
 }
 .card::before {
   content: ''; position: absolute; inset: 0;
-  background: linear-gradient(135deg, var(--accent-soft), transparent 60%);
+  background: linear-gradient(135deg, var(--accent-soft) 0%, rgba(180,160,100,0.06) 40%, transparent 70%);
   opacity: 0; transition: opacity 0.3s; z-index: 0;
 }
 .card-head, .card-desc, .card-footer { position: relative; z-index: 1; }
@@ -249,7 +249,7 @@ body:not([data-page="sites"]) .search-box { display: none; }
   background: var(--card); border: 1px solid var(--border); border-radius: 14px;
   padding: 1.8rem; transition: border-color 0.2s;
 }
-.guide-card:hover { border-color: #3a3828; }
+.guide-card:hover { border-color: #3d3a26; }
 .guide-card h3 {
   font-size: 1rem; font-weight: 600; margin-bottom: 0.8rem;
   display: flex; align-items: center; gap: 0.6rem;
@@ -321,7 +321,7 @@ body:not([data-page="sites"]) .search-box { display: none; }
   font-size: 0.88rem; font-weight: 600; font-family: 'Inter', sans-serif;
   cursor: pointer; transition: all 0.2s;
 }
-.submit-btn:hover { background: #a89a78; transform: translateY(-1px); box-shadow: 0 6px 20px rgba(156, 144, 112, 0.25); }
+.submit-btn:hover { background: #b09a6c; transform: translateY(-1px); box-shadow: 0 6px 20px rgba(176, 154, 108, 0.3); }
 .form-success { display: none; text-align: center; padding: 2.5rem 1rem; }
 .form-success.show { display: block; }
 .form-success .check { font-size: 2.5rem; margin-bottom: 1rem; }
@@ -416,7 +416,7 @@ footer {
   background: var(--surface); color: var(--muted); font-size: 0.8rem;
   font-weight: 500; cursor: pointer; transition: all 0.2s; white-space: nowrap;
 }
-.brand-chip:hover { color: var(--text); border-color: #3a3828; }
+.brand-chip:hover { color: var(--text); border-color: #3d3a26; }
 .brand-chip.active { background: var(--accent); border-color: var(--accent); color: #fff; }
 .brand-result-label {
   font-size: 0.7rem; letter-spacing: 0.3em; text-transform: uppercase;
