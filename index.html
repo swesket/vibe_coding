@@ -47,6 +47,17 @@
   </a>
   <nav id="nav"></nav>
   <div class="header-right">
+    <button class="theme-btn" id="themeBtn" aria-label="Toggle theme"></button>
+    <div class="vision-selector" id="visionSelector">
+      <button class="vision-btn" id="visionBtn" aria-label="Color vision mode">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+      </button>
+      <div class="vision-dropdown" id="visionDropdown">
+        <button class="vision-option active" data-vision="normal">일반</button>
+        <button class="vision-option" data-vision="protanopia">적록 색약</button>
+        <button class="vision-option" data-vision="achromatopsia">완전 색맹</button>
+      </div>
+    </div>
     <div class="search-box">
       <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
         <circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/>

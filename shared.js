@@ -266,6 +266,48 @@ const i18n = {
   }
 };
 
+// ── Theme State ──
+let currentTheme = localStorage.getItem('digging-theme') || 'dark';
+
+// ── Vision State ──
+let currentVision = localStorage.getItem('digging-vision') || 'normal';
+
+function applyVision(mode) {
+  currentVision = mode;
+  document.documentElement.dataset.vision = mode;
+  localStorage.setItem('digging-vision', mode);
+  const btn = document.getElementById('visionBtn');
+  if (btn) {
+    // Update icon: normal=eye, protanopia=eye with line, achromatopsia=eye-off
+    if (mode === 'achromatopsia') {
+      btn.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94"/><path d="M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19"/><line x1="1" y1="1" x2="23" y2="23"/></svg>';
+    } else if (mode === 'protanopia') {
+      btn.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/><line x1="2" y1="2" x2="22" y2="22"/></svg>';
+    } else {
+      btn.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>';
+    }
+  }
+  // Update dropdown active state
+  const dropdown = document.getElementById('visionDropdown');
+  if (dropdown) {
+    dropdown.querySelectorAll('.vision-option').forEach(o => {
+      o.classList.toggle('active', o.dataset.vision === mode);
+    });
+  }
+}
+
+function applyTheme(theme) {
+  currentTheme = theme;
+  document.documentElement.dataset.theme = theme;
+  localStorage.setItem('digging-theme', theme);
+  const btn = document.getElementById('themeBtn');
+  if (btn) {
+    btn.innerHTML = theme === 'dark'
+      ? '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>'
+      : '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>';
+  }
+}
+
 // ── Language State ──
 const langNames = { ko: 'KO', en: 'EN', zh: 'ZH', ja: 'JA' };
 let currentLang = localStorage.getItem('digging-lang') || 'ko';
@@ -348,6 +390,35 @@ document.addEventListener('DOMContentLoaded', () => {
       document.dispatchEvent(new CustomEvent('langchange', { detail: lang }));
     });
   }
+
+  // theme toggle
+  const themeBtn = document.getElementById('themeBtn');
+  if (themeBtn) {
+    themeBtn.addEventListener('click', () => {
+      applyTheme(currentTheme === 'dark' ? 'light' : 'dark');
+    });
+  }
+  applyTheme(currentTheme);
+
+  // vision selector
+  const visionSelector = document.getElementById('visionSelector');
+  const visionBtn = document.getElementById('visionBtn');
+  const visionDropdown = document.getElementById('visionDropdown');
+
+  if (visionBtn) {
+    visionBtn.addEventListener('click', (e) => { e.stopPropagation(); visionSelector.classList.toggle('open'); });
+    document.addEventListener('click', () => visionSelector.classList.remove('open'));
+  }
+
+  if (visionDropdown) {
+    visionDropdown.addEventListener('click', (e) => {
+      const opt = e.target.closest('.vision-option');
+      if (!opt) return;
+      visionSelector.classList.remove('open');
+      applyVision(opt.dataset.vision);
+    });
+  }
+  applyVision(currentVision);
 
   // initial render
   applySharedLang(currentLang);
