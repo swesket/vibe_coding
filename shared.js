@@ -46,6 +46,7 @@ const i18n = {
       resultLabel: "취급 사이트",
       emptyResult: "해당 브랜드를 찾을 수 없습니다."
     },
+    vision: { normal: "일반", protanopia: "적록 색약", achromatopsia: "완전 색맹" },
     comments: { title: "커뮤니티", desc: "패션에 대해 자유롭게 이야기해보세요. 좋은 사이트 추천, 쇼핑 후기, 질문 모두 환영합니다." },
     footer: {
       brandDesc: "전 세계 패션 쇼핑 사이트를 큐레이션하는 디깅 플랫폼.",
@@ -112,6 +113,7 @@ const i18n = {
       resultLabel: "Available Sites",
       emptyResult: "Brand not found."
     },
+    vision: { normal: "Normal", protanopia: "Protanopia", achromatopsia: "Achromatopsia" },
     comments: { title: "Community", desc: "Talk freely about fashion. Site recommendations, shopping reviews, and questions are all welcome." },
     footer: {
       brandDesc: "A curation platform for fashion shopping sites worldwide.",
@@ -178,6 +180,7 @@ const i18n = {
       resultLabel: "可购买网站",
       emptyResult: "未找到该品牌。"
     },
+    vision: { normal: "正常", protanopia: "红绿色弱", achromatopsia: "全色盲" },
     comments: { title: "社区", desc: "与大家自由交流时尚话题。网站推荐、购物评价、提问都欢迎。" },
     footer: {
       brandDesc: "精选全球时尚购物网站的策展平台。",
@@ -244,6 +247,7 @@ const i18n = {
       resultLabel: "取り扱いサイト",
       emptyResult: "該当するブランドが見つかりません。"
     },
+    vision: { normal: "通常", protanopia: "赤緑色弱", achromatopsia: "全色盲" },
     comments: { title: "コミュニティ", desc: "ファッションについて自由に語り合いましょう。サイト推薦、お買い物レビュー、質問すべて歓迎です。" },
     footer: {
       brandDesc: "世界中のファッション通販サイトをキュレーションするプラットフォーム。",
@@ -349,6 +353,14 @@ function applySharedLang(lang) {
   if (langDropdown) {
     langDropdown.querySelectorAll('.lang-option').forEach(o => {
       o.classList.toggle('active', o.dataset.lang === lang);
+    });
+  }
+
+  // vision dropdown labels
+  const visionDropdown = document.getElementById('visionDropdown');
+  if (visionDropdown) {
+    visionDropdown.querySelectorAll('.vision-option').forEach(o => {
+      o.textContent = t.vision[o.dataset.vision];
     });
   }
 
