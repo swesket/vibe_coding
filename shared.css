@@ -448,6 +448,119 @@ footer {
 }
 .brand-empty.show { display: block; }
 
+/* ── HOMEPAGE ENHANCEMENTS ── */
+
+/* Hero — radial gradient glow background */
+.hero { position: relative; overflow: hidden; }
+.hero::before {
+  content: ''; position: absolute;
+  width: 600px; height: 600px; top: -200px; left: -100px;
+  background: radial-gradient(circle, var(--accent-soft) 0%, transparent 70%);
+  opacity: 0.8; pointer-events: none;
+}
+.hero::after {
+  content: ''; position: absolute;
+  width: 500px; height: 500px; bottom: -150px; right: -100px;
+  background: radial-gradient(circle, var(--accent2-soft) 0%, transparent 70%);
+  opacity: 0.6; pointer-events: none;
+}
+
+/* Hero title — accent gradient text */
+.hero h1 {
+  background: linear-gradient(135deg, var(--accent) 0%, var(--text) 40%, var(--accent2) 100%);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Hero content z-index — above glow pseudo-elements */
+.hero-eyebrow, .hero h1, .hero p, .hero-stats, .hero-cta {
+  position: relative; z-index: 1;
+}
+
+/* Hero eyebrow — decorative gold line above */
+.hero-eyebrow::before {
+  content: ''; display: block;
+  width: 40px; height: 2px;
+  background: var(--accent);
+  margin: 0 auto 1rem;
+}
+
+/* Hero CTA button */
+.hero-cta {
+  display: inline-flex; margin-top: 2.5rem;
+  padding: 0.85rem 2.2rem;
+  background: linear-gradient(135deg, var(--accent), var(--accent2));
+  color: #fff; border-radius: 999px;
+  font-size: 0.9rem; font-weight: 600;
+  text-decoration: none; letter-spacing: 0.02em;
+  transition: all 0.3s;
+  box-shadow: 0 4px 20px rgba(168, 152, 104, 0.3);
+  position: relative; z-index: 1;
+}
+.hero-cta:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 30px rgba(168, 152, 104, 0.4);
+}
+
+/* Hero stats — dividers + glow */
+.hero-stat { position: relative; }
+.hero-stat + .hero-stat::before {
+  content: ''; position: absolute;
+  left: -1.5rem; top: 50%; transform: translateY(-50%);
+  width: 1px; height: 32px;
+  background: var(--border);
+}
+.hero-stat .num { text-shadow: 0 0 30px var(--accent-soft); }
+
+/* Category section label */
+.category-label {
+  text-align: center; padding-top: 3rem; margin-bottom: 0;
+  max-width: 1000px; margin-left: auto; margin-right: auto;
+}
+body[data-page="home"] .category-grid { padding-top: 1rem; }
+
+/* Category card — icon background + gradient hover border */
+.cat-card { position: relative; overflow: hidden; }
+.cat-card .cat-icon {
+  width: 52px; height: 52px;
+  display: flex; align-items: center; justify-content: center;
+  background: var(--accent-soft);
+  border-radius: 14px;
+  transition: all 0.3s;
+}
+.cat-card:hover .cat-icon {
+  background: var(--accent);
+  transform: scale(1.05);
+}
+.cat-card::after {
+  content: ''; position: absolute;
+  top: 0; left: 1.5rem; right: 1.5rem;
+  height: 2px;
+  background: linear-gradient(90deg, var(--accent), var(--accent2));
+  opacity: 0; transition: opacity 0.3s;
+}
+.cat-card:hover::after { opacity: 1; }
+.cat-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 16px 40px rgba(0,0,0,0.3);
+}
+
+/* Hero sequential fade-in animations */
+.hero-eyebrow { animation: fadeInUp 0.6s ease both; animation-delay: 0.1s; }
+.hero h1 { animation: fadeInUp 0.6s ease both; animation-delay: 0.25s; }
+.hero p:not(.hero-eyebrow) { animation: fadeInUp 0.6s ease both; animation-delay: 0.4s; }
+.hero-stats { animation: fadeInUp 0.6s ease both; animation-delay: 0.55s; }
+.hero-cta { animation: fadeInUp 0.6s ease both; animation-delay: 0.7s; }
+.cat-card { animation: fadeInUp 0.4s ease both; }
+
+/* Footer gradient divider — homepage only */
+body[data-page="home"] footer { border-top: none; position: relative; }
+body[data-page="home"] footer::before {
+  content: ''; position: absolute;
+  top: 0; left: 2rem; right: 2rem; height: 1px;
+  background: linear-gradient(90deg, transparent, var(--accent), var(--accent2), transparent);
+}
+
 @media (max-width: 768px) {
   nav { display: none; }
   .search-box { width: 100%; }

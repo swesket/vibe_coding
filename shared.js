@@ -57,6 +57,7 @@ const i18n = {
     },
     landing: {
       explore: "카테고리별 탐색",
+      heroCta: "사이트 둘러보기 →",
       catCards: {
         korea: { icon: "🇰🇷", name: "국내 셀렉트샵" },
         luxury: { icon: "💎", name: "럭셔리 / 하이엔드" },
@@ -124,6 +125,7 @@ const i18n = {
     },
     landing: {
       explore: "Explore by Category",
+      heroCta: "Explore Sites →",
       catCards: {
         korea: { icon: "🇰🇷", name: "Korean Select" },
         luxury: { icon: "💎", name: "Luxury / High-End" },
@@ -191,6 +193,7 @@ const i18n = {
     },
     landing: {
       explore: "按分类探索",
+      heroCta: "浏览网站 →",
       catCards: {
         korea: { icon: "🇰🇷", name: "韩国精选店" },
         luxury: { icon: "💎", name: "奢侈品 / 高端" },
@@ -258,6 +261,7 @@ const i18n = {
     },
     landing: {
       explore: "カテゴリー別に探す",
+      heroCta: "サイトを見る →",
       catCards: {
         korea: { icon: "🇰🇷", name: "韓国セレクトショップ" },
         luxury: { icon: "💎", name: "ラグジュアリー / ハイエンド" },

@@ -88,8 +88,10 @@
     <div class="hero-stat"><div class="num">6</div><div class="label" id="statCats"></div></div>
     <div class="hero-stat"><div class="num">4</div><div class="label" id="statLangs"></div></div>
   </div>
+  <a href="sites.html" class="hero-cta" id="heroCta"></a>
 </section>
 
+<p class="section-label category-label" id="catLabel"></p>
 <div id="categoryGrid" class="category-grid"></div>
 
 <div class="ad-slot">
@@ -135,13 +137,16 @@
     document.getElementById('statSites').textContent = t.stats.sites;
     document.getElementById('statCats').textContent = t.stats.cats;
     document.getElementById('statLangs').textContent = t.stats.langs;
+    document.getElementById('heroCta').textContent = t.landing.heroCta;
+    document.getElementById('catLabel').textContent = t.landing.explore;
 
     const grid = document.getElementById('categoryGrid');
     grid.innerHTML = '';
-    catOrder.forEach(key => {
+    catOrder.forEach((key, i) => {
       const cc = t.landing.catCards[key];
       const a = document.createElement('a');
       a.className = 'cat-card'; a.href = `sites.html?cat=${key}`;
+      a.style.animationDelay = `${i * 0.06}s`;
       a.innerHTML = `<div class="cat-icon">${cc.icon}</div><div><div class="cat-name">${cc.name}</div><div class="cat-count">${catCounts[key]}${t.countSuffix}</div></div><span class="cat-arrow">→</span>`;
       grid.appendChild(a);
     });
