@@ -4,7 +4,13 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Community — DIGGING</title>
-  <meta name="description" content="DIGGING community — talk about fashion freely." />
+  <meta name="description" content="DIGGING community — talk about fashion freely. Share site recommendations, shopping reviews, and ask questions about fashion shopping." />
+  <meta property="og:title" content="Community — DIGGING" />
+  <meta property="og:description" content="DIGGING community — talk about fashion freely. Share site recommendations, shopping reviews, and ask questions." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://swesket.github.io/vibe_coding/community.html" />
+  <meta property="og:site_name" content="DIGGING" />
+  <meta property="og:locale" content="ko_KR" />
   <meta name="google-adsense-account" content="ca-pub-4004698288665198">
   <link rel="canonical" href="https://swesket.github.io/vibe_coding/community.html" />
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4004698288665198" crossorigin="anonymous"></script>
@@ -23,6 +29,17 @@
         y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
     })(window, document, "clarity", "script", "vks9106g6o");
   </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "name": "Community — DIGGING",
+    "description": "Join the DIGGING community to discuss fashion, share shopping site recommendations, and exchange tips with fellow fashion enthusiasts.",
+    "url": "https://swesket.github.io/vibe_coding/community.html",
+    "isPartOf": { "@type": "WebSite", "name": "DIGGING", "url": "https://swesket.github.io/vibe_coding/" }
+  }
+  </script>
+  <link rel="icon" type="image/svg+xml" href="favicon.svg" />
   <link rel="stylesheet" href="shared.css" />
 </head>
 <body data-page="community">
@@ -69,6 +86,7 @@
 <section class="comments-section">
   <h2 id="commentsTitle"></h2>
   <p class="sub" id="commentsDesc"></p>
+  <div class="guidelines-block" id="guidelinesBlock"></div>
   <div id="disqus_thread"></div>
   <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
 </section>
@@ -85,11 +103,13 @@
         <a href="sites.html" id="footerNavSites"></a>
         <a href="guide.html" id="footerNavGuide"></a>
         <a href="brands.html" id="footerNavBrands"></a>
+        <a href="blog.html" id="footerNavBlog"></a>
         <a href="about.html" id="footerNavAbout"></a>
       </div>
       <div class="footer-col">
         <h4 id="footerLegalTitle"></h4>
         <a href="privacy.html" id="footerPrivacy"></a>
+        <a href="terms.html" id="footerTerms"></a>
         <a href="submit.html" id="footerNavSubmit"></a>
         <a href="mailto:swesket@gmail.com" id="footerContact"></a>
       </div>
@@ -104,6 +124,10 @@
     const t = i18n[currentLang];
     document.getElementById('commentsTitle').textContent = t.comments.title;
     document.getElementById('commentsDesc').textContent = t.comments.desc;
+    const block = document.getElementById('guidelinesBlock');
+    if (t.comments.guidelines) {
+      block.innerHTML = `<h3>${t.comments.guidelinesTitle}</h3><ul>${t.comments.guidelines.map(g => `<li>${g}</li>`).join('')}</ul>`;
+    }
   }
 
   document.addEventListener('langchange', renderComments);

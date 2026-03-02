@@ -4,7 +4,13 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Brands — DIGGING</title>
-  <meta name="description" content="Search fashion brands and find which sites carry them." />
+  <meta name="description" content="Search fashion brands and find which sites carry them. Discover 40+ popular brands like Nike, Adidas, Balenciaga, and more with direct links to curated shopping destinations." />
+  <meta property="og:title" content="Brands — DIGGING" />
+  <meta property="og:description" content="Search fashion brands and find which sites carry them. Discover 40+ popular brands with direct links to curated shopping destinations." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://swesket.github.io/vibe_coding/brands.html" />
+  <meta property="og:site_name" content="DIGGING" />
+  <meta property="og:locale" content="ko_KR" />
   <meta name="google-adsense-account" content="ca-pub-4004698288665198">
   <link rel="canonical" href="https://swesket.github.io/vibe_coding/brands.html" />
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4004698288665198" crossorigin="anonymous"></script>
@@ -23,6 +29,17 @@
         y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
     })(window, document, "clarity", "script", "vks9106g6o");
   </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "name": "Brand Search — DIGGING",
+    "description": "Search 40+ fashion brands and discover which curated shopping sites carry them. Find Nike, Adidas, Balenciaga, and more.",
+    "url": "https://swesket.github.io/vibe_coding/brands.html",
+    "isPartOf": { "@type": "WebSite", "name": "DIGGING", "url": "https://swesket.github.io/vibe_coding/" }
+  }
+  </script>
+  <link rel="icon" type="image/svg+xml" href="favicon.svg" />
   <link rel="stylesheet" href="shared.css" />
 </head>
 <body data-page="brands">
@@ -70,6 +87,10 @@
   <h2 id="brandsTitle"></h2>
   <p class="sub" id="brandsDesc"></p>
 
+  <div class="about-block" id="brandsIntroBlock" style="margin-bottom:2rem;">
+    <p id="brandsIntro"></p>
+  </div>
+
   <div class="brand-search-wrap">
     <svg class="brand-search-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
       <circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/>
@@ -105,11 +126,13 @@
         <a href="sites.html" id="footerNavSites"></a>
         <a href="guide.html" id="footerNavGuide"></a>
         <a href="brands.html" id="footerNavBrands"></a>
+        <a href="blog.html" id="footerNavBlog"></a>
         <a href="about.html" id="footerNavAbout"></a>
       </div>
       <div class="footer-col">
         <h4 id="footerLegalTitle"></h4>
         <a href="privacy.html" id="footerPrivacy"></a>
+        <a href="terms.html" id="footerTerms"></a>
         <a href="submit.html" id="footerNavSubmit"></a>
         <a href="mailto:swesket@gmail.com" id="footerContact"></a>
       </div>
@@ -138,6 +161,7 @@
     const bt = t.brands;
     document.getElementById('brandsTitle').textContent = bt.title;
     document.getElementById('brandsDesc').textContent = bt.desc;
+    document.getElementById('brandsIntro').textContent = bt.intro;
     brandSearchInput.placeholder = bt.searchPlaceholder;
     brandEmpty.textContent = bt.emptyResult;
 

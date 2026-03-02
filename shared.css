@@ -226,7 +226,7 @@ body:not([data-page="sites"]) .search-box { display: none; }
 .card-url { font-size: 0.76rem; color: var(--muted); margin-top: 1px; }
 .card-desc {
   font-size: 0.82rem; color: var(--muted); line-height: 1.65; font-weight: 400;
-  display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden;
+  display: -webkit-box; -webkit-line-clamp: 4; -webkit-box-orient: vertical; overflow: hidden;
 }
 .card-footer { display: flex; align-items: center; justify-content: space-between; margin-top: auto; }
 .tags { display: flex; gap: 0.4rem; flex-wrap: wrap; }
@@ -290,6 +290,30 @@ body:not([data-page="sites"]) .search-box { display: none; }
   text-align: center; color: var(--muted); font-size: 0.88rem;
   font-weight: 300; line-height: 1.7; margin-bottom: 2rem;
 }
+/* ── ABOUT BLOCKS ── */
+.about-block {
+  background: var(--card); border: 1px solid var(--border); border-radius: 14px;
+  padding: 1.8rem; margin-bottom: 1.5rem;
+}
+.about-block h3 {
+  font-size: 1.05rem; font-weight: 600; color: var(--accent); margin-bottom: 0.8rem;
+}
+.about-block p {
+  color: var(--muted); font-size: 0.86rem; line-height: 1.75; font-weight: 400;
+}
+.about-block ul {
+  list-style: none; padding: 0;
+}
+.about-block ul li {
+  color: var(--muted); font-size: 0.86rem; line-height: 1.75; font-weight: 400;
+  padding: 0.3rem 0; padding-left: 1.2rem; position: relative;
+}
+.about-block ul li::before {
+  content: ''; position: absolute; left: 0; top: 0.75rem;
+  width: 6px; height: 6px; border-radius: 50%;
+  background: var(--accent);
+}
+
 .about-values {
   display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 1.2rem;
 }
@@ -348,6 +372,83 @@ body:not([data-page="sites"]) .search-box { display: none; }
 .comments-section h2 { font-family: 'Playfair Display', serif; font-size: 1.6rem; margin-bottom: 0.5rem; }
 .comments-section .sub { color: var(--muted); font-size: 0.85rem; font-weight: 300; line-height: 1.6; margin-bottom: 2rem; }
 #disqus_thread { background: var(--surface); border: 1px solid var(--border); border-radius: 14px; padding: 1.5rem; }
+
+/* ── BLOG ── */
+.blog-section {
+  border-top: 1px solid var(--border); padding: 4rem 2rem;
+  max-width: 800px; margin: 0 auto;
+}
+.blog-section h2 {
+  font-family: 'Playfair Display', serif; font-size: 1.8rem;
+  text-align: center; margin-bottom: 0.6rem;
+}
+.blog-section > .sub {
+  text-align: center; color: var(--muted); font-size: 0.9rem;
+  font-weight: 300; margin-bottom: 3rem; line-height: 1.6;
+}
+.blog-grid {
+  display: grid; gap: 1.5rem; margin-bottom: 3rem;
+}
+.blog-card {
+  background: var(--card); border: 1px solid var(--border); border-radius: 14px;
+  padding: 1.8rem; transition: border-color 0.2s; cursor: pointer;
+  text-decoration: none; color: inherit; display: block;
+}
+.blog-card:hover { border-color: var(--accent); transform: translateY(-2px); box-shadow: var(--card-hover-shadow); }
+.blog-card h3 { font-size: 1.05rem; font-weight: 600; margin-bottom: 0.5rem; }
+.blog-card .blog-date { font-size: 0.75rem; color: var(--accent2); margin-bottom: 0.6rem; }
+.blog-card p { color: var(--muted); font-size: 0.84rem; line-height: 1.75; font-weight: 400; }
+.blog-card .blog-read-more { color: var(--accent); font-size: 0.82rem; font-weight: 500; margin-top: 0.8rem; display: inline-block; }
+
+.blog-article {
+  background: var(--card); border: 1px solid var(--border); border-radius: 14px;
+  padding: 2.5rem; margin-bottom: 2rem;
+}
+.blog-article h2 {
+  font-family: 'Playfair Display', serif; font-size: 1.5rem;
+  color: var(--accent); margin-bottom: 0.4rem; text-align: left;
+}
+.blog-article .blog-date { font-size: 0.78rem; color: var(--accent2); margin-bottom: 1.5rem; }
+.blog-article h3 { font-size: 1rem; font-weight: 600; margin: 1.8rem 0 0.6rem; color: var(--text); }
+.blog-article p { color: var(--muted); font-size: 0.86rem; line-height: 1.8; font-weight: 400; margin-bottom: 0.8rem; }
+.blog-article ul, .blog-article ol { color: var(--muted); font-size: 0.86rem; line-height: 1.8; padding-left: 1.5rem; margin-bottom: 0.8rem; }
+.blog-back {
+  display: inline-block; color: var(--accent2); font-size: 0.82rem;
+  font-weight: 500; cursor: pointer; margin-bottom: 2rem;
+  text-decoration: none; transition: color 0.2s;
+}
+.blog-back:hover { color: var(--accent); }
+
+/* ── GUIDELINES ── */
+.guidelines-block {
+  background: var(--card); border: 1px solid var(--border); border-radius: 14px;
+  padding: 1.5rem 1.8rem; margin-bottom: 2rem;
+}
+.guidelines-block h3 {
+  font-size: 0.95rem; font-weight: 600; color: var(--accent); margin-bottom: 0.8rem;
+}
+.guidelines-block ul { list-style: none; padding: 0; }
+.guidelines-block ul li {
+  color: var(--muted); font-size: 0.84rem; line-height: 1.75; font-weight: 400;
+  padding: 0.25rem 0; padding-left: 1.2rem; position: relative;
+}
+.guidelines-block ul li::before {
+  content: ''; position: absolute; left: 0; top: 0.7rem;
+  width: 5px; height: 5px; border-radius: 50%; background: var(--accent2);
+}
+
+/* ── PROCESS STEPS ── */
+.process-steps {
+  display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 1.2rem; margin-bottom: 2rem;
+}
+.process-step {
+  background: var(--card); border: 1px solid var(--border); border-radius: 12px;
+  padding: 1.4rem; text-align: center;
+}
+.process-step .icon { font-size: 1.5rem; margin-bottom: 0.6rem; }
+.process-step h4 { font-size: 0.88rem; margin-bottom: 0.4rem; }
+.process-step p { font-size: 0.78rem; color: var(--muted); font-weight: 400; line-height: 1.65; }
 
 /* ── FOOTER ── */
 footer {
@@ -570,7 +671,8 @@ body[data-page="home"] footer::before {
   .hero { padding: 3rem 1.2rem 2.5rem; }
   .hero-stats { gap: 1.5rem; }
   .main { padding: 2rem 1.2rem 3rem; }
-  .guide-section, .about-section, .submit-section, .comments-section { padding: 3rem 1.2rem; }
+  .guide-section, .about-section, .submit-section, .comments-section, .blog-section { padding: 3rem 1.2rem; }
+  .blog-article { padding: 1.5rem; }
   .footer-top { flex-direction: column; }
   .category-grid { padding: 2rem 1.2rem; }
   .brands-section { padding: 3rem 1.2rem; }

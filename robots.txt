@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://swesket.github.io/vibe_coding/sitemap.xml

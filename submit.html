@@ -4,7 +4,13 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Submit — DIGGING</title>
-  <meta name="description" content="Submit your fashion shopping site to DIGGING." />
+  <meta name="description" content="Submit your fashion shopping site to DIGGING. Fill out the form to request listing on our curated directory of trusted fashion shopping destinations." />
+  <meta property="og:title" content="Submit — DIGGING" />
+  <meta property="og:description" content="Submit your fashion shopping site to DIGGING. Request listing on our curated directory of trusted fashion shopping destinations." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://swesket.github.io/vibe_coding/submit.html" />
+  <meta property="og:site_name" content="DIGGING" />
+  <meta property="og:locale" content="ko_KR" />
   <meta name="google-adsense-account" content="ca-pub-4004698288665198">
   <link rel="canonical" href="https://swesket.github.io/vibe_coding/submit.html" />
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4004698288665198" crossorigin="anonymous"></script>
@@ -23,6 +29,17 @@
         y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
     })(window, document, "clarity", "script", "vks9106g6o");
   </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "name": "Submit Your Site — DIGGING",
+    "description": "Submit your fashion shopping site for review and potential listing on DIGGING's curated directory.",
+    "url": "https://swesket.github.io/vibe_coding/submit.html",
+    "isPartOf": { "@type": "WebSite", "name": "DIGGING", "url": "https://swesket.github.io/vibe_coding/" }
+  }
+  </script>
+  <link rel="icon" type="image/svg+xml" href="favicon.svg" />
   <link rel="stylesheet" href="shared.css" />
 </head>
 <body data-page="submit">
@@ -69,6 +86,7 @@
 <section class="submit-section">
   <h2 id="formTitle"></h2>
   <p class="sub" id="formDesc"></p>
+  <div class="process-steps" id="processSteps"></div>
   <form id="submitForm" action="https://formspree.io/f/xreayzej" method="POST">
     <div class="form-group"><label id="labelSiteName"></label><input type="text" name="site_name" required id="inputSiteName" /></div>
     <div class="form-group"><label id="labelSiteUrl"></label><input type="url" name="site_url" required id="inputSiteUrl" placeholder="https://" /></div>
@@ -96,11 +114,13 @@
         <a href="sites.html" id="footerNavSites"></a>
         <a href="guide.html" id="footerNavGuide"></a>
         <a href="brands.html" id="footerNavBrands"></a>
+        <a href="blog.html" id="footerNavBlog"></a>
         <a href="about.html" id="footerNavAbout"></a>
       </div>
       <div class="footer-col">
         <h4 id="footerLegalTitle"></h4>
         <a href="privacy.html" id="footerPrivacy"></a>
+        <a href="terms.html" id="footerTerms"></a>
         <a href="submit.html" id="footerNavSubmit"></a>
         <a href="mailto:swesket@gmail.com" id="footerContact"></a>
       </div>
@@ -119,6 +139,16 @@
     const f = t.form;
     document.getElementById('formTitle').textContent = f.title;
     document.getElementById('formDesc').textContent = f.desc;
+    const steps = document.getElementById('processSteps');
+    steps.innerHTML = '';
+    if (f.process) {
+      f.process.forEach(step => {
+        const div = document.createElement('div');
+        div.className = 'process-step';
+        div.innerHTML = `<div class="icon">${step.icon}</div><h4>${step.title}</h4><p>${step.desc}</p>`;
+        steps.appendChild(div);
+      });
+    }
     document.getElementById('labelSiteName').innerHTML = f.siteName + ' <span class="req">*</span>';
     document.getElementById('labelSiteUrl').innerHTML = f.siteUrl + ' <span class="req">*</span>';
     document.getElementById('labelCategory').innerHTML = f.category + ' <span class="req">*</span>';

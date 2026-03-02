@@ -4,7 +4,13 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>About — DIGGING</title>
-  <meta name="description" content="About DIGGING — a curation platform for fashion lovers." />
+  <meta name="description" content="About DIGGING — a curation platform for fashion lovers. Learn about our editorial verification process, selection criteria, and mission to connect you with the best fashion shopping sites worldwide." />
+  <meta property="og:title" content="About — DIGGING" />
+  <meta property="og:description" content="About DIGGING — a curation platform for fashion lovers. Learn about our editorial verification process, selection criteria, and mission." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://swesket.github.io/vibe_coding/about.html" />
+  <meta property="og:site_name" content="DIGGING" />
+  <meta property="og:locale" content="ko_KR" />
   <meta name="google-adsense-account" content="ca-pub-4004698288665198">
   <link rel="canonical" href="https://swesket.github.io/vibe_coding/about.html" />
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4004698288665198" crossorigin="anonymous"></script>
@@ -23,6 +29,19 @@
         y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
     })(window, document, "clarity", "script", "vks9106g6o");
   </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "DIGGING",
+    "url": "https://swesket.github.io/vibe_coding/",
+    "description": "A curation platform for fashion lovers. We hand-pick trustworthy and valuable fashion shopping destinations with editorial verification, expert guides, and multi-language support.",
+    "foundingDate": "2025",
+    "knowsAbout": ["Fashion", "Online Shopping", "Streetwear", "Luxury Fashion", "Sneakers", "Vintage Fashion"],
+    "sameAs": []
+  }
+  </script>
+  <link rel="icon" type="image/svg+xml" href="favicon.svg" />
   <link rel="stylesheet" href="shared.css" />
 </head>
 <body data-page="about">
@@ -69,6 +88,18 @@
 <section class="about-section">
   <h2 id="aboutTitle"></h2>
   <p class="sub" id="aboutDesc"></p>
+  <div class="about-block" id="aboutMethodology">
+    <h3 id="methodologyTitle"></h3>
+    <p id="methodologyDesc"></p>
+  </div>
+  <div class="about-block" id="aboutCriteria">
+    <h3 id="criteriaTitle"></h3>
+    <ul id="criteriaList"></ul>
+  </div>
+  <div class="about-block" id="aboutStory">
+    <h3 id="storyTitle"></h3>
+    <p id="storyDesc"></p>
+  </div>
   <div class="about-values" id="aboutValues"></div>
 </section>
 
@@ -84,11 +115,13 @@
         <a href="sites.html" id="footerNavSites"></a>
         <a href="guide.html" id="footerNavGuide"></a>
         <a href="brands.html" id="footerNavBrands"></a>
+        <a href="blog.html" id="footerNavBlog"></a>
         <a href="about.html" id="footerNavAbout"></a>
       </div>
       <div class="footer-col">
         <h4 id="footerLegalTitle"></h4>
         <a href="privacy.html" id="footerPrivacy"></a>
+        <a href="terms.html" id="footerTerms"></a>
         <a href="submit.html" id="footerNavSubmit"></a>
         <a href="mailto:swesket@gmail.com" id="footerContact"></a>
       </div>
@@ -103,6 +136,26 @@
     const t = i18n[currentLang];
     document.getElementById('aboutTitle').textContent = t.about.title;
     document.getElementById('aboutDesc').textContent = t.about.desc;
+
+    // Methodology
+    document.getElementById('methodologyTitle').textContent = t.about.methodology.title;
+    document.getElementById('methodologyDesc').textContent = t.about.methodology.desc;
+
+    // Criteria
+    document.getElementById('criteriaTitle').textContent = t.about.criteria.title;
+    const cl = document.getElementById('criteriaList');
+    cl.innerHTML = '';
+    t.about.criteria.items.forEach(item => {
+      const li = document.createElement('li');
+      li.textContent = item;
+      cl.appendChild(li);
+    });
+
+    // Story
+    document.getElementById('storyTitle').textContent = t.about.story.title;
+    document.getElementById('storyDesc').textContent = t.about.story.desc;
+
+    // Values
     const av = document.getElementById('aboutValues');
     av.innerHTML = '';
     t.about.values.forEach(v => {
