@@ -1,0 +1,19 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(cd:*)",
+      "WebFetch(domain:swesket.github.io)",
+      "Bash(cd /d/study/vibe_coding && python3 << 'EOF'\nimport re\n\n# Read data.js and analyze description lengths\nwith open\\('data.js', 'r', encoding='utf-8'\\) as f:\n    content = f.read\\(\\)\n\n# Extract all Korean descriptions\nko_descs = re.findall\\(r'\"ko\":\\\\s*\"\\([^\"]+\\)\"\\(?=[,}]\\)', content\\)\n\n# Calculate stats\ndesc_lengths = [len\\(desc\\) for desc in ko_descs if len\\(desc\\) > 50]\nif desc_lengths:\n    print\\(f\"Total descriptions with length > 50 chars: {len\\(desc_lengths\\)}\"\\)\n    print\\(f\"Min length: {min\\(desc_lengths\\)}\"\\)\n    print\\(f\"Max length: {max\\(desc_lengths\\)}\"\\)\n    print\\(f\"Average length: {sum\\(desc_lengths\\) / len\\(desc_lengths\\):.0f}\"\\)\n    print\\(\"\\\\nLongest descriptions \\(first 3\\):\"\\)\n    for i, desc in enumerate\\(sorted\\(ko_descs, key=len, reverse=True\\)[:3]\\):\n        print\\(f\"{i+1}. {len\\(desc\\)} chars: {desc[:80]}...\"\\)\nEOF)",
+      "WebFetch(domain:support.google.com)",
+      "Bash(python:*)",
+      "Bash(git add:*)",
+      "Bash(git commit:*)",
+      "Bash(git push:*)",
+      "Bash(node:*)",
+      "Bash(node -e \":*)",
+      "WebFetch(domain:raw.githubusercontent.com)",
+      "Bash(grep:*)",
+      "Bash(python3:*)"
+    ]
+  }
+}
