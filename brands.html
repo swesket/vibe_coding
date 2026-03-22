@@ -49,53 +49,64 @@
     DIGGING
     <span>Fashion Site Curation</span>
   </a>
-  <nav id="nav"></nav>
+  <nav id="nav">
+    <a href="sites.html">사이트</a>
+    <a href="guide.html">가이드</a>
+    <a href="brands.html" class="active">브랜드</a>
+    <a href="blog.html">블로그</a>
+    <a href="about.html">소개</a>
+    <a href="submit.html">등록 요청</a>
+  </nav>
+  <button class="hamburger" id="hamburgerBtn" aria-label="Open menu" aria-expanded="false">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12h18M3 6h18M3 18h18"/></svg>
+  </button>
   <div class="header-right">
     <button class="theme-btn" id="themeBtn" aria-label="Toggle theme"></button>
     <div class="vision-selector" id="visionSelector">
-      <button class="vision-btn" id="visionBtn" aria-label="Color vision mode">
+      <button class="vision-btn" id="visionBtn" aria-label="Color vision mode" aria-expanded="false" aria-haspopup="true">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
       </button>
-      <div class="vision-dropdown" id="visionDropdown">
-        <button class="vision-option active" data-vision="normal">일반</button>
-        <button class="vision-option" data-vision="protanopia">적록 색약</button>
-        <button class="vision-option" data-vision="achromatopsia">완전 색맹</button>
+      <div class="vision-dropdown" id="visionDropdown" role="menu">
+        <button class="vision-option active" role="menuitem" data-vision="normal">일반</button>
+        <button class="vision-option" role="menuitem" data-vision="protanopia">적록 색약</button>
+        <button class="vision-option" role="menuitem" data-vision="achromatopsia">완전 색맹</button>
       </div>
     </div>
     <div class="search-box">
       <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
         <circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/>
       </svg>
-      <input type="text" id="searchInput" placeholder="" />
+      <input type="text" id="searchInput" placeholder="사이트 검색..." aria-label="Search sites" />
     </div>
     <div class="lang-selector" id="langSelector">
-      <button class="lang-btn" id="langBtn">
+      <button class="lang-btn" id="langBtn" aria-label="Select language" aria-expanded="false" aria-haspopup="true">
         <span id="langLabel">KO</span>
         <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 4.5l3 3 3-3"/></svg>
       </button>
-      <div class="lang-dropdown" id="langDropdown">
-        <button class="lang-option active" data-lang="ko">Korean</button>
-        <button class="lang-option" data-lang="en">English</button>
-        <button class="lang-option" data-lang="zh">Chinese</button>
-        <button class="lang-option" data-lang="ja">Japanese</button>
+      <div class="lang-dropdown" id="langDropdown" role="menu">
+        <button class="lang-option active" role="menuitem" data-lang="ko">Korean</button>
+        <button class="lang-option" role="menuitem" data-lang="en">English</button>
+        <button class="lang-option" role="menuitem" data-lang="zh">Chinese</button>
+        <button class="lang-option" role="menuitem" data-lang="ja">Japanese</button>
       </div>
     </div>
   </div>
 </header>
 
+<main>
 <section class="brands-section">
-  <h2 id="brandsTitle"></h2>
-  <p class="sub" id="brandsDesc"></p>
+  <h2 id="brandsTitle">브랜드 검색</h2>
+  <p class="sub" id="brandsDesc">좋아하는 브랜드를 검색하면 해당 브랜드를 취급하는 사이트를 한눈에 확인할 수 있습니다.</p>
 
   <div class="about-block" id="brandsIntroBlock" style="margin-bottom:2rem;">
-    <p id="brandsIntro"></p>
+    <p id="brandsIntro">DIGGING의 브랜드 검색 기능을 활용하면 좋아하는 브랜드를 취급하는 사이트를 한 번에 찾을 수 있습니다. Nike, Gucci, Supreme 등 40개 이상의 인기 브랜드를 검색하거나 아래 인기 브랜드 칩을 클릭해보세요. 각 브랜드별로 DIGGING이 검증한 신뢰할 수 있는 쇼핑 사이트 목록과 함께 가격대, 배송 정보를 확인할 수 있습니다.</p>
   </div>
 
   <div class="brand-search-wrap">
     <svg class="brand-search-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
       <circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/>
     </svg>
-    <input type="text" class="brand-search-input" id="brandSearchInput" placeholder="" autocomplete="off" />
+    <input type="text" class="brand-search-input" id="brandSearchInput" placeholder="브랜드 검색..." autocomplete="off" />
     <div class="brand-autocomplete" id="brandAutocomplete"></div>
   </div>
 
@@ -106,43 +117,59 @@
     <div class="brand-result-grid" id="brandResultGrid"></div>
   </div>
 
-  <div class="brand-empty" id="brandEmpty"></div>
+  <div class="brand-empty" id="brandEmpty">해당 브랜드를 찾을 수 없습니다.</div>
 </section>
 
 <div class="ad-slot">
   <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-4004698288665198" data-ad-slot="auto" data-ad-format="horizontal" data-full-width-responsive="true"></ins>
   <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
 </div>
+</main>
 
 <footer>
   <div class="footer-top">
     <div class="footer-brand">
       <div class="f-logo">DIGGING</div>
-      <p id="footerBrandDesc"></p>
+      <p id="footerBrandDesc">전 세계 패션 쇼핑 사이트를 큐레이션하는 디깅 플랫폼.</p>
     </div>
     <div class="footer-links">
       <div class="footer-col">
-        <h4 id="footerNavTitle"></h4>
-        <a href="sites.html" id="footerNavSites"></a>
-        <a href="guide.html" id="footerNavGuide"></a>
-        <a href="brands.html" id="footerNavBrands"></a>
-        <a href="blog.html" id="footerNavBlog"></a>
-        <a href="about.html" id="footerNavAbout"></a>
+        <h4 id="footerNavTitle">메뉴</h4>
+        <a href="sites.html" id="footerNavSites">사이트 목록</a>
+        <a href="guide.html" id="footerNavGuide">쇼핑 가이드</a>
+        <a href="brands.html" id="footerNavBrands">브랜드</a>
+        <a href="blog.html" id="footerNavBlog">블로그</a>
+        <a href="about.html" id="footerNavAbout">소개</a>
       </div>
       <div class="footer-col">
-        <h4 id="footerLegalTitle"></h4>
-        <a href="privacy.html" id="footerPrivacy"></a>
-        <a href="terms.html" id="footerTerms"></a>
-        <a href="submit.html" id="footerNavSubmit"></a>
-        <a href="mailto:swesket@gmail.com" id="footerContact"></a>
+        <h4 id="footerLegalTitle">정보</h4>
+        <a href="privacy.html" id="footerPrivacy">개인정보처리방침</a>
+        <a href="terms.html" id="footerTerms">이용약관</a>
+        <a href="submit.html" id="footerNavSubmit">등록 요청</a>
+        <a href="mailto:swesket@gmail.com" id="footerContact">문의하기</a>
       </div>
     </div>
   </div>
-  <div class="footer-bottom" id="footerCopy"></div>
+  <div class="footer-bottom" id="footerCopy">© 2026 DIGGING. All rights reserved.</div>
 </footer>
 
 <script src="data.js"></script>
 <script src="brands.js"></script>
+
+<div class="mobile-nav" id="mobileNav" role="dialog" aria-label="Navigation menu">
+  <div class="mobile-nav-panel">
+    <button class="mobile-nav-close" aria-label="Close menu">&times;</button>
+    <a href="index.html">Home</a>
+    <a href="sites.html">Sites</a>
+    <a href="guide.html">Guide</a>
+    <a href="brands.html">Brands</a>
+    <a href="blog.html">Blog</a>
+    <a href="about.html">About</a>
+    <a href="submit.html">Submit</a>
+    <a href="community.html">Community</a>
+  </div>
+</div>
+
 <script src="shared.js"></script>
 <script>
   const brandSearchInput = document.getElementById('brandSearchInput');
@@ -156,6 +183,10 @@
   const popularBrands = ['Nike', 'Adidas', 'Gucci', 'Balenciaga', 'Supreme', 'Prada', 'New Balance', 'Jordan', 'Stussy', 'Comme des Garcons'];
   let selectedBrand = null;
 
+  // O(1) lookup maps
+  const sitesByName = new Map(sites.map(s => [s.name, s]));
+  const brandsByNameLC = new Map(brands.map(b => [b.name.toLowerCase(), b]));
+
   function renderBrandsPage() {
     const t = i18n[currentLang];
     const bt = t.brands;
@@ -165,19 +196,26 @@
     brandSearchInput.placeholder = bt.searchPlaceholder;
     brandEmpty.textContent = bt.emptyResult;
 
-    // render chips
-    brandChips.innerHTML = '';
+    // render chips with DocumentFragment
+    const frag = document.createDocumentFragment();
     popularBrands.forEach(name => {
       const chip = document.createElement('button');
       chip.className = 'brand-chip' + (selectedBrand === name ? ' active' : '');
       chip.textContent = name;
-      chip.addEventListener('click', () => selectBrand(name));
-      brandChips.appendChild(chip);
+      frag.appendChild(chip);
     });
+    brandChips.innerHTML = '';
+    brandChips.appendChild(frag);
 
-    // re-render result if a brand is selected
     if (selectedBrand) showBrandResult(selectedBrand);
   }
+
+  // event delegation for chips
+  brandChips.addEventListener('click', (e) => {
+    const chip = e.target.closest('.brand-chip');
+    if (!chip) return;
+    selectBrand(chip.textContent);
+  });
 
   function selectBrand(name) {
     selectedBrand = name;
@@ -185,7 +223,6 @@
     brandAutocomplete.classList.remove('show');
     brandEmpty.classList.remove('show');
 
-    // update chip active states
     brandChips.querySelectorAll('.brand-chip').forEach(c => {
       c.classList.toggle('active', c.textContent === name);
     });
@@ -194,7 +231,7 @@
   }
 
   function showBrandResult(name) {
-    const brand = brands.find(b => b.name.toLowerCase() === name.toLowerCase());
+    const brand = brandsByNameLC.get(name.toLowerCase());
     if (!brand) {
       brandResultArea.style.display = 'none';
       brandEmpty.classList.add('show');
@@ -206,9 +243,9 @@
     brandResultArea.style.display = '';
     brandResultLabel.textContent = `${brand.name} — ${t.brands.resultLabel} (${brand.sites.length})`;
 
-    brandResultGrid.innerHTML = '';
+    const frag = document.createDocumentFragment();
     brand.sites.forEach((siteName, i) => {
-      const site = sites.find(s => s.name === siteName);
+      const site = sitesByName.get(siteName);
       if (!site) return;
       const desc = site.desc[currentLang] || site.desc.ko;
       const tags = site.tags[currentLang] || site.tags.ko;
@@ -219,8 +256,10 @@
       a.rel = 'noopener noreferrer';
       a.innerHTML = `<div class="card-head"><div class="favicon">${site.emoji}</div><div><div class="card-title">${site.name}</div><div class="card-url">${site.url}</div></div></div><p class="card-desc">${desc}</p><div class="card-footer"><div class="tags">${tags.map(tag => `<span class="tag">${tag}</span>`).join('')}</div><span class="arrow">→</span></div>`;
       a.style.animationDelay = `${i * 0.04}s`;
-      brandResultGrid.appendChild(a);
+      frag.appendChild(a);
     });
+    brandResultGrid.innerHTML = '';
+    brandResultGrid.appendChild(frag);
   }
 
   // autocomplete
@@ -270,8 +309,8 @@
         selectBrand(active.dataset.name);
       } else {
         const q = brandSearchInput.value.trim().toLowerCase();
-        const match = brands.find(b => b.name.toLowerCase() === q);
-        if (match) selectBrand(match.name);
+        const brand = brandsByNameLC.get(q);
+        if (brand) selectBrand(brand.name);
       }
     }
   });

@@ -49,85 +49,111 @@
     DIGGING
     <span>Fashion Site Curation</span>
   </a>
-  <nav id="nav"></nav>
+  <nav id="nav">
+    <a href="sites.html">사이트</a>
+    <a href="guide.html">가이드</a>
+    <a href="brands.html">브랜드</a>
+    <a href="blog.html">블로그</a>
+    <a href="about.html">소개</a>
+    <a href="submit.html" class="active">등록 요청</a>
+  </nav>
+  <button class="hamburger" id="hamburgerBtn" aria-label="Open menu" aria-expanded="false">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12h18M3 6h18M3 18h18"/></svg>
+  </button>
   <div class="header-right">
     <button class="theme-btn" id="themeBtn" aria-label="Toggle theme"></button>
     <div class="vision-selector" id="visionSelector">
-      <button class="vision-btn" id="visionBtn" aria-label="Color vision mode">
+      <button class="vision-btn" id="visionBtn" aria-label="Color vision mode" aria-expanded="false" aria-haspopup="true">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
       </button>
-      <div class="vision-dropdown" id="visionDropdown">
-        <button class="vision-option active" data-vision="normal">일반</button>
-        <button class="vision-option" data-vision="protanopia">적록 색약</button>
-        <button class="vision-option" data-vision="achromatopsia">완전 색맹</button>
+      <div class="vision-dropdown" id="visionDropdown" role="menu">
+        <button class="vision-option active" role="menuitem" data-vision="normal">일반</button>
+        <button class="vision-option" role="menuitem" data-vision="protanopia">적록 색약</button>
+        <button class="vision-option" role="menuitem" data-vision="achromatopsia">완전 색맹</button>
       </div>
     </div>
     <div class="search-box">
       <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
         <circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/>
       </svg>
-      <input type="text" id="searchInput" placeholder="" />
+      <input type="text" id="searchInput" placeholder="사이트 검색..." aria-label="Search sites" />
     </div>
     <div class="lang-selector" id="langSelector">
-      <button class="lang-btn" id="langBtn">
+      <button class="lang-btn" id="langBtn" aria-label="Select language" aria-expanded="false" aria-haspopup="true">
         <span id="langLabel">KO</span>
         <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 4.5l3 3 3-3"/></svg>
       </button>
-      <div class="lang-dropdown" id="langDropdown">
-        <button class="lang-option active" data-lang="ko">Korean</button>
-        <button class="lang-option" data-lang="en">English</button>
-        <button class="lang-option" data-lang="zh">Chinese</button>
-        <button class="lang-option" data-lang="ja">Japanese</button>
+      <div class="lang-dropdown" id="langDropdown" role="menu">
+        <button class="lang-option active" role="menuitem" data-lang="ko">Korean</button>
+        <button class="lang-option" role="menuitem" data-lang="en">English</button>
+        <button class="lang-option" role="menuitem" data-lang="zh">Chinese</button>
+        <button class="lang-option" role="menuitem" data-lang="ja">Japanese</button>
       </div>
     </div>
   </div>
 </header>
 
+<main>
 <section class="submit-section">
-  <h2 id="formTitle"></h2>
-  <p class="sub" id="formDesc"></p>
+  <h2 id="formTitle">사이트 등록 요청</h2>
+  <p class="sub" id="formDesc">운영 중인 패션 쇼핑 사이트를 DIGGING에 등록하고 싶으시다면 아래 양식을 작성해주세요. 검토 후 연락드리겠습니다.</p>
   <div class="process-steps" id="processSteps"></div>
   <form id="submitForm" action="https://formspree.io/f/xreayzej" method="POST">
-    <div class="form-group"><label id="labelSiteName"></label><input type="text" name="site_name" required id="inputSiteName" /></div>
-    <div class="form-group"><label id="labelSiteUrl"></label><input type="url" name="site_url" required id="inputSiteUrl" placeholder="https://" /></div>
-    <div class="form-group"><label id="labelCategory"></label><select name="category" required id="selectCategory"></select></div>
-    <div class="form-group"><label id="labelDesc"></label><textarea name="description" id="inputDesc"></textarea></div>
-    <div class="form-group"><label id="labelContact"></label><input type="email" name="email" required id="inputContact" /></div>
-    <button type="submit" class="submit-btn" id="submitBtn"></button>
+    <div class="form-group"><label id="labelSiteName" for="inputSiteName">사이트 이름 <span class="req">*</span></label><input type="text" name="site_name" required id="inputSiteName" placeholder="사이트 이름" autocomplete="organization" /></div>
+    <div class="form-group"><label id="labelSiteUrl" for="inputSiteUrl">사이트 URL <span class="req">*</span></label><input type="url" name="site_url" required id="inputSiteUrl" placeholder="https://" autocomplete="url" /></div>
+    <div class="form-group"><label id="labelCategory" for="selectCategory">카테고리 <span class="req">*</span></label><select name="category" required id="selectCategory"></select></div>
+    <div class="form-group"><label id="labelDesc" for="inputDesc">사이트 소개</label><textarea name="description" id="inputDesc" placeholder="사이트에 대한 간단한 소개를 작성해주세요."></textarea></div>
+    <div class="form-group"><label id="labelContact" for="inputContact">담당자 이메일 <span class="req">*</span></label><input type="email" name="email" required id="inputContact" placeholder="email@example.com" autocomplete="email" /></div>
+    <button type="submit" class="submit-btn" id="submitBtn">등록 요청하기 →</button>
   </form>
   <div class="form-success" id="formSuccess">
     <div class="check">&#10003;</div>
-    <h3 id="successTitle"></h3>
-    <p id="successDesc"></p>
+    <h3 id="successTitle">요청이 접수되었습니다!</h3>
+    <p id="successDesc">검토 후 등록 여부를 이메일로 안내드리겠습니다. 감사합니다.</p>
   </div>
 </section>
+</main>
 
 <footer>
   <div class="footer-top">
     <div class="footer-brand">
       <div class="f-logo">DIGGING</div>
-      <p id="footerBrandDesc"></p>
+      <p id="footerBrandDesc">전 세계 패션 쇼핑 사이트를 큐레이션하는 디깅 플랫폼.</p>
     </div>
     <div class="footer-links">
       <div class="footer-col">
-        <h4 id="footerNavTitle"></h4>
-        <a href="sites.html" id="footerNavSites"></a>
-        <a href="guide.html" id="footerNavGuide"></a>
-        <a href="brands.html" id="footerNavBrands"></a>
-        <a href="blog.html" id="footerNavBlog"></a>
-        <a href="about.html" id="footerNavAbout"></a>
+        <h4 id="footerNavTitle">메뉴</h4>
+        <a href="sites.html" id="footerNavSites">사이트 목록</a>
+        <a href="guide.html" id="footerNavGuide">쇼핑 가이드</a>
+        <a href="brands.html" id="footerNavBrands">브랜드</a>
+        <a href="blog.html" id="footerNavBlog">블로그</a>
+        <a href="about.html" id="footerNavAbout">소개</a>
       </div>
       <div class="footer-col">
-        <h4 id="footerLegalTitle"></h4>
-        <a href="privacy.html" id="footerPrivacy"></a>
-        <a href="terms.html" id="footerTerms"></a>
-        <a href="submit.html" id="footerNavSubmit"></a>
-        <a href="mailto:swesket@gmail.com" id="footerContact"></a>
+        <h4 id="footerLegalTitle">정보</h4>
+        <a href="privacy.html" id="footerPrivacy">개인정보처리방침</a>
+        <a href="terms.html" id="footerTerms">이용약관</a>
+        <a href="submit.html" id="footerNavSubmit">등록 요청</a>
+        <a href="mailto:swesket@gmail.com" id="footerContact">문의하기</a>
       </div>
     </div>
   </div>
-  <div class="footer-bottom" id="footerCopy"></div>
+  <div class="footer-bottom" id="footerCopy">© 2026 DIGGING. All rights reserved.</div>
 </footer>
+
+<div class="mobile-nav" id="mobileNav" role="dialog" aria-label="Navigation menu">
+  <div class="mobile-nav-panel">
+    <button class="mobile-nav-close" aria-label="Close menu">&times;</button>
+    <a href="index.html">Home</a>
+    <a href="sites.html">Sites</a>
+    <a href="guide.html">Guide</a>
+    <a href="brands.html">Brands</a>
+    <a href="blog.html">Blog</a>
+    <a href="about.html">About</a>
+    <a href="submit.html">Submit</a>
+    <a href="community.html">Community</a>
+  </div>
+</div>
 
 <script src="shared.js"></script>
 <script>

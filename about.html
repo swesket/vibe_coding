@@ -51,84 +51,110 @@
     DIGGING
     <span>Fashion Site Curation</span>
   </a>
-  <nav id="nav"></nav>
+  <nav id="nav">
+    <a href="sites.html">사이트</a>
+    <a href="guide.html">가이드</a>
+    <a href="brands.html">브랜드</a>
+    <a href="blog.html">블로그</a>
+    <a href="about.html" class="active">소개</a>
+    <a href="submit.html">등록 요청</a>
+  </nav>
+  <button class="hamburger" id="hamburgerBtn" aria-label="Open menu" aria-expanded="false">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12h18M3 6h18M3 18h18"/></svg>
+  </button>
   <div class="header-right">
     <button class="theme-btn" id="themeBtn" aria-label="Toggle theme"></button>
     <div class="vision-selector" id="visionSelector">
-      <button class="vision-btn" id="visionBtn" aria-label="Color vision mode">
+      <button class="vision-btn" id="visionBtn" aria-label="Color vision mode" aria-expanded="false" aria-haspopup="true">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
       </button>
-      <div class="vision-dropdown" id="visionDropdown">
-        <button class="vision-option active" data-vision="normal">일반</button>
-        <button class="vision-option" data-vision="protanopia">적록 색약</button>
-        <button class="vision-option" data-vision="achromatopsia">완전 색맹</button>
+      <div class="vision-dropdown" id="visionDropdown" role="menu">
+        <button class="vision-option active" role="menuitem" data-vision="normal">일반</button>
+        <button class="vision-option" role="menuitem" data-vision="protanopia">적록 색약</button>
+        <button class="vision-option" role="menuitem" data-vision="achromatopsia">완전 색맹</button>
       </div>
     </div>
     <div class="search-box">
       <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
         <circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/>
       </svg>
-      <input type="text" id="searchInput" placeholder="" />
+      <input type="text" id="searchInput" placeholder="사이트 검색..." aria-label="Search sites" />
     </div>
     <div class="lang-selector" id="langSelector">
-      <button class="lang-btn" id="langBtn">
+      <button class="lang-btn" id="langBtn" aria-label="Select language" aria-expanded="false" aria-haspopup="true">
         <span id="langLabel">KO</span>
         <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 4.5l3 3 3-3"/></svg>
       </button>
-      <div class="lang-dropdown" id="langDropdown">
-        <button class="lang-option active" data-lang="ko">Korean</button>
-        <button class="lang-option" data-lang="en">English</button>
-        <button class="lang-option" data-lang="zh">Chinese</button>
-        <button class="lang-option" data-lang="ja">Japanese</button>
+      <div class="lang-dropdown" id="langDropdown" role="menu">
+        <button class="lang-option active" role="menuitem" data-lang="ko">Korean</button>
+        <button class="lang-option" role="menuitem" data-lang="en">English</button>
+        <button class="lang-option" role="menuitem" data-lang="zh">Chinese</button>
+        <button class="lang-option" role="menuitem" data-lang="ja">Japanese</button>
       </div>
     </div>
   </div>
 </header>
 
+<main>
 <section class="about-section">
-  <h2 id="aboutTitle"></h2>
-  <p class="sub" id="aboutDesc"></p>
+  <h2 id="aboutTitle">DIGGING 소개</h2>
+  <p class="sub" id="aboutDesc">DIGGING은 패션을 사랑하는 사람들을 위한 큐레이션 플랫폼입니다. 수많은 쇼핑 사이트 중에서 신뢰할 수 있고 가치 있는 곳만을 직접 선별하여 소개합니다. 단순한 링크 모음이 아닌, 각 사이트의 특성과 활용법까지 함께 제공하는 것이 우리의 차별점입니다.</p>
   <div class="about-block" id="aboutMethodology">
-    <h3 id="methodologyTitle"></h3>
-    <p id="methodologyDesc"></p>
+    <h3 id="methodologyTitle">큐레이션 프로세스</h3>
+    <p id="methodologyDesc">DIGGING의 모든 사이트는 4단계 검증 프로세스를 거칩니다. 먼저 에디터가 직접 사이트를 방문하여 UI, 상품 퀄리티, 고객 서비스를 평가합니다. 이후 실제 주문을 통해 배송 속도와 포장 상태를 확인하고, 반품·교환 절차의 편의성을 테스트합니다. 마지막으로 커뮤니티 평판과 리뷰를 종합 분석하여 최종 등록 여부를 결정합니다. 이 과정은 분기마다 재검증되며, 기준에 미달하는 사이트는 목록에서 제외됩니다.</p>
   </div>
   <div class="about-block" id="aboutCriteria">
-    <h3 id="criteriaTitle"></h3>
+    <h3 id="criteriaTitle">선정 기준</h3>
     <ul id="criteriaList"></ul>
   </div>
   <div class="about-block" id="aboutStory">
-    <h3 id="storyTitle"></h3>
-    <p id="storyDesc"></p>
+    <h3 id="storyTitle">DIGGING의 탄생</h3>
+    <p id="storyDesc">수많은 패션 쇼핑 사이트가 존재하지만, 정말 신뢰할 수 있는 곳을 찾기란 쉽지 않습니다. DIGGING은 이런 고민에서 출발했습니다. 직접 수백 개의 사이트를 방문하고, 주문하고, 반품까지 경험하며 검증한 결과물을 공유하고자 합니다. 패션 초보자부터 마니아까지, 누구나 자신에게 맞는 최적의 쇼핑 목적지를 빠르게 찾을 수 있도록 돕는 것이 우리의 미션입니다.</p>
   </div>
   <div class="about-values" id="aboutValues"></div>
 </section>
+</main>
 
 <footer>
   <div class="footer-top">
     <div class="footer-brand">
       <div class="f-logo">DIGGING</div>
-      <p id="footerBrandDesc"></p>
+      <p id="footerBrandDesc">전 세계 패션 쇼핑 사이트를 큐레이션하는 디깅 플랫폼.</p>
     </div>
     <div class="footer-links">
       <div class="footer-col">
-        <h4 id="footerNavTitle"></h4>
-        <a href="sites.html" id="footerNavSites"></a>
-        <a href="guide.html" id="footerNavGuide"></a>
-        <a href="brands.html" id="footerNavBrands"></a>
-        <a href="blog.html" id="footerNavBlog"></a>
-        <a href="about.html" id="footerNavAbout"></a>
+        <h4 id="footerNavTitle">메뉴</h4>
+        <a href="sites.html" id="footerNavSites">사이트 목록</a>
+        <a href="guide.html" id="footerNavGuide">쇼핑 가이드</a>
+        <a href="brands.html" id="footerNavBrands">브랜드</a>
+        <a href="blog.html" id="footerNavBlog">블로그</a>
+        <a href="about.html" id="footerNavAbout">소개</a>
       </div>
       <div class="footer-col">
-        <h4 id="footerLegalTitle"></h4>
-        <a href="privacy.html" id="footerPrivacy"></a>
-        <a href="terms.html" id="footerTerms"></a>
-        <a href="submit.html" id="footerNavSubmit"></a>
-        <a href="mailto:swesket@gmail.com" id="footerContact"></a>
+        <h4 id="footerLegalTitle">정보</h4>
+        <a href="privacy.html" id="footerPrivacy">개인정보처리방침</a>
+        <a href="terms.html" id="footerTerms">이용약관</a>
+        <a href="submit.html" id="footerNavSubmit">등록 요청</a>
+        <a href="mailto:swesket@gmail.com" id="footerContact">문의하기</a>
       </div>
     </div>
   </div>
-  <div class="footer-bottom" id="footerCopy"></div>
+  <div class="footer-bottom" id="footerCopy">© 2026 DIGGING. All rights reserved.</div>
 </footer>
+
+<div class="mobile-nav" id="mobileNav" role="dialog" aria-label="Navigation menu">
+  <div class="mobile-nav-panel">
+    <button class="mobile-nav-close" aria-label="Close menu">&times;</button>
+    <a href="index.html">Home</a>
+    <a href="sites.html">Sites</a>
+    <a href="guide.html">Guide</a>
+    <a href="brands.html">Brands</a>
+    <a href="blog.html">Blog</a>
+    <a href="about.html">About</a>
+    <a href="submit.html">Submit</a>
+    <a href="community.html">Community</a>
+  </div>
+</div>
 
 <script src="shared.js"></script>
 <script>
@@ -144,12 +170,14 @@
     // Criteria
     document.getElementById('criteriaTitle').textContent = t.about.criteria.title;
     const cl = document.getElementById('criteriaList');
-    cl.innerHTML = '';
+    const clFrag = document.createDocumentFragment();
     t.about.criteria.items.forEach(item => {
       const li = document.createElement('li');
       li.textContent = item;
-      cl.appendChild(li);
+      clFrag.appendChild(li);
     });
+    cl.innerHTML = '';
+    cl.appendChild(clFrag);
 
     // Story
     document.getElementById('storyTitle').textContent = t.about.story.title;
@@ -157,12 +185,14 @@
 
     // Values
     const av = document.getElementById('aboutValues');
-    av.innerHTML = '';
+    const avFrag = document.createDocumentFragment();
     t.about.values.forEach(v => {
       const d = document.createElement('div'); d.className = 'about-value';
       d.innerHTML = `<div class="icon">${v.icon}</div><h4>${v.title}</h4><p>${v.desc}</p>`;
-      av.appendChild(d);
+      avFrag.appendChild(d);
     });
+    av.innerHTML = '';
+    av.appendChild(avFrag);
   }
 
   document.addEventListener('langchange', renderAbout);
