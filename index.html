@@ -115,7 +115,14 @@
 </section>
 
 <h2 class="section-label category-label" id="catLabel">카테고리별 탐색</h2>
-<div id="categoryGrid" class="category-grid"></div>
+<div id="categoryGrid" class="category-grid">
+  <a class="cat-card" href="sites.html?cat=korea"><div class="cat-icon">🇰🇷</div><div><div class="cat-name">국내 셀렉트샵</div><div class="cat-count">6개</div></div><span class="cat-arrow">→</span></a>
+  <a class="cat-card" href="sites.html?cat=luxury"><div class="cat-icon">💎</div><div><div class="cat-name">럭셔리 / 하이엔드</div><div class="cat-count">5개</div></div><span class="cat-arrow">→</span></a>
+  <a class="cat-card" href="sites.html?cat=street"><div class="cat-icon">🛹</div><div><div class="cat-name">스트릿</div><div class="cat-count">5개</div></div><span class="cat-arrow">→</span></a>
+  <a class="cat-card" href="sites.html?cat=vintage"><div class="cat-icon">👜</div><div><div class="cat-name">빈티지 / 중고</div><div class="cat-count">5개</div></div><span class="cat-arrow">→</span></a>
+  <a class="cat-card" href="sites.html?cat=sneaker"><div class="cat-icon">👟</div><div><div class="cat-name">스니커즈</div><div class="cat-count">4개</div></div><span class="cat-arrow">→</span></a>
+  <a class="cat-card" href="sites.html?cat=global"><div class="cat-icon">🌍</div><div><div class="cat-name">글로벌 멀티</div><div class="cat-count">4개</div></div><span class="cat-arrow">→</span></a>
+</div>
 <noscript>
 <div class="category-grid">
   <div class="about-block"><h3>국내 편집숍</h3><p>무신사, 29CM, W Concept, 한섬 EQL, 크림(KREAM), OCO 등 국내 대표 패션 편집숍을 소개합니다. <a href="sites.html">사이트 목록 보기 →</a></p></div>
@@ -126,6 +133,11 @@
   <div class="about-block"><h3>글로벌</h3><p>ASOS, Zara, Uniqlo, H&M 등 글로벌 SPA 브랜드 공식 사이트를 포함합니다. <a href="sites.html">사이트 목록 보기 →</a></p></div>
 </div>
 </noscript>
+
+<section class="about-block" id="homeAboutBlock" style="margin-top:2rem;">
+  <h3 id="homeAboutTitle">DIGGING이란?</h3>
+  <p id="homeAboutDesc">DIGGING은 전 세계 패션 쇼핑 사이트를 직접 검증하고 큐레이션하는 플랫폼입니다. 무신사, 29CM 같은 국내 편집숍부터 SSENSE, Farfetch, Mr Porter 같은 해외 럭셔리 플랫폼, StockX, GOAT 같은 리셀 마켓까지 — 에디터가 실제로 주문하고 반품까지 테스트한 사이트만 소개합니다. 카테고리별 쇼핑 가이드, 관세·배송 정보, 세일 캘린더 등 실전에 필요한 정보도 함께 제공합니다.</p>
+</section>
 
 <div class="ad-slot">
   <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-4004698288665198" data-ad-slot="auto" data-ad-format="horizontal" data-full-width-responsive="true"></ins>
@@ -202,6 +214,11 @@
     });
     grid.innerHTML = '';
     grid.appendChild(frag);
+
+    if (t.landing.homeAbout) {
+      document.getElementById('homeAboutTitle').textContent = t.landing.homeAbout.title;
+      document.getElementById('homeAboutDesc').textContent = t.landing.homeAbout.desc;
+    }
   }
 
   document.addEventListener('langchange', renderLanding);

@@ -23,7 +23,7 @@ There are no tests, linters, or CI pipelines. Changes go live on push to `main`.
 - 10 HTML pages share `shared.css` and `shared.js`
 - Each page sets `<body data-page="...">` to identify itself
 - Page-specific logic is embedded in `<script>` blocks within each HTML file
-- Data lives in separate JS files: `data.js` (29 sites), `brands.js` (40 brands), `blog-data.js` (12 extra blog articles)
+- Data lives in separate JS files: `data.js` (29 sites), `brands.js` (40 brands), `blog-data.js` (15 extra blog articles)
 - Script load order matters: `shared.js` → `data.js`/`brands.js`/`blog-data.js` → page-specific inline `<script>`. `blog-data.js` mutates `i18n[lang].blog.articles` at load time via `Array.concat`, so it must run after `shared.js` (defines `i18n`) and before the blog page script (reads it). Only `blog.html` loads `blog-data.js`.
 
 ### Three Independent Axes on `<html>`
@@ -90,7 +90,8 @@ All 10 HTML files must keep this structure identical.
 - Cards use staggered `animation-delay: ${i * 0.04}s` for fade-in
 - Grid layouts use `minmax(280px, 1fr)` for responsive columns
 - Blog article content is stored as HTML strings inside the `i18n` object (not separate files)
-- **`<noscript>` static Korean content**: JS-dependent pages ship hardcoded Korean static blocks inside `<noscript>` tags for users with JavaScript disabled. Pages with noscript content: `sites.html`, `guide.html`, `blog.html`, `community.html`, `brands.html`, `index.html`. When adding/removing entries from `data.js`, `brands.js`, or `blog-data.js`, keep the `<noscript>` block on the matching page in sync. **Do NOT use hidden off-screen divs** (`position:absolute;left:-9999px`) for crawler-only content — Google classifies this as hidden text spam.
+- **`<noscript>` static Korean content**: JS-dependent pages ship hardcoded Korean static blocks inside `<noscript>` tags for users with JavaScript disabled. Pages with noscript content: `sites.html`, `guide.html`, `blog.html`, `community.html`, `brands.html`, `index.html`, `about.html`, `submit.html`. When adding/removing entries from `data.js`, `brands.js`, or `blog-data.js`, keep the `<noscript>` block on the matching page in sync. **Do NOT use hidden off-screen divs** (`position:absolute;left:-9999px`) for crawler-only content — Google classifies this as hidden text spam.
+- **Progressive enhancement**: Pages with JS-rendered sections (about criteria/values, submit process steps, index category grid) include static Korean HTML as default content inside those containers. JS clears and re-renders with the active language on load. This ensures content is visible even if JS fails to execute.
 
 ## Third-Party Services
 - **Google AdSense** (ca-pub-4004698288665198): script on all 10 pages; ad slots on index, sites, guide, brands, blog, about, submit (7 pages). community/privacy/terms have no ad slots (community is third-party Disqus content; legal pages excluded)

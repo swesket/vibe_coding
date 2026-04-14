@@ -35,6 +35,10 @@ const i18n = {
     countSuffix: "개",
     nav: { sites: "사이트", guide: "가이드", brands: "브랜드", blog: "블로그", about: "소개", submit: "등록 요청" },
     categories: { all: "전체", korea: "국내 셀렉트샵", luxury: "럭셔리 / 하이엔드", street: "스트릿", vintage: "빈티지 / 중고", sneaker: "스니커즈", global: "글로벌 멀티" },
+    sitesIntro: {
+      title: "큐레이션 사이트 디렉토리",
+      desc: "DIGGING이 직접 검증한 29개의 패션 쇼핑 사이트를 카테고리별로 탐색하세요. 국내 편집숍, 럭셔리, 스트릿, 빈티지, 스니커즈, 글로벌 SPA까지 — 각 사이트의 특징, 배송 정보, 할인 시기를 한눈에 비교할 수 있습니다. 모든 사이트는 에디터의 실제 구매·반품 테스트와 커뮤니티 평판 분석을 거쳐 선정되었습니다."
+    },
     guide: {
       title: "패션 쇼핑 가이드",
       desc: "카테고리별로 현명하게 쇼핑하는 방법을 DIGGING 에디터가 직접 정리했습니다.",
@@ -73,7 +77,11 @@ const i18n = {
         { icon: "🔍", title: "직접 검증", desc: "모든 사이트를 에디터가 직접 방문하고, 실제 주문과 반품 테스트를 거쳐 신뢰성을 확인합니다. 광고 제휴 여부와 관계없이 객관적 기준으로 평가합니다." },
         { icon: "🎯", title: "엄선된 큐레이션", desc: "양보다 질을 우선합니다. 수백 개 사이트 중 DIGGING의 엄격한 기준을 충족하는 사이트만 선별하여, 쇼핑 결정에 드는 시간과 위험을 줄여드립니다." },
         { icon: "🌏", title: "글로벌 커버리지", desc: "한국, 미국, 유럽, 일본 등 전 세계 주요 패션 마켓을 아우릅니다. 각 지역의 쇼핑 문화와 배송·관세 정보까지 함께 제공하여 해외 직구의 진입 장벽을 낮춥니다." }
-      ]
+      ],
+      editor: {
+        title: "운영자 소개",
+        desc: "DIGGING은 10년 이상 해외 패션 직구를 해온 에디터가 운영합니다. SSENSE, Farfetch, End Clothing, Mr Porter 등 주요 글로벌 플랫폼에서 수백 건의 실제 구매·반품 경험을 바탕으로, 각 사이트의 장단점을 체계적으로 분석합니다. 패션 쇼핑의 시행착오를 줄이고, 누구나 합리적으로 좋은 아이템을 찾을 수 있도록 돕는 것이 DIGGING의 목표입니다. 문의 사항이 있으시면 <a href=\"mailto:swesket@gmail.com\">swesket@gmail.com</a>으로 연락해주세요."
+      }
     },
     form: {
       title: "사이트 등록 요청", desc: "운영 중인 패션 쇼핑 사이트를 DIGGING에 등록하고 싶으시다면 아래 양식을 작성해주세요. 검토 후 연락드리겠습니다.",
@@ -154,6 +162,10 @@ const i18n = {
         vintage: { icon: "👜", name: "빈티지 / 중고" },
         sneaker: { icon: "👟", name: "스니커즈" },
         global: { icon: "🌍", name: "글로벌 멀티" }
+      },
+      homeAbout: {
+        title: "DIGGING이란?",
+        desc: "DIGGING은 전 세계 패션 쇼핑 사이트를 직접 검증하고 큐레이션하는 플랫폼입니다. 무신사, 29CM 같은 국내 편집숍부터 SSENSE, Farfetch, Mr Porter 같은 해외 럭셔리 플랫폼, StockX, GOAT 같은 리셀 마켓까지 — 에디터가 실제로 주문하고 반품까지 테스트한 사이트만 소개합니다. 카테고리별 쇼핑 가이드, 관세·배송 정보, 세일 캘린더 등 실전에 필요한 정보도 함께 제공합니다."
       }
     }
   },
@@ -167,6 +179,10 @@ const i18n = {
     countSuffix: "",
     nav: { sites: "Sites", guide: "Guide", brands: "Brands", blog: "Blog", about: "About", submit: "Submit" },
     categories: { all: "All", korea: "Korean Select", luxury: "Luxury / High-End", street: "Streetwear", vintage: "Vintage / Resale", sneaker: "Sneakers", global: "Global Multi" },
+    sitesIntro: {
+      title: "Curated Site Directory",
+      desc: "Explore 29 fashion shopping sites verified by DIGGING, organized by category. From Korean select shops to luxury, streetwear, vintage, sneakers, and global SPA brands — compare each site's features, shipping info, and sale periods at a glance. Every site has been selected through real purchase and return testing by our editors, combined with community reputation analysis."
+    },
     guide: {
       title: "Fashion Shopping Guide",
       desc: "Smart shopping tips curated by DIGGING editors for each category.",
@@ -205,7 +221,11 @@ const i18n = {
         { icon: "🔍", title: "Verified by Editors", desc: "Every site is personally visited by our editorial team, with real orders and return tests to verify reliability. We evaluate objectively regardless of advertising partnerships." },
         { icon: "🎯", title: "Quality Over Quantity", desc: "We prioritize quality over volume. Out of hundreds of sites, only those meeting DIGGING's strict standards are featured, saving you time and reducing risk in your shopping decisions." },
         { icon: "🌏", title: "Global Coverage", desc: "Spanning Korea, US, Europe, Japan, and beyond. We provide regional shopping culture insights along with shipping and customs information to lower the barrier to international shopping." }
-      ]
+      ],
+      editor: {
+        title: "About the Editor",
+        desc: "DIGGING is run by an editor with over 10 years of international fashion shopping experience. With hundreds of real purchases and returns across major global platforms like SSENSE, Farfetch, End Clothing, and Mr Porter, we systematically analyze the pros and cons of each site. Our goal is to reduce trial-and-error in fashion shopping so everyone can find great items at fair prices. For inquiries, reach us at <a href=\"mailto:swesket@gmail.com\">swesket@gmail.com</a>."
+      }
     },
     form: {
       title: "Submit Your Site", desc: "Want your fashion shopping site featured on DIGGING? Fill out the form below and we'll review your submission.",
@@ -286,6 +306,10 @@ const i18n = {
         vintage: { icon: "👜", name: "Vintage / Resale" },
         sneaker: { icon: "👟", name: "Sneakers" },
         global: { icon: "🌍", name: "Global Multi" }
+      },
+      homeAbout: {
+        title: "What is DIGGING?",
+        desc: "DIGGING is a platform that personally verifies and curates fashion shopping sites worldwide. From Korean select shops like Musinsa and 29CM to luxury platforms like SSENSE, Farfetch, and Mr Porter, and resale markets like StockX and GOAT — we only feature sites where our editors have placed real orders and tested returns. We also provide category-specific shopping guides, customs and shipping information, and sale calendars."
       }
     }
   },
@@ -299,6 +323,10 @@ const i18n = {
     countSuffix: "个",
     nav: { sites: "网站", guide: "指南", brands: "品牌", blog: "博客", about: "关于", submit: "提交" },
     categories: { all: "全部", korea: "韩国精选店", luxury: "奢侈品 / 高端", street: "街头潮流", vintage: "复古 / 二手", sneaker: "球鞋", global: "全球综合" },
+    sitesIntro: {
+      title: "精选网站目录",
+      desc: "按类别浏览DIGGING亲自验证的29个时尚购物网站。从韩国精选店、奢侈品、街头潮流、复古、球鞋到全球SPA品牌——一目了然地比较各网站的特点、配送信息和折扣时间。所有网站均经过编辑的实际购买·退货测试和社区口碑分析后精选。"
+    },
     guide: {
       title: "时尚购物指南",
       desc: "DIGGING编辑为每个分类整理的智慧购物技巧。",
@@ -337,7 +365,11 @@ const i18n = {
         { icon: "🔍", title: "编辑亲自验证", desc: "每个网站都由编辑团队亲自访问，通过实际下单和退货测试验证可靠性。无论是否有广告合作关系，均以客观标准评估。" },
         { icon: "🎯", title: "质量优于数量", desc: "我们以质量为先。在数百个网站中，仅收录符合DIGGING严格标准的网站，为您节省选择时间，降低购物风险。" },
         { icon: "🌏", title: "全球覆盖", desc: "涵盖韩国、美国、欧洲、日本等全球主要时尚市场。同时提供各地区的购物文化及配送·关税信息，降低海淘门槛。" }
-      ]
+      ],
+      editor: {
+        title: "运营者介绍",
+        desc: "DIGGING由一位拥有10年以上海外时尚购物经验的编辑运营。凭借在SSENSE、Farfetch、End Clothing、Mr Porter等主要全球平台数百次实际购买和退货的经验，我们系统性地分析每个网站的优缺点。DIGGING的目标是减少时尚购物中的试错成本，让每个人都能以合理的价格找到优质单品。如有疑问，请联系 <a href=\"mailto:swesket@gmail.com\">swesket@gmail.com</a>。"
+      }
     },
     form: {
       title: "提交您的网站", desc: "想让您的时尚购物网站入驻DIGGING？请填写以下表单，我们会审核您的申请。",
@@ -418,6 +450,10 @@ const i18n = {
         vintage: { icon: "👜", name: "复古 / 二手" },
         sneaker: { icon: "👟", name: "球鞋" },
         global: { icon: "🌍", name: "全球综合" }
+      },
+      homeAbout: {
+        title: "什么是DIGGING？",
+        desc: "DIGGING是一个亲自验证和精选全球时尚购物网站的平台。从Musinsa、29CM等韩国精选店到SSENSE、Farfetch、Mr Porter等奢侈品平台，再到StockX、GOAT等转售市场——我们只推荐编辑实际下单并测试退货的网站。同时提供分类购物指南、关税配送信息和促销日历等实用资讯。"
       }
     }
   },
@@ -431,6 +467,10 @@ const i18n = {
     countSuffix: "件",
     nav: { sites: "サイト", guide: "ガイド", brands: "ブランド", blog: "ブログ", about: "紹介", submit: "掲載依頼" },
     categories: { all: "すべて", korea: "韓国セレクトショップ", luxury: "ラグジュアリー / ハイエンド", street: "ストリート", vintage: "ヴィンテージ / 中古", sneaker: "スニーカー", global: "グローバル" },
+    sitesIntro: {
+      title: "キュレーションサイトディレクトリ",
+      desc: "DIGGINGが直接検証した29のファッションショッピングサイトをカテゴリ別に探索しましょう。韓国セレクトショップ、ラグジュアリー、ストリート、ヴィンテージ、スニーカー、グローバルSPAまで——各サイトの特徴、配送情報、セール時期を一目で比較できます。すべてのサイトはエディターの実際の購入・返品テストとコミュニティ評判分析を経て選定されています。"
+    },
     guide: {
       title: "ファッションショッピングガイド",
       desc: "DIGGINGエディターがカテゴリー別にまとめた賢いショッピングのコツ。",
@@ -469,7 +509,11 @@ const i18n = {
         { icon: "🔍", title: "エディターが直接検証", desc: "すべてのサイトをエディターチームが直接訪問し、実際の注文と返品テストを通じて信頼性を検証しています。広告提携の有無に関わらず客観的な基準で評価します。" },
         { icon: "🎯", title: "量より質", desc: "質を最優先にしています。数百のサイトの中からDIGGINGの厳格な基準を満たすサイトのみを厳選し、ショッピングの意思決定にかかる時間とリスクを軽減します。" },
         { icon: "🌏", title: "グローバルカバレッジ", desc: "韓国、アメリカ、ヨーロッパ、日本など世界の主要ファッション市場を網羅しています。各地域のショッピング文化や配送・関税情報も併せて提供し、海外通販のハードルを下げます。" }
-      ]
+      ],
+      editor: {
+        title: "運営者紹介",
+        desc: "DIGGINGは、10年以上の海外ファッション通販経験を持つエディターが運営しています。SSENSE、Farfetch、End Clothing、Mr Porterなど主要グローバルプラットフォームでの数百件の実際の購入・返品経験を基に、各サイトのメリット・デメリットを体系的に分析しています。ファッションショッピングの試行錯誤を減らし、誰もがリーズナブルに良いアイテムを見つけられるようにすることがDIGGINGの目標です。お問い合わせは <a href=\"mailto:swesket@gmail.com\">swesket@gmail.com</a> まで。"
+      }
     },
     form: {
       title: "サイト掲載リクエスト", desc: "運営中のファッションサイトをDIGGINGに掲載しませんか？以下のフォームにご記入ください。審査後ご連絡いたします。",
@@ -550,6 +594,10 @@ const i18n = {
         vintage: { icon: "👜", name: "ヴィンテージ / 中古" },
         sneaker: { icon: "👟", name: "スニーカー" },
         global: { icon: "🌍", name: "グローバル" }
+      },
+      homeAbout: {
+        title: "DIGGINGとは？",
+        desc: "DIGGINGは世界中のファッションショッピングサイトを直接検証しキュレーションするプラットフォームです。Musinsa、29CMなどの韓国セレクトショップからSSENSE、Farfetch、Mr Porterなどのラグジュアリープラットフォーム、StockX、GOATなどのリセール市場まで——エディターが実際に注文し返品までテストしたサイトのみをご紹介しています。カテゴリ別ショッピングガイド、関税・配送情報、セールカレンダーなど実践的な情報も提供します。"
       }
     }
   }

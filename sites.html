@@ -129,6 +129,10 @@
 </header>
 
 <main id="main">
+<section class="about-block" id="sitesIntroBlock" style="margin-bottom:1.5rem;">
+  <h2 id="sitesTitle" style="margin-bottom:0.5rem;">큐레이션 사이트 디렉토리</h2>
+  <p id="sitesIntroDesc">DIGGING이 직접 검증한 29개의 패션 쇼핑 사이트를 카테고리별로 탐색하세요. 국내 편집숍, 럭셔리, 스트릿, 빈티지, 스니커즈, 글로벌 SPA까지 — 각 사이트의 특징, 배송 정보, 할인 시기를 한눈에 비교할 수 있습니다. 모든 사이트는 에디터의 실제 구매·반품 테스트와 커뮤니티 평판 분석을 거쳐 선정되었습니다.</p>
+</section>
 <div class="filter-bar" id="filterBar"></div>
 
 <div class="main" id="sites">
@@ -294,7 +298,16 @@
     searchTimer = setTimeout(render, 200);
   });
 
+  function renderSitesIntro() {
+    const t = i18n[currentLang];
+    if (t.sitesIntro) {
+      document.getElementById('sitesTitle').textContent = t.sitesIntro.title;
+      document.getElementById('sitesIntroDesc').textContent = t.sitesIntro.desc;
+    }
+  }
+
   document.addEventListener('langchange', () => {
+    renderSitesIntro();
     renderTabs();
     render();
   });
