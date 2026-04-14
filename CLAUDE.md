@@ -23,7 +23,8 @@ There are no tests, linters, or CI pipelines. Changes go live on push to `main`.
 - 10 HTML pages share `shared.css` and `shared.js`
 - Each page sets `<body data-page="...">` to identify itself
 - Page-specific logic is embedded in `<script>` blocks within each HTML file
-- Data lives in separate JS files: `data.js` (30 sites), `brands.js` (40+ brands)
+- Data lives in separate JS files: `data.js` (29 sites), `brands.js` (40 brands), `blog-data.js` (12 extra blog articles)
+- Script load order matters: `shared.js` → `data.js`/`brands.js`/`blog-data.js` → page-specific inline `<script>`. `blog-data.js` mutates `i18n[lang].blog.articles` at load time via `Array.concat`, so it must run after `shared.js` (defines `i18n`) and before the blog page script (reads it). Only `blog.html` loads `blog-data.js`.
 
 ### Three Independent Axes on `<html>`
 | Attribute | Values | Storage Key |
@@ -49,6 +50,8 @@ localStorage → DOMContentLoaded → apply{Theme,Vision,SharedLang}()
                           page-specific render functions
 ```
 
+All `localStorage` access goes through the `safeStorage.get/set` wrapper defined at the top of `shared.js` — it swallows exceptions from Safari private mode, storage quota, and ITP/extension blocks so a single throw can't break the whole script. **Do not call `localStorage.getItem/setItem` directly** outside the wrapper. `applySharedLang` also falls back to `ko` if `i18n[lang]` is missing, so tampered `digging-lang` values can't break the render.
+
 ### Header UI Order (in `.header-right`)
 `theme-btn` → `vision-selector` → `search-box` → `lang-selector`
 
@@ -73,9 +76,10 @@ All 10 HTML files must keep this structure identical.
 | File | Role |
 |------|------|
 | `shared.css` | All styles, CSS variables for theme/vision, responsive breakpoint at 768px |
-| `shared.js` | i18n dictionary, theme/vision/lang state management, shared DOM init |
+| `shared.js` | `safeStorage` wrapper, i18n dictionary, theme/vision/lang state management, shared DOM init |
 | `data.js` | Site catalog array — each entry has multilingual `desc`/`tags` |
 | `brands.js` | Brand-to-site mapping array |
+| `blog-data.js` | Appends extra blog articles into `i18n[lang].blog.articles` at load time (blog page only) |
 
 ## Conventions
 
@@ -86,10 +90,20 @@ All 10 HTML files must keep this structure identical.
 - Cards use staggered `animation-delay: ${i * 0.04}s` for fade-in
 - Grid layouts use `minmax(280px, 1fr)` for responsive columns
 - Blog article content is stored as HTML strings inside the `i18n` object (not separate files)
+- **`<noscript>` static Korean content**: JS-dependent pages ship hardcoded Korean static blocks inside `<noscript>` tags and/or always-visible crawler blocks (`*StaticCrawler` divs hidden off-screen) to satisfy Google crawlers and AdSense thin-content policy. Pages with noscript/crawler content: `sites.html`, `guide.html`, `blog.html`, `community.html`, `brands.html`, `index.html`, `about.html`, `submit.html`. When adding/removing entries from `data.js`, `brands.js`, or `blog-data.js`, keep the `<noscript>` / crawler block on the matching page in sync.
 
 ## Third-Party Services
-- **Google AdSense** (ca-pub-4004698288665198): ad slots on index, sites, guide, brands
+- **Google AdSense** (ca-pub-4004698288665198): script on all 10 pages; ad slots on index, sites, guide, brands, blog, about, submit, community (privacy/terms excluded)
 - **Google Analytics** (G-Y7PCS90ZRL): all pages
 - **MS Clarity** (vks9106g6o): all pages
 - **Formspree** (xreayzej): submit.html form handler
 - **Disqus**: community.html comments
+
+## Performance & Accessibility
+- Google Fonts loaded via `<link rel="preconnect">` + `<link rel="stylesheet">` (not CSS @import)
+- `<meta name="theme-color" content="#0a0a0a">` on all pages
+- `color-scheme: dark/light` set on `html` element via CSS
+- Skip-to-content link (`<a href="#main" class="skip-link">`) on all pages
+- `prefers-reduced-motion` honored (animations disabled)
+- `touch-action: manipulation` on body (removes 300ms tap delay)
+- `overscroll-behavior: contain` on mobile nav overlay

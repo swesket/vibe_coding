@@ -1,7 +1,32 @@
+// shared.js — DIGGING 공통 스크립트. i18n 사전(ko/en/zh/ja), 테마/비전/언어
+// 상태 관리, 공통 DOM 초기화(내비·드롭다운·모바일 메뉴)를 담당한다.
+// 모든 페이지에서 data.js/brands.js/blog-data.js 보다 먼저 로드되어야 한다.
+
+// ── Safe localStorage wrapper ──
+// Safari 프라이빗 모드, 쿼터 초과, 일부 확장 프로그램 환경에서
+// localStorage 접근이 예외를 던질 수 있어 전체 스크립트가 멈추지 않도록 보호한다.
+const safeStorage = {
+  get(key, fallback) {
+    try {
+      const v = localStorage.getItem(key);
+      return v === null ? fallback : v;
+    } catch (e) {
+      return fallback;
+    }
+  },
+  set(key, value) {
+    try {
+      localStorage.setItem(key, value);
+    } catch (e) {
+      /* storage unavailable — silently ignore */
+    }
+  }
+};
+
 // ── i18n ──
 const i18n = {
   ko: {
-    searchPlaceholder: "사이트 검색...",
+    searchPlaceholder: "사이트 검색\u2026",
     heroEyebrow: "Curated Fashion Destinations",
     heroTitle: "당신의 다음<br/>스타일을 발견하세요",
     heroDesc: "국내외 패션 쇼핑 사이트를 한 곳에서 큐레이션합니다. 카테고리별 쇼핑 가이드와 함께 브랜드, 빈티지, 스트릿까지 탐색하세요.",
@@ -65,7 +90,7 @@ const i18n = {
     brands: {
       title: "브랜드 검색",
       desc: "좋아하는 브랜드를 검색하면 해당 브랜드를 취급하는 사이트를 한눈에 확인할 수 있습니다.",
-      searchPlaceholder: "브랜드 검색...",
+      searchPlaceholder: "브랜드 검색\u2026",
       popularTitle: "인기 브랜드",
       resultLabel: "취급 사이트",
       emptyResult: "해당 브랜드를 찾을 수 없습니다.",
@@ -133,7 +158,7 @@ const i18n = {
     }
   },
   en: {
-    searchPlaceholder: "Search sites...",
+    searchPlaceholder: "Search sites\u2026",
     heroEyebrow: "Curated Fashion Destinations",
     heroTitle: "Discover Your<br/>Next Style",
     heroDesc: "We curate the best fashion shopping sites from around the world. Explore brands, vintage, and streetwear with category-specific shopping guides.",
@@ -197,7 +222,7 @@ const i18n = {
     brands: {
       title: "Brand Search",
       desc: "Search for your favorite brand to see which sites carry it at a glance.",
-      searchPlaceholder: "Search brands...",
+      searchPlaceholder: "Search brands\u2026",
       popularTitle: "Popular Brands",
       resultLabel: "Available Sites",
       emptyResult: "Brand not found.",
@@ -265,7 +290,7 @@ const i18n = {
     }
   },
   zh: {
-    searchPlaceholder: "搜索网站...",
+    searchPlaceholder: "搜索网站\u2026",
     heroEyebrow: "精选时尚目的地",
     heroTitle: "发现你的<br/>下一个风格",
     heroDesc: "我们精选全球最佳时尚购物网站。探索品牌、复古、街头风格，并获取分类购物指南。",
@@ -329,7 +354,7 @@ const i18n = {
     brands: {
       title: "品牌搜索",
       desc: "搜索您喜欢的品牌，一目了然地查看哪些网站有售。",
-      searchPlaceholder: "搜索品牌...",
+      searchPlaceholder: "搜索品牌\u2026",
       popularTitle: "热门品牌",
       resultLabel: "可购买网站",
       emptyResult: "未找到该品牌。",
@@ -397,7 +422,7 @@ const i18n = {
     }
   },
   ja: {
-    searchPlaceholder: "サイトを検索...",
+    searchPlaceholder: "サイトを検索\u2026",
     heroEyebrow: "厳選ファッションサイト",
     heroTitle: "次のスタイルを<br/>見つけよう",
     heroDesc: "世界中のベストファッション通販サイトをキュレーション。カテゴリー別ショッピングガイドと共に、ブランド、ヴィンテージ、ストリートを探索しましょう。",
@@ -461,7 +486,7 @@ const i18n = {
     brands: {
       title: "ブランド検索",
       desc: "お気に入りのブランドを検索して、取り扱いサイトを一目で確認できます。",
-      searchPlaceholder: "ブランドを検索...",
+      searchPlaceholder: "ブランドを検索\u2026",
       popularTitle: "人気ブランド",
       resultLabel: "取り扱いサイト",
       emptyResult: "該当するブランドが見つかりません。",
@@ -531,15 +556,15 @@ const i18n = {
 };
 
 // ── Theme State ──
-let currentTheme = localStorage.getItem('digging-theme') || 'dark';
+let currentTheme = safeStorage.get('digging-theme', 'dark');
 
 // ── Vision State ──
-let currentVision = localStorage.getItem('digging-vision') || 'normal';
+let currentVision = safeStorage.get('digging-vision', 'normal');
 
 function applyVision(mode) {
   currentVision = mode;
   document.documentElement.dataset.vision = mode;
-  localStorage.setItem('digging-vision', mode);
+  safeStorage.set('digging-vision', mode);
   const btn = document.getElementById('visionBtn');
   if (btn) {
     // Update icon: normal=eye, protanopia=eye with line, achromatopsia=eye-off
@@ -563,7 +588,7 @@ function applyVision(mode) {
 function applyTheme(theme) {
   currentTheme = theme;
   document.documentElement.dataset.theme = theme;
-  localStorage.setItem('digging-theme', theme);
+  safeStorage.set('digging-theme', theme);
   const btn = document.getElementById('themeBtn');
   if (btn) {
     btn.innerHTML = theme === 'dark'
@@ -574,12 +599,14 @@ function applyTheme(theme) {
 
 // ── Language State ──
 const langNames = { ko: 'KO', en: 'EN', zh: 'ZH', ja: 'JA' };
-let currentLang = localStorage.getItem('digging-lang') || 'ko';
+let currentLang = safeStorage.get('digging-lang', 'ko');
 
 // ── Shared rendering ──
 function applySharedLang(lang) {
+  // 잘못된 값(수동 조작된 localStorage 등)이 들어오면 한국어로 폴백
+  if (!i18n[lang]) lang = 'ko';
   currentLang = lang;
-  localStorage.setItem('digging-lang', lang);
+  safeStorage.set('digging-lang', lang);
   document.documentElement.lang = lang === 'zh' ? 'zh-CN' : lang;
 
   const t = i18n[lang];
