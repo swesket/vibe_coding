@@ -13,7 +13,15 @@
       "Bash(node -e \":*)",
       "WebFetch(domain:raw.githubusercontent.com)",
       "Bash(grep:*)",
-      "Bash(python3:*)"
+      "Bash(python3:*)",
+      "Bash(awk 'NR%2==1 {name=$0} NR%2==0 {print name \" | \" $0}')",
+      "Bash(cat)",
+      "Bash(bash /tmp/analyze.sh)",
+      "Read(//tmp/**)",
+      "Bash(curl -s -m 20 \"https://vibe-coding-6ou.pages.dev/\")",
+      "Bash(curl -s -m 20 -o /dev/null -w \"HTTP %{http_code}\\\\n\" \"https://vibe-coding-6ou.pages.dev/ads.txt\")",
+      "Bash(curl -s -m 20 \"https://vibe-coding-6ou.pages.dev/ads.txt\")",
+      "Bash(curl -s -m 20 -o /dev/null -w \"HTTP %{http_code}\\\\n\" \"https://vibe-coding-6ou.pages.dev/sitemap.xml\")"
     ]
   }
 }

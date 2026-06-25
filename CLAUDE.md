@@ -4,9 +4,9 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-DIGGING is a curated fashion shopping site directory — a static multi-page website built with vanilla HTML/CSS/JS. No build tools, bundlers, or package managers are used. Deployment is direct to GitHub Pages via `git push`.
+DIGGING is a curated fashion shopping site directory — a static multi-page website built with vanilla HTML/CSS/JS. No build tools, bundlers, or package managers are used. Deployment is to Cloudflare Pages, which auto-deploys on `git push` to `main`.
 
-Live URL: `https://swesket.github.io/vibe_coding/`
+Live URL: `https://vibe-coding-6ou.pages.dev/`
 
 ## Development
 
