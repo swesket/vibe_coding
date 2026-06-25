@@ -21,7 +21,9 @@
       "Bash(curl -s -m 20 \"https://vibe-coding-6ou.pages.dev/\")",
       "Bash(curl -s -m 20 -o /dev/null -w \"HTTP %{http_code}\\\\n\" \"https://vibe-coding-6ou.pages.dev/ads.txt\")",
       "Bash(curl -s -m 20 \"https://vibe-coding-6ou.pages.dev/ads.txt\")",
-      "Bash(curl -s -m 20 -o /dev/null -w \"HTTP %{http_code}\\\\n\" \"https://vibe-coding-6ou.pages.dev/sitemap.xml\")"
+      "Bash(curl -s -m 20 -o /dev/null -w \"HTTP %{http_code}\\\\n\" \"https://vibe-coding-6ou.pages.dev/sitemap.xml\")",
+      "Bash(exit 1)",
+      "Bash(awk '/<noscript>/,/<\\\\/noscript>/' blog.html)"
     ]
   }
 }

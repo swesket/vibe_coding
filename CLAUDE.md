@@ -23,7 +23,7 @@ There are no tests, linters, or CI pipelines. Changes go live on push to `main`.
 - 10 HTML pages share `shared.css` and `shared.js`
 - Each page sets `<body data-page="...">` to identify itself
 - Page-specific logic is embedded in `<script>` blocks within each HTML file
-- Data lives in separate JS files: `data.js` (29 sites), `brands.js` (40 brands), `blog-data.js` (15 extra blog articles)
+- Data lives in separate JS files: `data.js` (29 sites), `brands.js` (40 brands), `blog-data.js` (18 extra blog articles)
 - Script load order matters: `shared.js` → `data.js`/`brands.js`/`blog-data.js` → page-specific inline `<script>`. `blog-data.js` mutates `i18n[lang].blog.articles` at load time via `Array.concat`, so it must run after `shared.js` (defines `i18n`) and before the blog page script (reads it). Only `blog.html` loads `blog-data.js`.
 
 ### Three Independent Axes on `<html>`

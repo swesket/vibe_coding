@@ -1,9 +1,30 @@
 // ── Additional Blog Articles ──
-// This file adds 15 more blog articles to the i18n object defined in shared.js.
+// This file adds 18 more blog articles to the i18n object defined in shared.js.
 // It must be loaded AFTER shared.js and BEFORE the page-specific script.
 
 const extraBlogArticles = {
   ko: [
+    {
+      id: "body-type-styling",
+      title: "체형별 스타일링 가이드: 내 몸에 맞는 옷 고르는 법",
+      date: "2026-06-20",
+      summary: "상체형·하체형·직선형 등 체형별 특징을 이해하고 온라인 쇼핑에서 실패 없이 잘 어울리는 옷을 고르는 실전 전략. 적은 돈으로 균형 잡힌 스타일을 완성하는 법.",
+      body: "<p>온라인에서 멋져 보이던 옷이 막상 입어보면 어색했던 경험, 누구나 있습니다. 문제는 옷이 아니라 내 체형과의 궁합인 경우가 많습니다. 같은 옷이라도 체형에 따라 전혀 다르게 보이기 때문입니다. 내 체형의 특징을 이해하면 쇼핑 실패율을 크게 줄이고, 적은 돈으로도 훨씬 잘 어울리는 옷을 고를 수 있습니다.</p><h3>체형 진단의 기본</h3><p>체형은 골격과 살집의 분포로 결정됩니다. 크게 어깨가 발달하고 상체에 무게중심이 있는 상체형, 골반과 허벅지에 볼륨이 있는 하체형, 전체적으로 굴곡이 적은 직선형, 굴곡이 뚜렷한 곡선형으로 나눌 수 있습니다. 거울 앞에서 어깨너비와 골반너비를 비교하고, 허리 굴곡의 정도를 살펴보면 대략적인 유형을 파악할 수 있습니다. 중요한 것은 좋고 나쁨이 아니라 균형입니다. 스타일링의 목표는 시각적으로 균형 잡힌 비율을 만드는 것입니다.</p><h3>상체에 볼륨이 있는 체형</h3><p>어깨가 넓고 가슴이 발달한 체형은 상체를 정돈하고 하체로 시선을 분산시키는 것이 핵심입니다. 브이넥과 깊은 라운드넥은 목선을 길어 보이게 하고 상체를 슬림하게 정리합니다. 상의는 너무 타이트하지 않은 적당한 핏을, 하의는 와이드 팬츠나 플레어 스커트로 볼륨을 주면 균형이 맞습니다. 큰 패턴이나 밝은 색은 하체에, 어두운 색은 상체에 배치하는 것이 유리합니다.</p><h3>하체에 볼륨이 있는 체형</h3><p>골반과 허벅지에 볼륨이 있는 체형은 반대로 상체에 포인트를 주고 하체를 깔끔하게 정리합니다. 어깨에 디테일이 있는 상의, 퍼프 소매, 보트넥 등이 상체를 강조해 균형을 만듭니다. 하의는 스트레이트 핏이나 부츠컷처럼 다리 라인을 자연스럽게 떨어뜨리는 실루엣이 좋습니다. 스키니보다는 일자 핏이 하체 볼륨을 부드럽게 감춰줍니다.</p><h3>직선형 체형</h3><p>굴곡이 적고 어깨와 골반 너비가 비슷한 체형은 직선적이고 모던한 스타일이 잘 어울립니다. 오버사이즈, 박시한 핏, 미니멀한 디자인이 체형의 장점을 살립니다. 굴곡을 억지로 만들기보다 깔끔한 실루엣을 그대로 활용하는 것이 세련돼 보입니다. 벨트로 허리를 강조하거나 레이어링으로 입체감을 더하면 단조로움을 피할 수 있습니다.</p><h3>온라인 쇼핑 실전 팁</h3><p>체형을 알았다면 온라인 쇼핑에서 이를 활용하세요. 상품 상세페이지의 모델 체형과 내 체형을 비교하고, 실측 사이즈를 내가 가진 잘 맞는 옷과 대조하는 습관이 중요합니다. 리뷰에서 나와 비슷한 체형의 후기를 찾아 핏을 가늠하세요. 무엇보다 한 가지 유형에 갇히지 마세요. 체형 가이드는 규칙이 아니라 출발점이며, 실제로 입어보며 나에게 맞는 변형을 찾아가는 것이 가장 중요합니다.</p>"
+    },
+    {
+      id: "personal-color-shopping",
+      title: "퍼스널 컬러 활용 쇼핑법: 나에게 맞는 색으로 옷장 채우기",
+      date: "2026-06-15",
+      summary: "웜톤·쿨톤을 넘어 사계절 퍼스널 컬러를 이해하고, 온라인에서 옷·액세서리를 살 때 실패 없이 색을 고르는 방법. 자가 진단법과 베스트·워스트 컬러까지.",
+      body: "<p>같은 옷을 입어도 어떤 색은 얼굴을 환하게 살려주고, 어떤 색은 칙칙하고 피곤해 보이게 만듭니다. 이 차이를 만드는 것이 바로 퍼스널 컬러입니다. 자신에게 어울리는 색의 영역을 알면 쇼핑할 때 색 선택의 실패가 크게 줄고, 옷장 안의 옷들이 자연스럽게 서로 어울리게 됩니다.</p><h3>퍼스널 컬러란</h3><p>퍼스널 컬러는 타고난 피부, 눈, 머리카락의 색조와 가장 조화를 이루는 색의 그룹을 말합니다. 크게 따뜻한 기운이 도는 웜톤과 푸른 기운이 도는 쿨톤으로 나뉘고, 여기에 명도와 채도를 더해 봄·여름·가을·겨울 네 계절로 세분합니다. 봄은 밝고 따뜻한 색, 여름은 부드럽고 시원한 색, 가을은 깊고 따뜻한 색, 겨울은 선명하고 차가운 색이 어울립니다.</p><h3>간단한 자가 진단</h3><p>전문 진단이 가장 정확하지만, 집에서도 대략적인 경향을 확인할 수 있습니다. 자연광 아래에서 금색과 은색 액세서리를 번갈아 얼굴 가까이 대보세요. 금색이 얼굴을 화사하게 한다면 웜톤, 은색이 더 잘 어울린다면 쿨톤일 가능성이 높습니다. 손목 안쪽 혈관이 초록빛이면 웜, 푸른빛이면 쿨 경향입니다. 화이트와 아이보리 천을 얼굴에 대봤을 때 어느 쪽이 안색을 맑게 하는지도 좋은 단서입니다.</p><h3>온라인에서 색 고르기</h3><p>모니터마다 색 표현이 달라 온라인 쇼핑에서 색은 가장 실패하기 쉬운 요소입니다. 상품 사진은 가능하면 자연광에서 찍은 상세컷을 기준으로 보고, 색상명을 함께 확인하세요. 같은 빨강이라도 토마토레드(웜)와 와인레드(쿨)는 어울리는 사람이 다릅니다. 리뷰의 실착 사진은 보정이 적어 실제 색에 가깝습니다. 확신이 없을 때는 무채색이나 본인 베이스 컬러부터 채우는 것이 안전합니다.</p><h3>베스트 컬러와 워스트 컬러</h3><p>각 시즌에는 특히 잘 어울리는 색과 피하면 좋은 색이 있습니다. 웜톤은 코럴, 카멜, 올리브, 아이보리 같은 따뜻한 색이 안색을 살리고, 쿨톤은 라벤더, 네이비, 트루레드, 퓨어화이트가 잘 어울립니다. 어울리지 않는 색을 꼭 입고 싶다면 얼굴에서 먼 하의나 신발에 배치하고, 얼굴 가까운 상의·스카프에는 베스트 컬러를 두는 것이 요령입니다.</p><h3>퍼스널 컬러를 너무 맹신하지 않기</h3><p>퍼스널 컬러는 강력한 도구지만 절대 규칙은 아닙니다. 소재의 질감, 디자인, 메이크업, 그날의 컨디션에 따라 어울림은 달라집니다. 진단 결과를 옷장을 효율적으로 채우는 가이드로 활용하되, 정말 좋아하는 색이 있다면 배치와 조합으로 충분히 소화할 수 있습니다. 핵심은 색에 끌려가는 것이 아니라 색을 도구로 쓰는 것입니다.</p>"
+    },
+    {
+      id: "vintage-secondhand-online",
+      title: "빈티지·세컨핸드 온라인 쇼핑 가이드: 실패 없이 중고 명품·구제 사는 법",
+      date: "2026-06-10",
+      summary: "빈티지·세컨핸드 온라인 플랫폼에서 진품을 합리적으로 구매하는 법. 상태 확인, 진품 감별, 사이즈 리스크 관리까지 실전 가이드.",
+      body: "<p>지속 가능한 소비에 대한 관심이 높아지고, 단종된 희귀 아이템을 찾는 수요가 늘면서 빈티지·세컨핸드 쇼핑이 빠르게 성장하고 있습니다. 새 옷보다 저렴하게 좋은 품질의 아이템을 구할 수 있고, 환경 부담도 줄일 수 있습니다. 다만 중고 거래 특성상 상태와 진위를 직접 확인하기 어렵기 때문에 몇 가지 원칙이 필요합니다.</p><h3>빈티지와 세컨핸드의 차이</h3><p>흔히 혼용하지만 둘은 다릅니다. 빈티지는 일반적으로 제작된 지 20년 이상 된, 시대적 특징을 지닌 아이템을 말합니다. 세컨핸드는 연식과 무관하게 한 번 이상 사용된 중고 의류 전반을 가리킵니다. 빈티지는 희소성과 디자인 가치가, 세컨핸드는 가성비와 실용성이 주된 매력입니다. 무엇을 원하는지에 따라 둘러볼 플랫폼과 검색 키워드가 달라집니다.</p><h3>플랫폼별 특징</h3><p>중고 명품은 진품 감정을 거치는 전문 플랫폼이 안전합니다. 일반 의류 세컨핸드는 개인 간 거래 마켓이나 위탁 판매 플랫폼이 선택지가 넓습니다. 거래 전 플랫폼이 진품 보증, 상태 검수, 반품 정책을 제공하는지 반드시 확인하세요. 개인 거래라면 판매자의 거래 이력과 후기를 점검하고, 에스크로 등 안전 결제 수단을 사용하는 것이 좋습니다.</p><h3>상태 확인 체크리스트</h3><p>중고 아이템은 상태 묘사와 실물 차이가 클 수 있습니다. 상품 설명의 상태 등급을 맹신하지 말고 사진을 꼼꼼히 보세요. 밑창과 굽의 마모, 가죽의 갈라짐, 니트의 보풀, 지퍼·단추 작동, 안감과 겨드랑이의 변색, 냄새 언급 여부를 확인합니다. 사진이 부족하면 판매자에게 택, 밑창, 내부 라벨, 손상 부위의 추가 사진을 요청하세요. 성실히 답하지 않는 판매자는 피하는 것이 안전합니다.</p><h3>진품 감별의 기초</h3><p>중고 명품에서 가장 큰 리스크는 가품입니다. 정품 영수증이나 보증서, 더스트백 등 부속품 유무를 확인하고, 로고 각인의 정밀도, 스티치 간격의 균일함, 시리얼 넘버와 날짜 코드를 점검하세요. 시세보다 지나치게 저렴한 매물은 의심해야 합니다. 확신이 없다면 전문 감정 서비스를 제공하는 플랫폼을 이용하거나, 별도 감정을 받을 수 있는 거래를 선택하는 것이 안전합니다.</p><h3>사이즈와 반품 리스크 관리</h3><p>빈티지는 과거 사이즈 체계를 따르는 경우가 많아 같은 표기라도 현재 옷보다 작거나 크게 나옵니다. 표기 사이즈를 믿지 말고 어깨너비, 가슴둘레, 총장 등 실측 치수를 내가 가진 옷과 비교하세요. 중고 거래는 반품이 제한적인 경우가 많으므로, 구매 전 반품 가능 여부와 조건을 확인하고, 고가 아이템일수록 진품 보증과 반품이 되는 플랫폼을 우선하세요. 신중하게 접근하면 빈티지·세컨핸드는 합리적인 가격에 개성 있는 옷장을 만드는 가장 좋은 방법이 됩니다.</p>"
+    },
     {
       id: "capsule-wardrobe",
       title: "캡슐 워드로브 구성법: 최소한의 옷으로 최대의 스타일",
@@ -112,6 +133,27 @@ const extraBlogArticles = {
   ],
   en: [
     {
+      id: "body-type-styling",
+      title: "Dressing for Your Body Type: How to Choose Clothes That Fit You",
+      date: "2026-06-20",
+      summary: "Understand the key body-shape types and learn practical strategies to pick flattering clothes online without costly mistakes, building a balanced look for less.",
+      body: "<p>Almost everyone has bought something that looked great online but felt awkward once worn. Often the problem is not the garment but how it works with your body. The same piece can look completely different depending on your proportions. Understanding your own shape dramatically lowers your shopping failure rate and helps you choose flattering clothes for less.</p><h3>The basics of body-shape assessment</h3><p>Body shape is determined by your skeletal frame and how weight is distributed. Broadly, there are top-heavy frames with developed shoulders, bottom-heavy frames with volume at the hips and thighs, straight frames with few curves, and curvy frames with a defined waist. Stand in front of a mirror, compare your shoulder and hip width, and note how defined your waist is. The goal is not good or bad but balance: styling aims to create a visually balanced silhouette.</p><h3>Top-heavy frames</h3><p>If you have broad shoulders and a fuller bust, the key is to streamline the upper body and draw the eye downward. V-necks and deeper round necks lengthen the neckline and slim the torso. Choose tops with a relaxed rather than tight fit, and add volume below with wide-leg trousers or a flared skirt. Place bold patterns and lighter colors on the bottom, darker tones on top.</p><h3>Bottom-heavy frames</h3><p>If volume sits at your hips and thighs, do the opposite: add interest up top and keep the lower half clean. Shoulder details, puff sleeves, and boat necks emphasize the upper body and create balance. For bottoms, straight-leg or boot-cut shapes that let the leg line fall naturally work best; a straight cut conceals lower-body volume more softly than skinny styles.</p><h3>Straight frames</h3><p>If you have few curves and similar shoulder and hip width, clean and modern styling suits you. Oversized and boxy fits and minimal designs play to your strengths. Rather than forcing curves, lean into a sharp silhouette, which reads as sophisticated. Add a belt to define the waist or layer pieces for dimension to avoid looking flat.</p><h3>Practical tips for online shopping</h3><p>Once you know your shape, put it to use. Compare the model's build with your own on product pages, and check measured dimensions against a garment you already own that fits well. Look for reviews from people with a similar build to gauge fit. Above all, do not box yourself in: shape guides are a starting point, not a rule, and the most important thing is to try pieces on and find the variations that work for you.</p>"
+    },
+    {
+      id: "personal-color-shopping",
+      title: "Shopping by Personal Color: Filling Your Closet With Shades That Suit You",
+      date: "2026-06-15",
+      summary: "Go beyond warm and cool tones to understand seasonal personal color, and learn how to choose colors online without mistakes, including a self-check and best and worst shades.",
+      body: "<p>Wear the same garment in two colors and one can brighten your face while the other makes you look dull and tired. Personal color is what creates this difference. Knowing the range of shades that suit you greatly reduces color mistakes when shopping and makes the pieces in your closet naturally coordinate.</p><h3>What is personal color</h3><p>Personal color refers to the group of shades that best harmonize with your natural skin, eyes, and hair. It divides broadly into warm tones with a golden undertone and cool tones with a blue undertone, then subdivides into the four seasons by adding lightness and saturation. Spring suits bright warm shades, summer soft cool shades, autumn deep warm shades, and winter vivid cool shades.</p><h3>A simple self-check</h3><p>A professional analysis is most accurate, but you can spot rough tendencies at home. In natural light, hold gold and silver jewelry near your face in turn. If gold brightens your face you likely lean warm; if silver suits you better, cool. Greenish veins on the inner wrist suggest warm, bluish ones cool. Holding white and ivory fabric to your face and seeing which clears your complexion is another good clue.</p><h3>Choosing color online</h3><p>Because every monitor renders color differently, color is the easiest thing to get wrong when shopping online. Judge by detail shots taken in natural light where possible, and check the color name too: even within red, tomato red (warm) and wine red (cool) suit different people. Customer photos in reviews have little retouching and sit closer to the true color. When unsure, start by filling your closet with neutrals or your base colors.</p><h3>Best and worst colors</h3><p>Each season has shades that especially flatter and ones better avoided. Warm tones come alive in coral, camel, olive, and ivory, while cool tones suit lavender, navy, true red, and pure white. If you really want to wear a color that does not suit you, place it on bottoms or shoes far from the face, and keep your best colors on tops and scarves near the face.</p><h3>Do not over-rely on personal color</h3><p>Personal color is a powerful tool but not an absolute rule. Fabric texture, design, makeup, and even your condition that day change how a shade reads. Use your results as a guide to fill your closet efficiently, but if there is a color you truly love, smart placement and pairing can carry it. The point is to use color as a tool, not to be ruled by it.</p>"
+    },
+    {
+      id: "vintage-secondhand-online",
+      title: "Buying Vintage and Secondhand Online: How to Shop Pre-Owned Without Regret",
+      date: "2026-06-10",
+      summary: "How to buy authentic pre-owned and vintage pieces at fair prices online, covering condition checks, authentication, and managing size and return risk.",
+      body: "<p>As interest in sustainable consumption grows and demand rises for rare discontinued pieces, vintage and secondhand shopping is expanding fast. You can find good-quality items for less than new and reduce environmental impact at the same time. But because it is hard to inspect condition and authenticity directly in pre-owned trade, a few principles help.</p><h3>Vintage versus secondhand</h3><p>The terms are often mixed up, but they differ. Vintage generally means an item at least twenty years old that carries the character of its era. Secondhand refers to any pre-owned clothing regardless of age. Vintage is prized for rarity and design value, secondhand for value and practicality. What you want changes which platforms to browse and which keywords to search.</p><h3>Platform characteristics</h3><p>For pre-owned luxury, specialist platforms that authenticate items are safer. For general secondhand clothing, peer marketplaces or consignment platforms offer wider choice. Before buying, confirm whether the platform provides authenticity guarantees, condition inspection, and a return policy. For peer sales, check the seller's transaction history and reviews, and use secure payment methods such as escrow.</p><h3>Condition checklist</h3><p>Pre-owned items can differ greatly between description and reality. Do not rely on the stated condition grade; study the photos closely. Check sole and heel wear, cracked leather, knit pilling, working zippers and buttons, discoloration in linings and underarms, and any mention of smell. If photos are lacking, ask the seller for extra shots of tags, soles, inner labels, and damaged areas. It is safest to avoid sellers who will not answer in good faith.</p><h3>The basics of authentication</h3><p>With pre-owned luxury, the biggest risk is fakes. Check for receipts, certificates, dust bags, and other accessories, and inspect the precision of logo stamping, the evenness of stitch spacing, and the serial or date code. Be suspicious of listings priced far below market. If unsure, use a platform that offers professional authentication, or choose a transaction that allows separate appraisal.</p><h3>Managing size and return risk</h3><p>Vintage often follows older sizing systems, so the same label can run smaller or larger than current clothes. Do not trust the labeled size; compare measured dimensions such as shoulder width, chest, and length against a garment you own. Pre-owned sales often have limited returns, so confirm return terms before buying, and for costly items prefer platforms with authenticity guarantees and returns. Approached carefully, vintage and secondhand are the best way to build a distinctive closet at a reasonable price.</p>"
+    },
+    {
       id: "capsule-wardrobe",
       title: "How to Build a Capsule Wardrobe: Maximum Style with Minimal Clothing",
       date: "2025-04-01",
@@ -219,6 +261,27 @@ const extraBlogArticles = {
   ],
   zh: [
     {
+      id: "body-type-styling",
+      title: "按体型穿搭指南：如何挑选适合自己身材的衣服",
+      date: "2026-06-20",
+      summary: "了解上宽型、下宽型、直线型等不同体型的特点，掌握在网购中不踩雷、挑选显身材衣服的实用策略，用更少的钱打造均衡风格。",
+      body: "<p>几乎每个人都有过这样的经历：网上看起来很好看的衣服，上身后却很别扭。问题往往不在衣服，而在它与你身材的契合度。同一件衣服，因身材比例不同会呈现完全不同的效果。了解自己的体型，能大幅降低购物失败率，用更少的钱挑到更显身材的衣服。</p><h3>体型判断的基础</h3><p>体型由骨架和脂肪分布决定。大致可分为肩部发达、重心在上半身的上宽型，臀腿有量感的下宽型，曲线较少的直线型，以及腰线分明的曲线型。站在镜子前，比较肩宽与胯宽，观察腰部曲线的明显程度，就能大致判断类型。重点不在好坏，而在平衡：穿搭的目标是营造视觉上均衡的比例。</p><h3>上半身量感较大的体型</h3><p>肩宽、胸部丰满的体型，关键是修饰上半身、把视线引向下方。V领和较深的圆领能拉长颈线、显瘦上身。上衣选择不过紧的合身版型，下装用阔腿裤或A字裙增加量感以求平衡。大图案和浅色放在下半身，深色放在上半身更有利。</p><h3>下半身量感较大的体型</h3><p>量感集中在臀腿的体型则相反：在上半身做亮点，下半身保持利落。肩部细节、泡泡袖、一字领能强调上身、制造平衡。下装选择直筒或微喇等让腿部线条自然垂坠的廓形最佳；直筒比紧身更能柔和地修饰下半身量感。</p><h3>直线型体型</h3><p>曲线少、肩宽与胯宽相近的体型，适合利落现代的风格。oversize、廓形宽松和极简设计能凸显优势。与其勉强制造曲线，不如顺势利用利落的廓形，更显高级。用腰带强调腰线，或通过叠穿增加层次，可避免显得单调。</p><h3>网购实战技巧</h3><p>了解体型后，就在网购中加以运用。把商品页模特的身材与自己比较，并用实测尺寸与一件你已有且合身的衣服对照。在评价里寻找体型相似者的反馈来判断版型。最重要的是别把自己框死：体型指南是起点而非规则，真正重要的是亲自试穿，找到适合自己的变化。</p>"
+    },
+    {
+      id: "personal-color-shopping",
+      title: "按个人色彩购物：用适合你的颜色填满衣橱",
+      date: "2026-06-15",
+      summary: "超越冷暖色调，理解四季个人色彩，学会网购时不踩雷地挑选颜色，包括自我检测法与最佳、最差色。",
+      body: "<p>同一件衣服换个颜色，有的能让脸色明亮，有的却让人显得暗沉疲惫。造成这种差别的正是个人色彩。了解适合自己的色彩范围，能大幅减少购物时的选色失误，也让衣橱里的衣服自然彼此协调。</p><h3>什么是个人色彩</h3><p>个人色彩指与你天生的肤色、眼睛和发色最和谐的一组颜色。大致分为带金色底调的暖色和带蓝色底调的冷色，再加入明度与饱和度细分为春夏秋冬四季。春季适合明亮温暖的颜色，夏季适合柔和清凉的颜色，秋季适合深沉温暖的颜色，冬季适合鲜明冷冽的颜色。</p><h3>简单的自我检测</h3><p>专业检测最准确，但在家也能看出大致倾向。在自然光下，把金色和银色饰品轮流贴近脸部。若金色让脸色更亮，多半偏暖；若银色更合适，则偏冷。手腕内侧血管偏绿为暖，偏蓝为冷。把白色和米色布料贴近脸部，看哪一种让气色更清透，也是很好的线索。</p><h3>在网上挑选颜色</h3><p>由于每台显示器呈色不同，颜色是网购中最容易出错的环节。尽量以自然光下拍摄的细节图为准，并核对颜色名称：同样是红色，番茄红（暖）和酒红（冷）适合的人并不相同。评价里的买家实拍修图少，更接近真实颜色。没把握时，先从无彩色或自己的基础色填起最稳妥。</p><h3>最佳色与最差色</h3><p>每个季型都有特别显气色和最好回避的颜色。暖色调在珊瑚色、驼色、橄榄色、米色中更出彩，冷色调则适合薰衣草紫、藏青、正红和纯白。若你很想穿不适合的颜色，可把它放在远离脸部的下装或鞋子上，把最佳色留给贴近脸部的上衣和围巾。</p><h3>不要过度迷信个人色彩</h3><p>个人色彩是强大的工具，却非绝对的规则。面料质感、设计、妆容乃至当天状态都会改变颜色的呈现。把检测结果当作高效填充衣橱的指南，但若有真正喜欢的颜色，巧妙的位置安排与搭配完全能驾驭。关键是把颜色当工具来用，而非被颜色牵着走。</p>"
+    },
+    {
+      id: "vintage-secondhand-online",
+      title: "二手与古着网购指南：如何放心买到正品中古与复古单品",
+      date: "2026-06-10",
+      summary: "如何在网上以合理价格买到正品中古与古着，涵盖品相确认、真伪鉴别与尺码、退货风险管理。",
+      body: "<p>随着对可持续消费的关注上升，以及对停产稀有单品的需求增加，二手与古着购物正快速增长。你能以低于新品的价格买到品质不错的单品，同时减少环境负担。但由于二手交易难以直接确认品相与真伪，需要遵循几条原则。</p><h3>古着与二手的区别</h3><p>两者常被混用，其实不同。古着一般指制作至少二十年、带有时代特征的单品。二手则泛指任何被使用过的旧衣，与年份无关。古着的魅力在稀缺性与设计价值，二手则在性价比与实用性。你想要什么，决定了要浏览的平台与搜索的关键词。</p><h3>各类平台的特点</h3><p>中古奢侈品适合经过正品鉴定的专业平台，更安全。普通二手衣物则可在个人交易市场或寄卖平台找到更多选择。交易前务必确认平台是否提供正品保证、品相检验和退货政策。若为个人交易，应核查卖家的交易记录与评价，并使用担保交易等安全支付方式。</p><h3>品相确认清单</h3><p>二手单品的描述与实物可能相差很大。别轻信描述里的品相等级，要仔细看照片。检查鞋底与鞋跟磨损、皮革开裂、针织起球、拉链与纽扣是否正常、内衬与腋下是否变色，以及是否提及气味。照片不足时，向卖家索取吊牌、鞋底、内部标签和损伤处的补充照片。对不愿如实回应的卖家，回避为上。</p><h3>真伪鉴别基础</h3><p>中古奢侈品最大的风险是假货。确认是否有发票、保证书、防尘袋等配件，并检查logo刻印的精细度、走线间距的均匀度，以及序列号与日期码。对远低于行情的商品要存疑。没把握时，使用提供专业鉴定的平台，或选择能另行鉴定的交易，更为稳妥。</p><h3>尺码与退货风险管理</h3><p>古着多沿用旧的尺码体系，同样的标注可能比现今衣服偏小或偏大。别只信标注尺码，要用肩宽、胸围、衣长等实测尺寸与自己的衣服对照。二手交易往往退货受限，购买前须确认退货条件；越是高价单品，越应优先选择提供正品保证与退货的平台。只要谨慎对待，二手与古着就是以合理价格打造个性衣橱的最佳途径。</p>"
+    },
+    {
       id: "capsule-wardrobe",
       title: "胶囊衣橱搭建法：用最少的衣服打造最佳风格",
       date: "2025-04-01",
@@ -325,6 +388,27 @@ const extraBlogArticles = {
     }
   ],
   ja: [
+    {
+      id: "body-type-styling",
+      title: "体型別スタイリングガイド：自分の体に合う服の選び方",
+      date: "2026-06-20",
+      summary: "上重心型・下重心型・直線型など体型別の特徴を理解し、ネット通販で失敗せず似合う服を選ぶ実践戦略。少ない予算で均整のとれたスタイルを完成させる方法。",
+      body: "<p>ネットで素敵に見えた服が、いざ着てみると何だかしっくりこない。そんな経験は誰にでもあります。問題は服ではなく、自分の体型との相性であることが多いのです。同じ服でも体型によって全く違って見えます。自分の体型の特徴を理解すれば、買い物の失敗を大きく減らし、少ない予算でもずっと似合う服を選べます。</p><h3>体型診断の基本</h3><p>体型は骨格と肉づきの分布で決まります。大きく分けて、肩が発達し上半身に重心がある上重心型、骨盤や太ももにボリュームがある下重心型、起伏が少ない直線型、起伏がはっきりした曲線型があります。鏡の前で肩幅と骨盤幅を比べ、ウエストのくびれ具合を見れば、おおよそのタイプが分かります。大切なのは良し悪しではなくバランスです。スタイリングの目的は、視覚的に均整のとれた比率をつくることです。</p><h3>上半身にボリュームがある体型</h3><p>肩幅が広く胸が豊かな体型は、上半身をすっきり見せ、視線を下に分散させるのが鍵です。Vネックや深めのラウンドネックは首元を長く見せ、上半身を細く整えます。トップスはきつすぎない程度のフィット感を、ボトムスはワイドパンツやフレアスカートでボリュームを出すとバランスが取れます。大きな柄や明るい色は下半身に、暗い色は上半身に配置すると有利です。</p><h3>下半身にボリュームがある体型</h3><p>骨盤や太ももにボリュームがある体型は逆に、上半身にポイントを置き下半身をすっきり整えます。肩のディテール、パフスリーブ、ボートネックが上半身を強調しバランスを生みます。ボトムスはストレートやブーツカットのように脚のラインを自然に落とすシルエットが良く、スキニーより直線的な形のほうが下半身のボリュームをやわらかく隠します。</p><h3>直線型の体型</h3><p>起伏が少なく肩幅と骨盤幅が近い体型は、直線的でモダンなスタイルが似合います。オーバーサイズ、ボクシーなフィット、ミニマルなデザインが長所を生かします。無理に曲線をつくるより、すっきりしたシルエットをそのまま活かすほうが洗練して見えます。ベルトでウエストを強調したり、レイヤードで立体感を加えたりすると単調さを避けられます。</p><h3>ネット通販の実践テクニック</h3><p>体型が分かったら、ネット通販で活用しましょう。商品ページのモデルの体型と自分を比べ、実寸サイズを手持ちのよく合う服と照らし合わせる習慣が大切です。レビューで自分に近い体型の感想を探し、フィット感を見極めましょう。何より一つのタイプに縛られないこと。体型ガイドはルールではなく出発点であり、実際に試して自分に合う変化を見つけることが最も重要です。</p>"
+    },
+    {
+      id: "personal-color-shopping",
+      title: "パーソナルカラー活用ショッピング：自分に似合う色でクローゼットを満たす",
+      date: "2026-06-15",
+      summary: "イエベ・ブルベを超えて四季のパーソナルカラーを理解し、ネット通販で失敗せず色を選ぶ方法。セルフチェックとベスト・ワーストカラーまで。",
+      body: "<p>同じ服でも、ある色は顔色を明るく引き立て、ある色はくすんで疲れて見せます。この違いを生むのがパーソナルカラーです。自分に似合う色の領域を知れば、買い物での色選びの失敗が大きく減り、クローゼットの服が自然に互いに調和するようになります。</p><h3>パーソナルカラーとは</h3><p>パーソナルカラーとは、生まれ持った肌・目・髪の色味と最も調和する色のグループを指します。大きく、暖かみのあるイエローベースと、青みのあるブルーベースに分かれ、さらに明度と彩度を加えて春・夏・秋・冬の四季に細分します。春は明るく暖かい色、夏は柔らかく涼しい色、秋は深く暖かい色、冬は鮮やかで冷たい色が似合います。</p><h3>簡単なセルフチェック</h3><p>専門診断が最も正確ですが、自宅でもおおよその傾向は確認できます。自然光の下で、金色と銀色のアクセサリーを交互に顔の近くに当ててみましょう。金色が顔を明るくするならイエベ寄り、銀色のほうが似合うならブルベ寄りの可能性が高いです。手首の内側の血管が緑がかっていれば暖、青みがかっていれば冷の傾向です。白とアイボリーの布を顔に当て、どちらが顔色を澄ませるかも良い手がかりです。</p><h3>ネットで色を選ぶ</h3><p>モニターごとに色の表現が異なるため、色はネット通販で最も失敗しやすい要素です。商品写真はできるだけ自然光で撮られた詳細カットを基準に見て、色名も確認しましょう。同じ赤でもトマトレッド（暖）とワインレッド（冷）では似合う人が違います。レビューの着用写真は補正が少なく実際の色に近いです。確信がないときは、無彩色や自分のベースカラーから揃えるのが安全です。</p><h3>ベストカラーとワーストカラー</h3><p>各シーズンには特に似合う色と、避けたほうがよい色があります。イエベはコーラル、キャメル、オリーブ、アイボリーといった暖色が顔色を引き立て、ブルベはラベンダー、ネイビー、トゥルーレッド、ピュアホワイトが似合います。似合わない色をどうしても着たいなら、顔から遠いボトムスや靴に配置し、顔に近いトップスやスカーフにはベストカラーを置くのがコツです。</p><h3>パーソナルカラーを過信しない</h3><p>パーソナルカラーは強力なツールですが、絶対のルールではありません。素材の質感、デザイン、メイク、その日の体調によって似合い方は変わります。診断結果をクローゼットを効率的に満たすガイドとして活用しつつ、本当に好きな色があるなら配置と組み合わせで十分こなせます。大切なのは色に振り回されるのではなく、色を道具として使うことです。</p>"
+    },
+    {
+      id: "vintage-secondhand-online",
+      title: "ヴィンテージ・セカンドハンド通販ガイド：失敗せず中古ブランド・古着を買う方法",
+      date: "2026-06-10",
+      summary: "ヴィンテージ・セカンドハンドのオンライン購入で正規品を賢く買う方法。状態確認、真贋判定、サイズ・返品リスク管理まで実践ガイド。",
+      body: "<p>サステナブルな消費への関心が高まり、生産終了の希少アイテムを探す需要が増えるなか、ヴィンテージ・セカンドハンドの買い物が急速に広がっています。新品より安く良質なアイテムを手に入れられ、環境負荷も減らせます。ただし中古取引の性質上、状態や真贋を直接確認しにくいため、いくつかの原則が必要です。</p><h3>ヴィンテージとセカンドハンドの違い</h3><p>よく混同されますが、両者は異なります。ヴィンテージは一般に製造から二十年以上経ち、時代の特徴をもつアイテムを指します。セカンドハンドは年数に関係なく、一度以上使われた古着全般を指します。ヴィンテージは希少性とデザイン価値が、セカンドハンドはコスパと実用性が主な魅力です。何を求めるかで、見て回るプラットフォームと検索キーワードが変わります。</p><h3>プラットフォーム別の特徴</h3><p>中古ブランド品は真贋鑑定を行う専門プラットフォームが安全です。一般の古着は個人間マーケットや委託販売プラットフォームのほうが選択肢が広いです。取引前に、プラットフォームが正規品保証、状態検品、返品ポリシーを提供しているか必ず確認しましょう。個人取引なら、出品者の取引履歴とレビューを点検し、エスクローなど安全な決済手段を使うのが良いです。</p><h3>状態確認チェックリスト</h3><p>中古アイテムは説明と実物の差が大きいことがあります。説明の状態ランクを鵜呑みにせず、写真を入念に見ましょう。靴底とヒールの摩耗、革のひび割れ、ニットの毛玉、ファスナーやボタンの動作、裏地や脇の変色、匂いの言及の有無を確認します。写真が足りなければ、タグ、靴底、内部ラベル、損傷部分の追加写真を出品者に依頼しましょう。誠実に答えない出品者は避けるのが安全です。</p><h3>真贋判定の基礎</h3><p>中古ブランド品で最大のリスクは偽物です。レシートや保証書、保存袋などの付属品の有無を確認し、ロゴ刻印の精密さ、ステッチ間隔の均一さ、シリアルナンバーや日付コードを点検しましょう。相場より極端に安い出品は疑うべきです。確信がなければ、専門鑑定を提供するプラットフォームを利用するか、別途鑑定を受けられる取引を選ぶのが安全です。</p><h3>サイズと返品リスクの管理</h3><p>ヴィンテージは過去のサイズ体系に従うことが多く、同じ表記でも現在の服より小さかったり大きかったりします。表記サイズを信じず、肩幅、胸囲、着丈などの実寸を手持ちの服と比べましょう。中古取引は返品が制限される場合が多いため、購入前に返品の可否と条件を確認し、高額アイテムほど正規品保証と返品があるプラットフォームを優先してください。慎重に取り組めば、ヴィンテージ・セカンドハンドは手頃な価格で個性的なクローゼットをつくる最良の方法になります。</p>"
+    },
     {
       id: "capsule-wardrobe",
       title: "カプセルワードローブの作り方：最小限の服で最大のスタイルを",
