@@ -8,11 +8,11 @@
   <meta property="og:title" id="ogTitle" content="사이트 상세 — DIGGING" />
   <meta property="og:description" id="ogDesc" content="DIGGING 에디터가 직접 검증한 패션 쇼핑 사이트 상세 리뷰." />
   <meta property="og:type" content="article" />
-  <meta property="og:url" id="ogUrl" content="https://vibe-coding-6ou.pages.dev/site.html" />
+  <meta property="og:url" id="ogUrl" content="https://vibe-coding-6ou.pages.dev/site" />
   <meta property="og:site_name" content="DIGGING" />
   <meta property="og:locale" content="ko_KR" />
   <meta name="google-adsense-account" content="ca-pub-4004698288665198">
-  <link rel="canonical" id="canonicalLink" href="https://vibe-coding-6ou.pages.dev/site.html" />
+  <link rel="canonical" id="canonicalLink" href="https://vibe-coding-6ou.pages.dev/site" />
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4004698288665198" crossorigin="anonymous"></script>
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-Y7PCS90ZRL"></script>
@@ -185,7 +185,7 @@
     const d = (typeof siteDetails !== 'undefined') ? siteDetails[site.url] : null;
 
     // ── meta / title / canonical (dynamic) ──
-    const canonical = `${SITE_ORIGIN}/site.html?id=${encodeURIComponent(site.url)}`;
+    const canonical = `${SITE_ORIGIN}/site?id=${encodeURIComponent(site.url)}`;
     const metaDescText = desc.length > 155 ? desc.slice(0, 152) + '…' : desc;
     document.title = `${site.name} 리뷰 — DIGGING`;
     document.documentElement.lang = lang;
@@ -243,7 +243,7 @@
       const cards = related.map(s => {
         const rd = pick(s.desc, lang);
         const short = rd.length > 90 ? rd.slice(0, 88) + '…' : rd;
-        return `<a class="card" href="site.html?id=${encodeURIComponent(s.url)}">
+        return `<a class="card" href="site?id=${encodeURIComponent(s.url)}">
           <div class="card-head"><div class="favicon">${s.emoji}</div><div><div class="card-title">${esc(s.name)}</div><div class="card-url">${esc(s.url)}</div></div></div>
           <p class="card-desc">${esc(short)}</p>
           <div class="card-footer"><div class="tags"></div><span class="arrow">→</span></div></a>`;
