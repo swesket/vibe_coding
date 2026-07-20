@@ -20,10 +20,10 @@ There are no tests, linters, or CI pipelines. Changes go live on push to `main`.
 ## Architecture
 
 ### Multi-Page Structure
-- 10 HTML pages share `shared.css` and `shared.js`
+- 11 HTML pages share `shared.css` and `shared.js`
 - Each page sets `<body data-page="...">` to identify itself
 - Page-specific logic is embedded in `<script>` blocks within each HTML file
-- Data lives in separate JS files: `data.js` (29 sites), `brands.js` (40 brands), `blog-data.js` (18 extra blog articles)
+- Data lives in separate JS files: `data.js` (29 sites), `brands.js` (40 brands), `blog-data.js` (18 extra blog articles), `site-details.js` (per-site review content: price/shipping/pros/cons/bestFor/verdict in 4 languages, keyed by site `url`)
 - Script load order matters: `shared.js` → `data.js`/`brands.js`/`blog-data.js` → page-specific inline `<script>`. `blog-data.js` mutates `i18n[lang].blog.articles` at load time via `Array.concat`, so it must run after `shared.js` (defines `i18n`) and before the blog page script (reads it). Only `blog.html` loads `blog-data.js`.
 
 ### Three Independent Axes on `<html>`
@@ -65,6 +65,7 @@ All 10 HTML files must keep this structure identical.
 | `guide.html` | `guide` | Shopping guide articles by category |
 | `brands.html` | `brands` | Brand → site lookup |
 | `blog.html` | `blog` | Editorial articles (content in i18n) |
+| `site.html` | `site` | Per-site detail/review page — reads `?id=<url>` param, renders full original review from `data.js` + `site-details.js`. Cards on `sites.html` link here (internal) instead of directly to external sites |
 | `about.html` | `about` | About page with values, criteria, story |
 | `submit.html` | `submit` | Site submission form (Formspree) |
 | `community.html` | `community` | Disqus comments |
@@ -80,6 +81,7 @@ All 10 HTML files must keep this structure identical.
 | `data.js` | Site catalog array — each entry has multilingual `desc`/`tags` |
 | `brands.js` | Brand-to-site mapping array |
 | `blog-data.js` | Appends extra blog articles into `i18n[lang].blog.articles` at load time (blog page only) |
+| `site-details.js` | Per-site rich review content (`siteDetails[url][field][lang]`); loaded by `site.html` only. When adding/removing a site in `data.js`, add/remove the matching `siteDetails` entry keyed by the same `url` |
 
 ## Conventions
 
@@ -90,11 +92,11 @@ All 10 HTML files must keep this structure identical.
 - Cards use staggered `animation-delay: ${i * 0.04}s` for fade-in
 - Grid layouts use `minmax(280px, 1fr)` for responsive columns
 - Blog article content is stored as HTML strings inside the `i18n` object (not separate files)
-- **`<noscript>` static Korean content**: JS-dependent pages ship hardcoded Korean static blocks inside `<noscript>` tags for users with JavaScript disabled. Pages with noscript content: `sites.html`, `guide.html`, `blog.html`, `community.html`, `brands.html`, `index.html`, `about.html`, `submit.html`. When adding/removing entries from `data.js`, `brands.js`, or `blog-data.js`, keep the `<noscript>` block on the matching page in sync. **Do NOT use hidden off-screen divs** (`position:absolute;left:-9999px`) for crawler-only content — Google classifies this as hidden text spam.
+- **`<noscript>` static Korean content**: JS-dependent pages ship hardcoded Korean static blocks inside `<noscript>` tags for users with JavaScript disabled. Pages with noscript content: `sites.html`, `guide.html`, `blog.html`, `community.html`, `brands.html`, `index.html`, `about.html`, `submit.html`, `site.html` (generic fallback pointing back to `sites.html`, since detail content is per-`?id=` and can't be statically embedded). When adding/removing entries from `data.js`, `brands.js`, or `blog-data.js`, keep the `<noscript>` block on the matching page in sync. **Do NOT use hidden off-screen divs** (`position:absolute;left:-9999px`) for crawler-only content — Google classifies this as hidden text spam.
 - **Progressive enhancement**: Pages with JS-rendered sections (about criteria/values, submit process steps, index category grid) include static Korean HTML as default content inside those containers. JS clears and re-renders with the active language on load. This ensures content is visible even if JS fails to execute.
 
 ## Third-Party Services
-- **Google AdSense** (ca-pub-4004698288665198): script on all 10 pages; ad slots on index, sites, guide, brands, blog, about, submit (7 pages). community/privacy/terms have no ad slots (community is third-party Disqus content; legal pages excluded)
+- **Google AdSense** (ca-pub-4004698288665198): script on all 11 pages; ad slots on index, sites, guide, brands, blog, about, submit, site (8 pages). community/privacy/terms have no ad slots (community is third-party Disqus content; legal pages excluded)
 - **Google Analytics** (G-Y7PCS90ZRL): all pages
 - **MS Clarity** (vks9106g6o): all pages
 - **Formspree** (xreayzej): submit.html form handler
